@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private RoleDao roleDao;
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+
 	@Override
 	@Transactional
 	public RegisteredUser findByUserName(String userName) {
@@ -36,17 +41,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void save(RegisteredUser crmUser) {
-		RegisteredUser user = new RegisteredUser();
-		 // assign user details to the user object
-		user.setUserName(crmUser.getUserName());
-		user.setPassword((crmUser.getPassword()));
-		user.setFirstName(crmUser.getFirstName());
-		user.setLastName(crmUser.getLastName());
-		user.setEmail(crmUser.getEmail());
-
-		// give user default role of "employee"
-		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_EMPLOYEE")));
+	public void save(RegisteredUser user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_SIMPLE")));
 
 		 // save user in the database
 		userDao.save(user);

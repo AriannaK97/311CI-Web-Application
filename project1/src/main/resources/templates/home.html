@@ -2,15 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Homepage</title>
 </head>
 <body>
 
     We are here!
 
-    <div th:if="${session}" >
-        <p th:text="'First name: ' + ${session.user.firstName} + ', Last name: ' + ${session.user.lastName} + ', Email: ' + ${session.user.email}"></p>
+
+    <div th:if="${session.user == null}" >
+        To login click here
+         <a href="/login"> Login </a>
     </div>
+
+    <div th:if="${session.user}" >
+        <p th:text="'First name: ' + ${session.user.firstName} + ', Last name: ' + ${session.user.lastName} + ', Email: ' + ${session.user.email}"></p>
+
+        To logout click here
+        <a href="/login"> Logout </a>
+    </div>
+
+
 
 </body>
 </html>
