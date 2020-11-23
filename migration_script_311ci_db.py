@@ -25,9 +25,9 @@ class MigrateDb:
     @staticmethod
     def _connect_():
         try:
-            #connect to the PostgresQl server
+            # connect to the PostgresQl server
             print("Connecting to db_311ci...")
-            conn = psycopg2.connect("host=localhost dbname=db_311ci user=postgres password=pass")
+            conn = psycopg2.connect("host=localhost dbname=db_311ci user=postgres password=root")
         except(Exception, psycopg2.DatabaseError) as error:
             print(error)
             sys.exit(1)
@@ -53,19 +53,25 @@ class MigrateDb:
         for file in all_files:
             print(file)
             iter_ += 1
-            df = pd.read_csv(file, index_col=None, header=0, nrows=1000)
-            table = self.get_table_name_reference(file)
-            print("Migrating table:" + table)
-            df = df.applymap(lambda s: s.lower() if type(s) == str else s)
-            df.columns = df.columns.str.lower()
-            if table == 'pot_holes_reported':
-                df.rename(columns={'zip': 'zip code'}, inplace=True)
-            self.insert_ssa(df, table)
-            self.insert_request_type(df)
-            self.insert_status_type(df)
-            self.insert_district(df)
-            self.insert_incident(df, table)
-            #break
+            iter2 = 0
+            chunksize = 100000
+            #df = pd.read_csv(file, index_col=None, header=0, nrows=1000)
+            for df in pd.read_csv(file, index_col=None, header=0, chunksize=chunksize):
+                iter2 += 1
+                table = self.get_table_name_reference(file)
+                print("Migrating table:" + table)
+                df = df.applymap(lambda s: s.lower() if type(s) == str else s)
+                df.columns = df.columns.str.lower()
+                if table == 'pot_holes_reported':
+                    df.rename(columns={'zip': 'zip code'}, inplace=True)
+                self.insert_ssa(df, table)
+                self.insert_request_type(df)
+                self.insert_status_type(df)
+                self.insert_district(df)
+                self.insert_incident(df, table)
+        ##comment here to reach all csv entries##
+                if iter2 == 2:
+                    break
             if iter_ == 11:
                 break
         print(len(all_files))
@@ -148,7 +154,7 @@ class MigrateDb:
             self.insert_tree_trims(row, request_type_id)
             return
 
-#Todo: check for service_request_number position in incident -  migh need to move it on request type
+    # Todo: check for service_request_number position in incident -  migh need to move it on request type
     def insert_incident(self, df, table):
         # SQL quert to execute
         for index, row in tqdm(df.iterrows(), desc="Migrating...", ascii=False, ncols=75):
@@ -157,15 +163,18 @@ class MigrateDb:
 
             extra_incident_info_id = None
             if table != 'street_lights_one_out':
-                incident_inf_df = row[['historical wards 2003-2015', 'zip codes', 'community areas', 'census tracts', 'wards']]
+                incident_inf_df = row[
+                    ['historical wards 2003-2015', 'zip codes', 'community areas', 'census tracts', 'wards']]
                 extra_incident_info_id = self.insert_extra_incident_info(incident_inf_df)
 
-            self.cur.execute("SELECT request_type_id FROM request_type where name = %s", (row['type of service request'],))
+            self.cur.execute("SELECT request_type_id FROM request_type where name = %s",
+                             (row['type of service request'],))
             request_type_id = self.cur.fetchone()
 
             self.cur.execute("SELECT district_id FROM district where zip_code = %s and ward = %s and "
                              "police_district = %s and community_area = %s", (row["zip code"], row["ward"],
-                             row["police district"], row["community area"],))
+                                                                              row["police district"],
+                                                                              row["community area"],))
             district_id = self.cur.fetchone()
 
             self.cur.execute("SELECT status_type_id FROM status_type where status_type_name = %s", (row["status"],))
@@ -205,23 +214,31 @@ class MigrateDb:
         data = df['type of service request'].unique()
         for d in data:
             psycopg2.extras.register_uuid()
-            query = "INSERT INTO request_type (request_type_id, name) VALUES (%s, %s)"
-            self.cur.execute(query, (uuid.uuid4(), d))
+            q1 = "SELECT name FROM request_type WHERE name = %s"
+            self.cur.execute(q1, (d, ))
             self.conn.commit()
+            if self.cur.fetchone() is None:
+                query = "INSERT INTO request_type (request_type_id, name) VALUES (%s, %s)"
+                self.cur.execute(query, (uuid.uuid4(), d))
+                self.conn.commit()
 
     def insert_status_type(self, df):
         data = df['status'].unique()
         for d in data:
             psycopg2.extras.register_uuid()
-            query = "INSERT INTO status_type (status_type_id, status_type_name) VALUES (%s, %s)"
-            self.cur.execute(query, (uuid.uuid4(), d))
+            q1 = "SELECT * FROM status_type WHERE status_type_name = %s"
+            self.cur.execute(q1, (d, ))
             self.conn.commit()
+            if self.cur.fetchone() is None:
+                query = "INSERT INTO status_type (status_type_id, status_type_name) VALUES (%s, %s)"
+                self.cur.execute(query, (uuid.uuid4(), d))
+                self.conn.commit()
 
     def insert_extra_incident_info(self, row):
         row = pd.DataFrame(row).T
         row = row.fillna(-1)
         row = row.astype({'historical wards 2003-2015': int, 'zip codes': int, 'community areas': int,
-                                   'census tracts': int, 'wards': int})
+                          'census tracts': int, 'wards': int})
         row = row.replace(-1, None)
 
         psycopg2.extras.register_uuid()
@@ -230,7 +247,8 @@ class MigrateDb:
                 "RETURNING extra_incident_info_id"
 
         self.cur.execute(query, (uuid.uuid4(), row['historical wards 2003-2015'].values[0], row['zip codes'].values[0],
-                                 row['community areas'].values[0], row['census tracts'].values[0], row['wards'].values[0]))
+                                 row['community areas'].values[0], row['census tracts'].values[0],
+                                 row['wards'].values[0]))
         self.conn.commit()
         return self.cur.fetchone()[0]
 
@@ -246,11 +264,17 @@ class MigrateDb:
 
         for index, row in district_df.iterrows():
             psycopg2.extras.register_uuid()
-            query = "INSERT INTO district (district_id, zip_code, ward, police_district, community_area) " \
-                    "VALUES (%s, %s, %s, %s, %s)"
-            self.cur.execute(query, (uuid.uuid4(), row["zip code"], row["ward"], row["police district"],
-                                     row["community area"]))
+            q1 = "SELECT * FROM district WHERE zip_code= %s AND ward= %s AND " \
+                 "police_district = %s AND community_area = %s"
+            self.cur.execute(q1, (row["zip code"], row["ward"], row["police district"],
+                                         row["community area"]))
             self.conn.commit()
+            if self.cur.fetchone() is None:
+                query = "INSERT INTO district (district_id, zip_code, ward, police_district, community_area) " \
+                        "VALUES (%s, %s, %s, %s, %s)"
+                self.cur.execute(query, (uuid.uuid4(), row["zip code"], row["ward"], row["police district"],
+                                         row["community area"]))
+                self.conn.commit()
 
     def insert_ssa(self, df, table):
         if table == "abandoned_vehicles" or table == "garbage-carts" or table == "graffiti-removal" or table == "pot-holes-reported":
@@ -261,22 +285,29 @@ class MigrateDb:
             data = s_df['ssa']
             psycopg2.extras.register_uuid()
             for d in data:
-                query = "INSERT INTO ssa (ssa_id, ssa)  SELECT %s, %s"
-                self.cur.execute(query, (uuid.uuid4(), d))
+                q1 = "SELECT ssa.ssa FROM ssa WHERE ssa.ssa = %s"
+                self.cur.execute(q1, (d,))
                 self.conn.commit()
+                if self.cur.fetchone() is None:
+                    query = "INSERT INTO ssa (ssa_id, ssa)  SELECT %s, %s"
+                    self.cur.execute(query, (uuid.uuid4(), d))
+                    self.conn.commit()
 
     def insert_abandoned_vehicle(self, row, request_type_id):
         i_df = pd.DataFrame(row).T
         i_df = pd.DataFrame(i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity',
-                                'most recent action', 'how many days has the vehicle been reported as parked?', 'ssa']])
+                                  'most recent action', 'how many days has the vehicle been reported as parked?',
+                                  'ssa']])
         i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity', 'most recent action']] = \
-            i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity', 'most recent action']].fillna('NULL')
+            i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity',
+                  'most recent action']].fillna('NULL')
         i_df[['how many days has the vehicle been reported as parked?', 'ssa']] = \
             i_df[['how many days has the vehicle been reported as parked?', 'ssa']].fillna(-1)
         i_df[['how many days has the vehicle been reported as parked?', 'ssa']] = \
             i_df[['how many days has the vehicle been reported as parked?', 'ssa']].replace(np.nan, None)
         i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity', 'most recent action']] = \
-            i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity', 'most recent action']].replace(np.nan, )
+            i_df[['license plate', 'vehicle make/model', 'vehicle color', 'current activity',
+                  'most recent action']].replace(np.nan, )
 
         self.cur.execute("SELECT ssa_id FROM ssa WHERE ssa.ssa = %s", (i_df['ssa'].values[0],))
         ssa_id = self.cur.fetchone()
@@ -301,7 +332,8 @@ class MigrateDb:
         i_df = pd.DataFrame(row).T
         i_df = pd.DataFrame(i_df[['number of black carts delivered', 'current activity', 'most recent action', 'ssa']])
         i_df[['number of black carts delivered', 'ssa']] = i_df[['number of black carts delivered', 'ssa']].fillna(-1)
-        i_df[['number of black carts delivered', 'ssa']] = i_df[['number of black carts delivered', 'ssa']].replace(np.nan, None)
+        i_df[['number of black carts delivered', 'ssa']] = i_df[['number of black carts delivered', 'ssa']].replace(
+            np.nan, None)
         i_df[['current activity', 'most recent action']] = \
             i_df[['current activity', 'most recent action']].fillna('NULL')
         i_df[['current activity', 'most recent action']] = \
@@ -333,17 +365,21 @@ class MigrateDb:
         psycopg2.extras.register_uuid()
         query = "INSERT INTO graffiti_removal (id, request_id, surface_type, graffiti_location, ssa_id) " \
                 "VALUES (%s, %s, %s, %s, %s) "
-        self.cur.execute(query, (uuid.uuid4(), request_type_id, i_df['what type of surface is the graffiti on?'].values[0],
-                                 i_df['where is the graffiti located?'].values[0], ssa_id))
+        self.cur.execute(query,
+                         (uuid.uuid4(), request_type_id, i_df['what type of surface is the graffiti on?'].values[0],
+                          i_df['where is the graffiti located?'].values[0], ssa_id))
         self.conn.commit()
 
     def insert_pot_holes_reported(self, row, request_type_id):
         i_df = pd.DataFrame(row).T
-        i_df = pd.DataFrame(i_df[['number of potholes filled on block', 'current activity', 'most recent action', 'ssa']])
+        i_df = pd.DataFrame(
+            i_df[['number of potholes filled on block', 'current activity', 'most recent action', 'ssa']])
 
-        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].fillna('NULL')
+        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].fillna(
+            'NULL')
 
-        i_df[['number of potholes filled on block', 'ssa']] = i_df[['number of potholes filled on block', 'ssa']].fillna(-1)
+        i_df[['number of potholes filled on block', 'ssa']] = i_df[
+            ['number of potholes filled on block', 'ssa']].fillna(-1)
 
         i_df[['number of potholes filled on block', 'ssa']] = \
             i_df[['number of potholes filled on block', 'ssa']].replace(np.nan, None)
@@ -366,31 +402,39 @@ class MigrateDb:
         i_df = pd.DataFrame(row).T
         i_df = pd.DataFrame(i_df[['number of premises baited', 'number of premises with garbage',
                                   'number of premises with rats', 'current activity', 'most recent action']])
-        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].fillna('NULL')
+        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].fillna(
+            'NULL')
         i_df[['number of premises baited', 'number of premises with garbage', 'number of premises with rats']] = \
-            i_df[['number of premises baited', 'number of premises with garbage', 'number of premises with rats']].fillna(-1)
+            i_df[['number of premises baited', 'number of premises with garbage',
+                  'number of premises with rats']].fillna(-1)
         i_df[['number of premises baited', 'number of premises with garbage', 'number of premises with rats']] = \
-            i_df[['number of premises baited', 'number of premises with garbage', 'number of premises with rats']].replace(np.nan, None)
-        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].replace(np.nan, )
+            i_df[['number of premises baited', 'number of premises with garbage',
+                  'number of premises with rats']].replace(np.nan, None)
+        i_df[['current activity', 'most recent action']] = i_df[['current activity', 'most recent action']].replace(
+            np.nan, )
 
         psycopg2.extras.register_uuid()
         query = "INSERT INTO rodent_bating (id, request_id, baited_premises_num, premises_with_garbage_num, " \
                 "premises_with_rats_num, current_activity, most_recent_action) " \
                 "VALUES (%s, %s, %s, %s, %s, %s, %s) "
         self.cur.execute(query, (uuid.uuid4(), request_type_id, i_df['number of premises baited'].values[0],
-                                 i_df['number of premises with garbage'].values[0], i_df['number of premises with rats'].values[0],
+                                 i_df['number of premises with garbage'].values[0],
+                                 i_df['number of premises with rats'].values[0],
                                  i_df['current activity'].values[0], i_df['most recent action'].values[0]))
         self.conn.commit()
 
     def insert_sanitation_code_complaints(self, row, request_type_id):
         i_df = pd.DataFrame(row).T
         i_df = pd.DataFrame(i_df['what is the nature of this code violation?'])
-        i_df['what is the nature of this code violation?'] = i_df['what is the nature of this code violation?'].fillna('NULL')
-        i_df['what is the nature of this code violation?'] = i_df['what is the nature of this code violation?'].replace(np.nan, )
+        i_df['what is the nature of this code violation?'] = i_df['what is the nature of this code violation?'].fillna(
+            'NULL')
+        i_df['what is the nature of this code violation?'] = i_df['what is the nature of this code violation?'].replace(
+            np.nan, )
 
         psycopg2.extras.register_uuid()
         query = "INSERT INTO sanitation_code_complaints (id, request_id, violation_nature) VALUES (%s, %s, %s)"
-        self.cur.execute(query, (uuid.uuid4(), request_type_id, i_df['what is the nature of this code violation?'].values[0]))
+        self.cur.execute(query,
+                         (uuid.uuid4(), request_type_id, i_df['what is the nature of this code violation?'].values[0]))
         self.conn.commit()
 
     def insert_street_lights_all_out(self, request_type_id):
@@ -435,4 +479,3 @@ class MigrateDb:
 if __name__ == "__main__":
     migration = MigrateDb()
     migration.read()
-
