@@ -32,6 +32,9 @@ public class RegisteredUser {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(mappedBy = "user")
+    private Collection<UserActionLog> logList;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "registered_user_id"),
