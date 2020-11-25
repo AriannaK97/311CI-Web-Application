@@ -34,6 +34,9 @@ public class PotHolesReported {
     @Column(name = "most_recent_action")
     private String mostRecentAction;
 
+    @Column(name = "SSA")
+    private int SSA;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="incident_id")

@@ -5,6 +5,7 @@ import com.databases.project1.dao.RoleDao;
 import com.databases.project1.dao.UserDao;
 import com.databases.project1.entity.RegisteredUser;
 import com.databases.project1.entity.Role;
+import com.databases.project1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,12 +32,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	@Autowired
+	private UserRepository userRepository;
+
 
 	@Override
 	@Transactional
 	public RegisteredUser findByUserName(String userName) {
 		// check the database if the user already exists
-		return userDao.findByUserName(userName);
+		return userRepository.findByUserName(userName);
 	}
 
 	@Override
@@ -46,13 +50,15 @@ public class UserServiceImpl implements UserService {
 		user.setRoles(Arrays.asList(roleDao.findRoleByName("ROLE_SIMPLE")));
 
 		 // save user in the database
-		userDao.save(user);
+		userRepository.save(user);
 	}
 
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		RegisteredUser user = userDao.findByUserName(userName);
+		//RegisteredUser user = userDao.findByUserName(userName);
+		RegisteredUser user = userRepository.findByUserName(userName);
+
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}

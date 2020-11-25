@@ -40,8 +40,11 @@ public class AbandonedVehicle {
     @Column(name = "most_recent_action")
     private String mostRecentAction;
 
-    @Column(name = "daysReportedParked")
+    @Column(name = "days_reported_parked")
     private int daysReportedParked;
+
+    @Column(name = "SSA")
+    private int SSA;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="incident_id")

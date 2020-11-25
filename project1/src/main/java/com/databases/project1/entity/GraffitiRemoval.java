@@ -31,6 +31,9 @@ public class GraffitiRemoval {
     @Column(name = "graffiti_location")
     private String graffitiLocation;
 
+    @Column(name = "SSA")
+    private int SSA;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="incident_id")
     Incident incident;

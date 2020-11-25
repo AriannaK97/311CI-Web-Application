@@ -31,7 +31,7 @@ public class RodentBaiting {
     @Column(name = "premises_with_garbage_num")
     private int premisesWithGarbageNum;
 
-    @Column(name = "premisesWithRatsNum")
+    @Column(name = "premises_with_rats_num")
     private int premisesWithRatsNum;
 
     @Column(name = "current_activity")

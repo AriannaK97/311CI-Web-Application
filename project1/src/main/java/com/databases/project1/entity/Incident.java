@@ -22,7 +22,7 @@ public class Incident {
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
-    @Column(name = "incident_id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
 
@@ -50,20 +50,11 @@ public class Incident {
     @Column(name="x_coordinate")
     private float x;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="id")
-    RegisteredUser user;
+    @JoinColumn(name="request_type")
+    String requestType;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="request_type_id")
-    RequestType requestType;
-
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="STATUS_TYPE_ID")
-    StatusType statusType;
+    @JoinColumn(name="status_type")
+    String statusType;
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})

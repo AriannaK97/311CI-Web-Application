@@ -21,7 +21,7 @@ public class ExtraIncidentInfo {
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
-    @Column(name = "EXTRA_INCIDENT_INFO_ID", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
 

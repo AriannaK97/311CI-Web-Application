@@ -22,7 +22,7 @@ public class District {
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
-    @Column(name = "district_id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
 
