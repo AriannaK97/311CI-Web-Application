@@ -32,7 +32,9 @@ public class RegisteredUser {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "regUser",
+    cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     private Collection<UserActionLog> logList;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

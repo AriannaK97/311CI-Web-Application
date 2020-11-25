@@ -17,7 +17,7 @@ public class UserActionLog {
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
-    @Column(name = "USER_ACTION_LOG_ID_UUID", unique = true, nullable = false)
+    @Column(name = "USER_ACTION_LOG_ID", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
 
@@ -28,7 +28,7 @@ public class UserActionLog {
     private Timestamp actionTimeStamp;
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false,updatable =false,insertable = false)
-    private RegisteredUser user;
+    @JoinColumn(name = "registered_user_id")
+    private RegisteredUser regUser;
 
 }
