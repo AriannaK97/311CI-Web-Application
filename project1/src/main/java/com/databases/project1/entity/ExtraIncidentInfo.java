@@ -25,6 +25,9 @@ public class ExtraIncidentInfo {
     @Type(type="pg-uuid")
     private UUID id;
 
+    @Column(name = "historical_wards_2003_2015")
+    private int historical_wards_2003_2015;
+
     @Column(name = "zip_codes")
     private int zipcode;
 

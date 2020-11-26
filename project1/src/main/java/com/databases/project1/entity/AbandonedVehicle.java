@@ -25,7 +25,7 @@ public class AbandonedVehicle {
     @Type(type="pg-uuid")
     private UUID id;
 
-    @Column(name = "license_plate")
+    @Column(name = "license_plate", columnDefinition = "TEXT")
     private String licensePlate;
 
     @Column(name = "vehicle_make_model")
@@ -41,7 +41,7 @@ public class AbandonedVehicle {
     private String mostRecentAction;
 
     @Column(name = "days_reported_parked")
-    private int daysReportedParked;
+    private float daysReportedParked;
 
     @Column(name = "SSA")
     private int SSA;
