@@ -26,13 +26,13 @@ public class RodentBaiting {
     private UUID id;
 
     @Column(name = "baited_premises_num")
-    private int baitedPremisesNum;
+    private float baitedPremisesNum;
 
     @Column(name = "premises_with_garbage_num")
-    private int premisesWithGarbageNum;
+    private float premisesWithGarbageNum;
 
     @Column(name = "premises_with_rats_num")
-    private int premisesWithRatsNum;
+    private float premisesWithRatsNum;
 
     @Column(name = "current_activity")
     private String currentActivity;
@@ -41,7 +41,7 @@ public class RodentBaiting {
     private String mostRecentAction;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 

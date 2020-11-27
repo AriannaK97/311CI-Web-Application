@@ -63,7 +63,7 @@ public class Incident {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="extra_incident_info_id")
+    @JoinColumn(name="id")
     ExtraIncidentInfo extraIncidentInfo;
 
 

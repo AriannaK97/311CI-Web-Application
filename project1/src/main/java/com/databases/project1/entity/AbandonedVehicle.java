@@ -47,7 +47,7 @@ public class AbandonedVehicle {
     private int SSA;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 

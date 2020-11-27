@@ -29,7 +29,7 @@ public class SanitationCodeComplaints {
     private String violationNature;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 
