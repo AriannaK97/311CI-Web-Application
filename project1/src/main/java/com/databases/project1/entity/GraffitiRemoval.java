@@ -26,7 +26,7 @@ public class GraffitiRemoval {
     private UUID id;
 
     @Column(name = "surface_type")
-    private int surfaceΤype;
+    private String surfaceΤype;
 
     @Column(name = "graffiti_location")
     private String graffitiLocation;
@@ -35,7 +35,7 @@ public class GraffitiRemoval {
     private int SSA;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 

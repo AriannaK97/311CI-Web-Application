@@ -30,7 +30,7 @@ public class TreeTrims {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 

@@ -26,7 +26,7 @@ public class GarbageCarts {
     private UUID id;
 
     @Column(name = "delivered_black_carts_num")
-    private int deliveredBlackCartsNum;
+    private float deliveredBlackCartsNum;
 
     @Column(name = "current_activity")
     private String currentActivity;
@@ -39,7 +39,7 @@ public class GarbageCarts {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="incident_id")
+    @JoinColumn(name="id")
     Incident incident;
 
 

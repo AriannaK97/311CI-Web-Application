@@ -34,9 +34,6 @@ public class ExtraIncidentInfo {
     @Column(name = "wards")
     private int ward;
 
-    @Column(name = "police_districts")
-    private int policeDistrict;
-
     @Column(name = "community_areas")
     private int communityArea;
 
