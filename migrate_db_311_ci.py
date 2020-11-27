@@ -8,7 +8,6 @@ import psycopg2.extras as extras
 from psycopg2.extensions import register_adapter
 import psycopg2
 import pandas as pd
-import sqlalchemy
 
 
 class MigrateDb:
@@ -55,7 +54,7 @@ class MigrateDb:
             command = "./pgfutter --db \"db_311ci\" --port \"5432\" --user \"postgres\" --pw \"root\" csv " + file
             os.system(command)
             table = self.get_table_name_reference(file)
-            self.call_table_insert(table)
+            #self.call_table_insert(table)
             # if iter_ == 3:
             #     break
         print(len(all_files))
@@ -181,12 +180,14 @@ class MigrateDb:
         insert_incident_uuid_column = "ALTER TABLE import._311_service_requests_alley_lights_out ADD incident_id uuid;"
         self.cur.execute(insert_incident_uuid_column)
         self.conn.commit()
-        create_uuids_query = "update import._311_service_requests_alley_lights_out set incident_id=uuid_in(md5(random()::text || clock_timestamp()::text)::cstring)"
+        create_uuids_query = "update import._311_service_requests_alley_lights_out set incident_id=uuid_in(md5(" \
+                             "random()::text || clock_timestamp()::text)::cstring) "
         self.cur.execute(create_uuids_query)
         self.conn.commit()
 
         # insert extra incident info
-        extra_incident_info_query = "INSERT INTO extra_incident_info (id, historical_wards_2003_2015, community_areas, cencus_tracts, zip_codes, wards)" \
+        extra_incident_info_query = "INSERT INTO extra_incident_info (id, historical_wards_2003_2015, " \
+                                    "community_areas, cencus_tracts, zip_codes, wards)" \
                                     "select tmp.incident_id::uuid, tmp.zip_codes::INTEGER, tmp.historical_wards_2003_2015::INTEGER," \
                                     "tmp.community_areas::INTEGER, tmp.census_tracts::INTEGER, tmp.wards::INTEGER from "\
                                     "(SELECT incident_id, case when coalesce(wards, '0') = '' then '0' when wards = E'\r' then '0' else coalesce(wards, '0') end wards,"\
@@ -430,9 +431,9 @@ class MigrateDb:
         # insert district entries
         district_query = "INSERT INTO district (id, zip_code, ward, police_district, community_area)" \
                          "select uuid_in(md5(random()::text || clock_timestamp()::text)::cstring)," \
-                         "tmp.zip_code::INTEGER, tmp.ward::INTEGER, tmp.police_district::INTEGER, tmp.community_area::INTEGER from" \
+                         "tmp.zip::INTEGER, tmp.ward::INTEGER, tmp.police_district::INTEGER, tmp.community_area::INTEGER from" \
                          "(SELECT distinct " \
-                         "case when coalesce(zip_code, '0') = '' then '0' else coalesce(zip_code, '0')  end zip_code," \
+                         "case when coalesce(zip, '0') = '' then '0' else coalesce(zip, '0')  end zip," \
                          "case when coalesce(community_area, '0') = '' then '0' else coalesce(community_area, '0')  end community_area," \
                          "case when coalesce(police_district, '0') = '' then '0' else coalesce(police_district, '0')  end police_district," \
                          "case when coalesce(ward, '0') = '' then '0' else coalesce(ward, '0')  end ward " \
@@ -757,7 +758,7 @@ class MigrateDb:
 
         #insert tree trims
         tree_trims_query = "INSERT INTO tree_trims (id, tree_location) "\
-                          "select tmp.incident_id::uuid, tmp.tree_location::VARCHAR "\
+                          "select tmp.incident_id::uuid, tmp.location_of_trees::VARCHAR "\
                                  "from (SELECT incident_id, location_of_trees "\
                                       "FROM import._311_service_requests_tree_trims) as tmp;"
         self.cur.execute(tree_trims_query)
