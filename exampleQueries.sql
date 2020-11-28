@@ -1,7 +1,24 @@
+--Query 1
+select count(*) cnt, I.request_type from incident I
+where CREATION_DATE between '2015-09-10' and '2016-03-18'
+group by I.request_type;
 
 --Query 2
 select count(*),creation_date from incident where request_type = 'Pothole in Street'
 group by creation_date having creation_date <= '2018-03-07' and creation_date >= '2016-03-03';
+
+--Query 3
+select * from (
+      select cnt, request_type, ZIP_CODE, rank() over (partition by ZIP_CODE order by cnt desc) as req_rank
+      from (
+               select count(*) cnt, I.request_type, d.ZIP_CODE
+               from INCIDENT I
+                        inner join DISTRICT D on D.ID = I.DISTRICT_ID
+               where CREATION_DATE = '2017-01-18'
+               group by I.request_type, d.ZIP_CODE
+               order by d.ZIP_CODE, I.request_type, count(*)
+           ) tmp
+) tmp1 where tmp1.req_rank = 1;
 
 --Query 4
 select avg(completion_date - creation_date) from incident
@@ -26,6 +43,13 @@ select sum(c) total , n from (select ssa as n,count(*) as c from garbage_carts j
                               where ssa is not null and creation_date <= '2020-09-07' and creation_date >= '1920-03-03'
                               group by ssa) ssa_totals group by n order by total desc limit 5 ;
 
+--Query 7
+
+select count(i.id),license_plate  from ABANDONED_VEHICLE a
+        inner join incident I on a.id=I.id
+        where I.request_type = 'Abandoned Vehicle Complaint'
+group by license_plate
+having count(i.id)> 1;
 
 --Query 8
 
