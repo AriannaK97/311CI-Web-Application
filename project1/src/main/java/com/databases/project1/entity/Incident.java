@@ -61,10 +61,33 @@ public class Incident {
     @JoinColumn(name="district_id")
     District district;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id")
     ExtraIncidentInfo extraIncidentInfo;
+
+    @OneToOne(mappedBy = "incident")
+    AbandonedVehicle abandonedVehicle;
+
+    @OneToOne(mappedBy = "incident")
+    AlleyLightsOut alleyLightsOut;
+
+    @OneToOne(mappedBy = "incident")
+    GarbageCarts garbageCarts;
+
+    @OneToOne(mappedBy = "incident")
+    PotHolesReported potHolesReported;
+
+    @OneToOne(mappedBy = "incident")
+    RodentBaiting rodentBaiting;
+
+    @OneToOne(mappedBy = "incident")
+    SanitationCodeComplaints sanitationCodeComplaints;
+
+    @OneToOne(mappedBy = "incident")
+    TreeDebris treeDebris;
+
+    @OneToOne(mappedBy = "incident")
+    TreeTrims treeTrims;
 
 
 }
