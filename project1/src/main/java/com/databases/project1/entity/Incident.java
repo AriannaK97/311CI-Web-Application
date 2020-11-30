@@ -48,9 +48,6 @@ public class Incident {
     @Column(name="latitude")
     private float latitude;
 
-    @Column(name="location")
-    private Point location;
-
     @Column(name="y_coordinate")
     private float y;
 

@@ -6,5 +6,4 @@ import javassist.NotFoundException;
 import java.util.List;
 
 public interface IncidentService {
-    List<Incident> findTopIncidentTypeForSpecificBoundedBoxOnAGivenDate(Float userLongitude, Float userLatitude);
 }

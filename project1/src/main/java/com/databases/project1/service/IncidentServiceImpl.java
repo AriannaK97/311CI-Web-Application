@@ -13,8 +13,4 @@ public class IncidentServiceImpl implements IncidentService {
     @Autowired
     private IncidentRepository incident;
 
-    @Override
-    public List<Incident> findTopIncidentTypeForSpecificBoundedBoxOnAGivenDate(Float userLongitude, Float userLatitude){
-        return incident.findTopIncidentTypeForSpecificBoundedBoxOnAGivenDate(userLongitude,userLatitude);
-    }
 }

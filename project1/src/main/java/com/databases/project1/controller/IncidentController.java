@@ -20,7 +20,9 @@ public class IncidentController {
         float userLongitude = userLocation.get(0);
         float userLatitude = userLocation.get(1);
 
-        return incident.findTopIncidentTypeForSpecificBoundedBoxOnAGivenDate(userLongitude, userLatitude);
+        return  null;
+
+        //return incident.findTopIncidentTypeForSpecificBoundedBoxOnAGivenDate(userLongitude, userLatitude);
     }
 
 }
