@@ -25,6 +25,19 @@ select avg(completion_date - creation_date) from incident
 where request_type = 'Graffiti Removal'
 and creation_date <= '2020-09-07' and creation_date >= '2012-03-03' and completion_date is not null;
 
+--Query 5
+select request_type, cnt from (
+    select request_type, cnt, rank() over (order by cnt desc) as rnk
+    from(
+        select  request_type, count(*) cnt
+        from incident
+        where longitude <= -87.62371063232422 and longitude >= -87.70037841796875
+          and latitude <= 41.80963897705078 and latitude >= 41.80550003051758 and creation_date='2017-01-18'
+        group by request_type
+        ) tmp
+    ) tmp1
+where rnk=1;
+
 --Query 6
 
 select sum(c) total , n from (select ssa as n,count(*) as c from garbage_carts join incident on incident.id = garbage_carts.id

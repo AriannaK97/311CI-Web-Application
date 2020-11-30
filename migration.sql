@@ -3,8 +3,6 @@ create unique index district_id_uindex
 	on district (community_area, police_district, ward, zip_code);
 
 --1) Insert Abandoned vehicle
-
-
 INSERT INTO request_type (request_type_id, name)
 select uuid_in(md5(random()::text || clock_timestamp()::text)::cstring),
         tmp.type_of_service_request::VARCHAR from
