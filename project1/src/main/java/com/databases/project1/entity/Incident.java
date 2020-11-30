@@ -1,14 +1,18 @@
 package com.databases.project1.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -43,6 +47,9 @@ public class Incident {
 
     @Column(name="latitude")
     private float latitude;
+
+    @Column(name="location")
+    private Point location;
 
     @Column(name="y_coordinate")
     private float y;

@@ -44,7 +44,7 @@ public class RegistrationController {
         if (userService.findByUserName(userName) != null){
         	theModel.addAttribute("user", new RegisteredUser());
 			theModel.addAttribute("regError", "Username already exists.");
-        	return "registration";
+        	return "register";
         }
         
 
