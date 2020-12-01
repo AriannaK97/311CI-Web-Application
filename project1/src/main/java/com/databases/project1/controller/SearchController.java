@@ -30,34 +30,35 @@ public class SearchController {
     @GetMapping("/search")
     public String search() {
 
-        UUID uuid = UUID.fromString("0e19d49d-3a16-5cbe-d18f-425968ff43f3");
-
         int queryType = 1;
-
-        Optional<Incident> abandonedVehicle =  incidentRepository.findById(uuid);
-
-
-        if (queryType == 1) {
-
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-            try {
-                Date firstDate = format.parse("2018-03-07");
-                Date secondDate = format.parse("2016-03-03");
-
-                LocalDate first = LocalDate.parse("2015-09-10",dateTimeFormat);
-                LocalDate second = LocalDate.parse("2016-03-18",dateTimeFormat);
-
-                List<Object[]> list = incidentRepository.findtotalRequestsPerType(first, second);
-                list = searchRequestService.findtotalRequestsPerType(first,second);
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+        List<Object[]> list;
+        LocalDate first = LocalDate.parse("2015-09-10", dateTimeFormat);
+        LocalDate second = LocalDate.parse("2016-03-18", dateTimeFormat);
+        LocalDate standard = LocalDate.parse("2017-01-18", dateTimeFormat);
+        try {
+            if (queryType == 1) {
+                list = incidentRepository.findtotalRequestsPerType(first, second);
+                //list = searchRequestService.findtotalRequestsPerType(first, second);
             }
 
+            else if (queryType == 3) {
+                list = incidentRepository.findMostCommonServiceRequestPerZipCode(standard);
+                int x = 5;
+            }
 
+            else if (queryType == 4) {
 
+            }
+
+            else if (queryType == 9) {
+                List<Incident> ilist = incidentRepository.findRodentBaitingRequestsByBaitedPremises(2);
+                int x = 5;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
 
         return "home";
     }
