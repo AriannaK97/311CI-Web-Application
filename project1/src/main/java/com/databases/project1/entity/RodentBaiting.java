@@ -26,13 +26,13 @@ public class RodentBaiting {
     private UUID id;
 
     @Column(name = "baited_premises_num")
-    private float baitedPremisesNum;
+    private Float baitedPremisesNum;
 
     @Column(name = "premises_with_garbage_num")
-    private float premisesWithGarbageNum;
+    private Float premisesWithGarbageNum;
 
     @Column(name = "premises_with_rats_num")
-    private float premisesWithRatsNum;
+    private Float premisesWithRatsNum;
 
     @Column(name = "current_activity")
     private String currentActivity;

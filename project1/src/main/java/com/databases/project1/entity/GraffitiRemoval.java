@@ -32,7 +32,7 @@ public class GraffitiRemoval {
     private String graffitiLocation;
 
     @Column(name = "SSA")
-    private int SSA;
+    private Integer SSA;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id")

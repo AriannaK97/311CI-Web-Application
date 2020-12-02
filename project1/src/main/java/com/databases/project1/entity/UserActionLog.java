@@ -27,6 +27,9 @@ public class UserActionLog {
     @Column(name="action_time_stamp")
     private Timestamp actionTimeStamp;
 
+    @Column(name="action")
+    private String userAction;
+
     @ManyToOne
     @JoinColumn(name = "registered_user_id")
     private RegisteredUser regUser;

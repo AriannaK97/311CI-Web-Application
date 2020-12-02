@@ -26,7 +26,7 @@ public class PotHolesReported {
     private UUID id;
 
     @Column(name = "filled_block_potholes_num")
-    private float filledBlockPotholesNum;
+    private Float filledBlockPotholesNum;
 
     @Column(name = "current_activity")
     private String currentActivity;
@@ -35,7 +35,7 @@ public class PotHolesReported {
     private String mostRecentAction;
 
     @Column(name = "SSA")
-    private int SSA;
+    private Integer SSA;
 
 
     @OneToOne(cascade = CascadeType.ALL)

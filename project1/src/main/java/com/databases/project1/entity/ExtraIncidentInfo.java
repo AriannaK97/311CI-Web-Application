@@ -26,19 +26,19 @@ public class ExtraIncidentInfo {
     private UUID id;
 
     @Column(name = "historical_wards_2003_2015")
-    private int historical_wards_2003_2015;
+    private Integer historical_wards_2003_2015;
 
     @Column(name = "zip_codes")
-    private int zipcode;
+    private Integer zipcode;
 
     @Column(name = "wards")
-    private int ward;
+    private Integer ward;
 
     @Column(name = "community_areas")
-    private int communityArea;
+    private Integer communityArea;
 
     @Column(name = "cencus_tracts")
-    private int cencusTracts;
+    private Integer cencusTracts;
 
 
 }

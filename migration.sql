@@ -789,6 +789,12 @@ select tmp.incident_id::uuid, tmp.current_activity::VARCHAR ,tmp.if_yes_where_is
        tmp.most_recent_action::VARCHAR
 from (SELECT incident_id, current_activity, if_yes_where_is_the_debris_located, most_recent_action
       FROM import.debris) as tmp;
+      
+-----------------------------------------------------------------------------------------------
+--Insert some user roles
+
+insert into role(name)
+values ('ROLE_ADMIN'),('ROLE_RESEARCHER'),('ROLE_SIMPLE');
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --12) Drop redundant schema import

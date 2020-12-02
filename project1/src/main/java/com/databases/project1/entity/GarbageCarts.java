@@ -35,7 +35,7 @@ public class GarbageCarts {
     private String mostRecentAction;
 
     @Column(name = "SSA")
-    private int SSA;
+    private Integer SSA;
 
 
     @OneToOne(cascade = CascadeType.ALL)
