@@ -13,16 +13,126 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		body {
+			background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IRHyBQOQ45PGXmwzt0SmtFazSM1OpXpc7A&usqp=CAU');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		.container2{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: 0 -50% 0 0;
+			transform: translate(-50%, -50%);
+		}
+
+		.row1{
+			background-color: #222;
+			color: 	whitesmoke;
+			position: absolute;
+			top: 12%;
+			left: 12%;
+			padding-left: 5%;
+			padding-right: 1%;
+			transform: translate(-50%, -30%);
+			font-weight: bolder;
+			font-size: large;
+			font-family: Verdana, sans-serif;
+		}
+
+		.row2{
+			font-weight: normal;
+			font-style: italic;
+		}
+
+		.panel-heading{
+			background-color:  #222222 !important;
+			border: #cccccc;
+			color: whitesmoke !important;
+		}
+
+		.my-panel-info{
+			background-color: #3e3e3e !important;
+			border: #cccccc;
+			color: whitesmoke !important;
+		}
+
+		.panel-title{
+			background-color:  #222222 !important;
+			border: rgba(0,0,0,0.5);
+		}
+
+		.panel{
+			background-color:  #222222;
+			border: rgba(0,0,0,0.5);
+		}
+
+		.btn-primary{
+			background-color: ;
+		}
+
+		.mainbox{
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			padding-left: 2%;
+			padding-right: 2%;
+			border: rgba(0,0,0,0.5);
+			margin: 1% -50% 1% 1%;
+			transform: translate(-55%, -25%);
+
+		}
+
+		/*footer*/
+		.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			background-color: #222;
+			color: darkgray;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body>
 
-	<div>
+<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container2">
+		<div class="navbar-header">
+			<button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+		</div>
+		<div class="navbar-inverse side-collapse in">
+			<nav role="navigation" class="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/home2">Home</a></li>
+					<li><a href="">Incident Report</a></li>
+					<li><a href="">Search</a></li>
+					<li><a href="/login">Login</a></li>
+					<li><a href="http://localhost:8080/login">Register</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<div class="row1">
+	<h1>Chicago Incident Report</h1>
+	<p class="row2">Welcome to Chicago Incident Report Platform</p>
+	<p class="row2">To report a new incident, please login or register</p>
+</div>
+
+	<div class="row3">
 		
 		<div id="loginbox" style="margin-top: 50px;"
 			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
 			
-			<div class="panel panel-info">
+			<div class="panel my-panel-info">
 
 				<div class="panel-heading">
 					<div class="panel-title">Sign In</div>
@@ -87,6 +197,10 @@
 		</div>
 
 	</div>
+
+<div class="footer">
+	<p>Project 1 - M149 Database Management Systems - Fall'20</p>
+</div>
 
 </body>
 </html>

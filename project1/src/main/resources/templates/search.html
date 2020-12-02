@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Homepage</title>
+    <title>Search</title>
     <meta charset="utf-8">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -37,13 +37,56 @@
             background-size: cover;
         }
 
-        .header{
-            font-weight: bold;
-            padding: 18px 30px;
+        /*search box css start here*/
+        .search-sec{
+            background-color: #222222;
+            padding: 2rem;
+        }
+        .search-slt{
+            display: block;
+            width: 100%;
+            font-size: 15px;
+            line-height: 2;
+            color: #55595c;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            height: calc(4rem + 2px) !important;
+            border-radius:0;
+
+        }
+        .btn{
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
             text-transform: capitalize;
+            height: calc(4rem + 2px) !important;
+            border-radius:0;
+        }
+
+        @media (min-width: 992px){
+            .search-sec{
+                top: -114px;
+                background: rgba(26, 70, 104, 0.51)!important;
+            }
+        }
+
+        @media (max-width: 992px){
+            .search-sec{
+                background-color: #222!important;
+            }
         }
 
         .container2{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container{
             margin: 0;
             position: absolute;
             top: 50%;
@@ -112,12 +155,41 @@
         </div>
     </div>
 </header>
+<section>
+    <div class="row1">
+        <h1>Search</h1>
+        <p class="row2">Welcome to Chicago Incident Report Platform</p>
+        <p class="row2">To search for an incident, please login or register</p>
+    </div>
+</section>
 
-<div class="row1">
-    <h1>Chicago Incident Report</h1>
-    <p class="row2">Welcome to Chicago Incident Report Platform</p>
-    <p class="row2">To report a new incident, please login or register</p>
-</div>
+<section class="search-sec">
+    <div class="container">
+        <form action="#" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-slt" placeholder="Enter Creation Date">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-slt" placeholder="Service Request Number">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                                <option>Select Incident Type</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button type="button" class="btn btn-success">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
 <div class="footer">
     <p>Project 1 - M149 Database Management Systems - Fall'20</p>
 </div>

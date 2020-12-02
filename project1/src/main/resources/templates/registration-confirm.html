@@ -2,16 +2,102 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-	<title>Registration Confirmation</title>
+	<title>User Registered</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Reference Bootstrap files -->
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style>
+		body {
+			background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IRHyBQOQ45PGXmwzt0SmtFazSM1OpXpc7A&usqp=CAU');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		.container2{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: 0 -50% 0 0;
+			transform: translate(-50%, -50%);
+		}
+		.row1{
+			background-color: #222;
+			color: 	whitesmoke;
+			position: absolute;
+			top: 12%;
+			left: 12%;
+			padding-left: 5%;
+			padding-right: 1%;
+			transform: translate(-50%, -30%);
+			font-weight: bolder;
+			font-size: large;
+			font-family: Verdana, sans-serif;
+		}
+
+		.row2{
+			font-weight: normal;
+			font-style: italic;
+		}
+
+		/*footer*/
+		.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			background-color: #222;
+			color: darkgray;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body>
 
+<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container2">
+		<div class="navbar-header">
+			<button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+		</div>
+		<div class="navbar-inverse side-collapse in">
+			<nav role="navigation" class="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/home2">Home</a></li>
+					<li><a href="">Incident Report</a></li>
+					<li><a href="">Search</a></li>
+					<li><a href="/login">Login</a></li>
+					<li><a href="http://localhost:8080/login">Register</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<div class="row1">
+	<h1>User registered successfully</h1>
+	<p class="row2">Welcome to Chicago Incident Report Platform</p>
+	<hr><a class="row2" th:href="@{/login}">Login with new user</a>
+</div>
+
+<!--
 	<h2>User registered successfully!</h2>
 
 	<hr>
 	
-	<a th:href="@{/login}">Login with new user</a>
+	<a th:href="@{/login}">Login with new user</a>-->
+
+<div class="footer">
+	<p>Project 1 - M149 Database Management Systems - Fall'20</p>
+</div>
 	
 </body>
 
