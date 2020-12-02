@@ -22,6 +22,22 @@
     </div>
 
 
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Request Type</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="listObject : ${list}">
+            <td><span th:text="${listObject[1]}"> Title </span></td>
+            <td><span th:text="${listObject[0]}"> Author </span></td>
+        </tr>
+        </tbody>
+    </table>
+
 
 </body>
 </html>

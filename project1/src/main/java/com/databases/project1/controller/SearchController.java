@@ -5,16 +5,14 @@ import com.databases.project1.repository.IncidentRepository;
 import com.databases.project1.service.SearchRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class SearchController {
@@ -28,7 +26,7 @@ public class SearchController {
     SearchRequestService searchRequestService;
 
     @GetMapping("/search")
-    public String search() {
+    public String search(Model theModel) {
 
         int queryType = 1;
         List<Object[]> list;
@@ -38,6 +36,7 @@ public class SearchController {
         try {
             if (queryType == 1) {
                 list = incidentRepository.findtotalRequestsPerType(first, second);
+                theModel.addAttribute("list", list);
                 //list = searchRequestService.findtotalRequestsPerType(first, second);
             }
 
