@@ -16,7 +16,7 @@ public class StartController {
     @GetMapping("/")
     public String showHomePage() {
 
-        return "home";
+        return "home2";
 
     }
 

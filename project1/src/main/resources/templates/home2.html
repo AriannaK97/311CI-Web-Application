@@ -76,6 +76,21 @@
             font-family: Verdana, sans-serif;
         }
 
+        .row3{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            background-color: #222222;
+            padding: 1% 1% 1% 1%;
+            color: 	whitesmoke;
+            font-weight: normal;
+            font-style: italic;
+            font-family: Verdana, sans-serif;
+        }
+
         /*footer*/
 
         .footer {
@@ -83,7 +98,7 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: #222;
+            background-color: #222222;
             color: darkgray;
             text-align: center;
         }
@@ -102,11 +117,11 @@
         <div class="navbar-inverse side-collapse in">
             <nav role="navigation" class="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/home2">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="">Incident Report</a></li>
-                    <li><a href="">Search</a></li>
+                    <li><a href="/search">Search</a></li>
                     <li><a href="/login">Login</a></li>
-                    <li><a href="http://localhost:8080/login">Register</a></li>
+                    <li><a href="/register">Register</a></li>
                 </ul>
             </nav>
         </div>
@@ -117,6 +132,12 @@
     <h1>Chicago Incident Report</h1>
     <p class="row2">Welcome to Chicago Incident Report Platform</p>
     <p class="row2">To report a new incident, please login or register</p>
+</div>
+
+<div class="row3">
+    <h4>>>If you are not logged in in, log in.</h4>
+    <h4>>>If you are not registered, register.</h4>
+    <h4>>>If you are not willing to do any of the above, just leave :)</h4>
 </div>
 <div class="footer">
     <p>Project 1 - M149 Database Management Systems - Fall'20</p>

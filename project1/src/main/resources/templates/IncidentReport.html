@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Incident Report</title>
+
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -15,9 +17,9 @@
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
+
     <style>
         fieldset {
-            /*background-color:  rgba(0,0,0,0.7);*/
             background-color:  #222222;
             padding: 4% 3% 2% 1%;
         }
@@ -100,10 +102,10 @@
             color: darkgray;
             text-align: center;
         }
+
     </style>
-
 </head>
-
+<body>
 <header role="banner" class="navbar navbar-fixed-top navbar-inverse">
     <div class="container2">
         <div class="navbar-header">
@@ -124,84 +126,97 @@
 </header>
 
 <div class="row1">
-    <h1>Registration Form</h1>
+    <h1>Chicago Incident Report</h1>
     <p class="row2">Welcome to Chicago Incident Report Platform</p>
     <p class="row2">To report a new incident, please login or register</p>
 </div>
+
 <div class="row3">
-<form th:action="@{/processRegistrationForm}"
-      th:object="${user}" method="POST" class="form-horizontal">
+    <form th:action="@{/...}"
+          th:object="${...}" method="POST" class="form-horizontal">
 
-    <fieldset>
-        <div class="control-group">
-            <!-- Username -->
-            <label class="control-label"  for="username">Username</label>
-            <div class="controls">
-                <input type="text" id="username" name="userName" placeholder="" class="input-xlarge">
-                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+        <fieldset>
+            <div class="control-group">
+                <!-- Username -->
+                <label class="control-label"  for="request_type">Request Type</label>
+                <div class="controls">
+                    <select class="form-control search-slt" id="request_type">
+                        <option>Select Incident Type</option>
+                        <option>Pothole in Street</option>
+                        <option>Tree Debris</option>
+                        <option>Tree Trim</option>
+                        <option>Graffiti Removal</option>
+                        <option>Street Light - 1/Out</option>
+                        <option>Street Lights - All/Out</option>
+                        <option>Street Light Out</option>
+                        <option>Rodent Baiting/Rat Complaint</option>
+                        <option>Sanitation Code Violation</option>
+                        <option>Garbage Cart Black Maintenance/Replacement</option>
+                        <option>Abandoned Vehicle Complaint</option>
+                    </select>
+                    <p class="help-block">Please select the type of the request you want to make</p>
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <!-- E-mail -->
-            <label class="control-label" for="email">E-mail</label>
-            <div class="controls">
-                <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                <p class="help-block">Please provide your E-mail</p>
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="creation_date">Incident date</label>
+                <div class="controls">
+                    <input type="datetime-local" id="creation_date" name="creation_date" placeholder="" class="input-xlarge">
+                    <p class="help-block">Please provide the date the incident took place</p>
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <!-- Password-->
-            <label class="control-label" for="password">Password</label>
-            <div class="controls">
-                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                <p class="help-block">Password should be at least 4 characters</p>
+            <div class="control-group">
+                <!-- Password-->
+                <label class="control-label" for="street_address">Street Address</label>
+                <div class="controls">
+                    <input type="text" id="street_address" name="street_address" placeholder="Street Address" class="input-xlarge">
+                    <p class="help-block">Enter the street address the incident took place</p>
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <!-- Password -->
-            <label class="control-label"  for="password_confirm">Password (Confirm)</label>
-            <div class="controls">
-                <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
-                <p class="help-block">Please confirm password</p>
+            <div class="control-group">
+                <!-- Password -->
+                <label class="control-label"  for="community_area">Community Area</label>
+                <div class="controls">
+                    <input type="text" id="community_area" name="community_area" placeholder="Community Area" class="input-xlarge">
+                    <p class="help-block">Please enter the community area</p>
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <!-- E-mail -->
-            <label class="control-label" for="lastName">Last Name</label>
-            <div class="controls">
-                <input type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge">
-                <p class="help-block">Please provide your last name</p>
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="police_district">Police District</label>
+                <div class="controls">
+                    <input type="text" id="police_district" name="police_district" placeholder="Police District" class="input-xlarge">
+                    <p class="help-block">Please provide with the police district</p>
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <!-- E-mail -->
-            <label class="control-label" for="firstName">First Name</label>
-            <div class="controls">
-                <input type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge">
-                <p class="help-block">Please provide your first name</p>
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label" for="zip_code">Zip code</label>
+                <div class="controls">
+                    <input type="text" id="zip_code" name="zip_code" placeholder="Zip Code" class="input-xlarge">
+                    <p class="help-block">Please enter the zip code</p>
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="control-group">
-            <!-- Button -->
-            <div class="controls">
-                <button class="btn btn-success">Register</button>
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn btn-success">Register</button>
+                </div>
             </div>
-        </div>
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
 </div>
 
 <div class="footer">
     <p>Project 1 - M149 Database Management Systems - Fall'20</p>
 </div>
-
 </body>
 </html>
