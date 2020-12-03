@@ -93,5 +93,8 @@ public class Incident {
     @OneToOne(mappedBy = "incident")
     TreeTrims treeTrims;
 
+    @OneToOne(mappedBy = "incident")
+    GraffitiRemoval graffitiRemoval;
+
 
 }

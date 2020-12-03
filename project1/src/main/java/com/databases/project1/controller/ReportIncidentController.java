@@ -1,9 +1,7 @@
 package com.databases.project1.controller;
 
-import com.databases.project1.dto.SearchDto;
 import com.databases.project1.entity.*;
-import com.databases.project1.service.IncidentService;
-import com.databases.project1.service.RequestTypeService;
+import com.databases.project1.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +23,33 @@ public class ReportIncidentController {
 
     @Autowired
     IncidentService incidentService;
+
+    @Autowired
+    AbandonedVehicleService abandonedVehicleService;
+
+    @Autowired
+    AlleyLightsService alleyLightsService;
+
+    @Autowired
+    GarbageCartsService garbageCartsService;
+
+    @Autowired
+    GraffityRemovalService graffityRemovalService;
+
+    @Autowired
+    PotHolesService potHolesService;
+
+    @Autowired
+    RodentBaitingService rodentBaitingService;
+
+    @Autowired
+    SanitationComplaintService sanitationComplaintService;
+
+    @Autowired
+    TreeDebrisService treeDebrisService;
+
+    @Autowired
+    TreeTrimService treeTrimService;
 
 
     @GetMapping("/showInsert")
@@ -66,8 +91,53 @@ public class ReportIncidentController {
         Date date = new Date();
         incident.setCreationDate(new java.sql.Date(date.getTime()));
 
+        if (requestType.equals("Abandoned Vehicle Complaint")) {
+            abandonedVehicleService.saveVehicle(incident.getAbandonedVehicle());
+        }
+        else if (requestType.equals("Alley Light Out")) {
+            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
+        }
+        else if (requestType.equals("Garbage Cart Black Maintenance/Replacement")) {
+            garbageCartsService.saveGarbageCarts(incident.getGarbageCarts());
+        }
 
+        else if (requestType.equals("Graffiti Removal")) {
+            graffityRemovalService.saveGraffityRemoval(incident.getGraffitiRemoval());
+        }
 
+        else if (requestType.equals("Pothole in Street")) {
+            potHolesService.savePotHoles(incident.getPotHolesReported());
+        }
+
+        else if (requestType.equals("Rodent Baiting/Rat Complaint")) {
+            rodentBaitingService.saveRodentBaiting(incident.getRodentBaiting());
+        }
+
+        else if (requestType.equals("Sanitation Code Violation")) {
+            sanitationComplaintService.saveSanitationComplaint(incident.getSanitationCodeComplaints());
+        }
+
+        else if (requestType.equals("Tree Trim")) {
+            treeTrimService.saveTreeTrim(incident.getTreeTrims());
+        }
+
+        else if (requestType.equals("Tree Debris")) {
+            treeDebrisService.saveTreeDebris(incident.getTreeDebris());
+        }
+
+        else if (requestType.equals("Street Lights - All/Out")) {
+            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
+        }
+
+        else if (requestType.equals("Street Light Out")) {
+            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
+        }
+
+        else if (requestType.equals("Street Lights - 1/Out")) {
+            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
+        }
+
+        incidentService.saveIncident(incident);
 
         return "redirect:/report/showInsert";
 

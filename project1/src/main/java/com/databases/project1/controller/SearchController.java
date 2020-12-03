@@ -1,6 +1,7 @@
 package com.databases.project1.controller;
 
 import com.databases.project1.dto.SearchDto;
+import com.databases.project1.entity.Incident;
 import com.databases.project1.entity.RegisteredUser;
 import com.databases.project1.repository.IncidentRepository;
 import com.databases.project1.service.SearchRequestService;
@@ -34,71 +35,94 @@ public class SearchController {
     @Autowired
     SearchService searchService;
 
-    @GetMapping("/search")
+    @GetMapping("/search2")
     public String search(@ModelAttribute("searchDto") SearchDto searchDto, Model theModel, HttpServletRequest request) {
 
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         int searchType = searchDto.getSearchType();
+        List<Object[]> objectList = null;
+        List<Incident> incidentList = null;
         try {
             if (searchType == 1) {
-                searchService.findTotalRequestsPerType(searchDto, user);
+                objectList = searchService.findTotalRequestsPerType(searchDto, user);
             }
 
             else if (searchType == 2 ) {
-                searchService.findTotalRequestsPerDayAndType(searchDto, user);
+                objectList = searchService.findTotalRequestsPerDayAndType(searchDto, user);
             }
 
             else if (searchType == 3) {
-                searchService.findMostCommonServiceRequestPerZipCode(searchDto, user);
+                objectList = searchService.findMostCommonServiceRequestPerZipCode(searchDto, user);
             }
 
             else if (searchType == 4) {
-                searchService.findAvgCompletionTimePerServiceReqType(searchDto, user);
+                objectList = searchService.findAvgCompletionTimePerServiceReqType(searchDto, user);
             }
 
             else if (searchType == 5) {
-                searchService.findMostCommonReqType(searchDto, user);
+                objectList = searchService.findMostCommonReqType(searchDto, user);
             }
 
             else if (searchType == 6) {
-                searchService.findTopSSAs(searchDto, user);
+                objectList = searchService.findTopSSAs(searchDto, user);
             }
 
             else if (searchType == 7) {
-                searchService.findNotoriousPlates(searchDto, user);
+                objectList = searchService.findNotoriousPlates(searchDto, user);
             }
 
             else if (searchType == 8) {
-                searchService.findSecondMostUsualVehicleColor(searchDto, user);
+                objectList = searchService.findSecondMostUsualVehicleColor(searchDto, user);
             }
 
             else if (searchType == 9) {
-                searchService.findRodentBaitingRequestsByBaitedPremises(searchDto, user);
+                incidentList = searchService.findRodentBaitingRequestsByBaitedPremises(searchDto, user);
             }
 
             else if (searchType == 10) {
-                searchService.findRodentBaitingRequestsByGarbagePremises(searchDto, user);
+                incidentList = searchService.findRodentBaitingRequestsByGarbagePremises(searchDto, user);
             }
 
             else if (searchType == 11) {
-                searchService.findRodentBaitingRequestsByRatPremises(searchDto, user);
+                incidentList = searchService.findRodentBaitingRequestsByRatPremises(searchDto, user);
             }
 
             else if (searchType == 12) {
-                searchService.findBusyPoliceDistricts(searchDto, user);
+                objectList = searchService.findBusyPoliceDistricts(searchDto, user);
             }
 
             else if (searchType == 13) {
-                searchService.findByZipCode(searchDto, user);
+                incidentList = searchService.findByZipCode(searchDto, user);
+            }
+
+            else if (searchType == 14) {
+                incidentList = searchService.findByStreetAddress(searchDto, user);
+            }
+
+            else if (searchType == 15) {
+                incidentList = searchService.findByStreetAddressAndZipCode(searchDto, user);
             }
 
             else {
-                  searchService.findAll(searchDto, user);
+                incidentList = searchService.findAll(searchDto, user);
+            }
+
+            if (objectList != null) {
+                theModel.addAttribute("objectList", objectList);
+            }
+
+            else if (incidentList != null) {
+                theModel.addAttribute("incidentList", incidentList);
+            }
+
+            else {
+                theModel.addAttribute("error", "no result list is available");
             }
 
 
         } catch (Exception e) {
             e.printStackTrace();
+            theModel.addAttribute("error", "no result list is available");
         }
 
 
@@ -112,7 +136,7 @@ public class SearchController {
         return "search";
     }
 
-    @GetMapping("/processSearch")
+    @PostMapping("/processSearch")
     public String processSearchQuery(@ModelAttribute("searcher") SearchDto searcher,
                                      BindingResult theBindingResult, Model theModel,
                                      @RequestParam(value = "creation_date", required = false, defaultValue = "") String creation_date){
