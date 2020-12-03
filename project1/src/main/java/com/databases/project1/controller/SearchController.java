@@ -99,7 +99,7 @@ public class SearchController {
         /*LocalDate first = LocalDate.parse("2015-09-10", dateTimeFormat);
         LocalDate second = LocalDate.parse("2016-03-18", dateTimeFormat);
         LocalDate standard = LocalDate.parse("2017-01-18", dateTimeFormat);*/
-        creation_date = searcher.getCreation_date();
+        creation_date = searcher.getCreationDate();
         theModel.addAttribute("creation_date", creation_date);
         return "search";
     }
