@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class SearchServiceImpl implements SearchService {
 
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Autowired
     IncidentRepository incidentRepository;
@@ -84,7 +84,7 @@ public class SearchServiceImpl implements SearchService {
         log.setUserAction("Seach for top SSAs with arguments: " + searchDto.toString());
         logRepository.save(log);
         return incidentRepository.findTopSSAs(LocalDate.parse(searchDto.getFirstDate(), formatter),
-                LocalDate.parse(searchDto.getSecondDate()), searchDto.getPage(), searchDto.getPageSize());
+                LocalDate.parse(searchDto.getSecondDate()));
     }
 
 
