@@ -43,16 +43,16 @@ public class Incident {
     private String streetAdress;
 
     @Column(name="longitude")
-    private float longitude;
+    private Float longitude;
 
     @Column(name="latitude")
-    private float latitude;
+    private Float latitude;
 
     @Column(name="y_coordinate")
-    private float y;
+    private Float y;
 
     @Column(name="x_coordinate")
-    private float x;
+    private Float x;
 
     @JoinColumn(name="request_type")
     String requestType;

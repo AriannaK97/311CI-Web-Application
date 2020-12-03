@@ -41,10 +41,10 @@ public class AbandonedVehicle {
     private String mostRecentAction;
 
     @Column(name = "days_reported_parked")
-    private float daysReportedParked;
+    private Float daysReportedParked;
 
     @Column(name = "SSA")
-    private int SSA;
+    private Integer SSA;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id")

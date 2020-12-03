@@ -27,16 +27,16 @@ public class District {
     private UUID id;
 
     @Column(name = "zip_code")
-    private int zipcode;
+    private Integer zipcode;
 
     @Column(name = "ward")
-    private int ward;
+    private Integer ward;
 
     @Column(name = "police_district")
-    private int policeDistrict;
+    private Integer policeDistrict;
 
     @Column(name = "community_area")
-    private int communityArea;
+    private Integer communityArea;
 
 
 }
