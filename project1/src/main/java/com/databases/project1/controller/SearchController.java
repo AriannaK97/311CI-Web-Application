@@ -35,8 +35,8 @@ public class SearchController {
     @Autowired
     SearchService searchService;
 
-    @GetMapping("/search2")
-    public String search(@ModelAttribute("searchDto") SearchDto searchDto, Model theModel, HttpServletRequest request) {
+    @PostMapping("/processSearch")
+    public String processSearch(@ModelAttribute("searchDto") SearchDto searchDto, Model theModel, HttpServletRequest request) {
 
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         int searchType = searchDto.getSearchType();
@@ -126,17 +126,17 @@ public class SearchController {
         }
 
 
-        return "search";
+        return "redirect:/search";
     }
 
     @GetMapping("/search")
-    public String search2(Model theModel) {
+    public String search(Model theModel) {
         SearchDto searcher = new SearchDto();
         theModel.addAttribute("searcher", new SearchDto());
         return "search";
     }
 
-    @PostMapping("/processSearch")
+    @PostMapping("/tesSearch")
     public String processSearchQuery(@ModelAttribute("searcher") SearchDto searcher,
                                      BindingResult theBindingResult, Model theModel,
                                      @RequestParam(value = "creation_date", required = false, defaultValue = "") String creation_date){

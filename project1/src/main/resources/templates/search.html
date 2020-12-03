@@ -418,9 +418,9 @@
                         });
                     </script>
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0" >
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                <option value="Other" selected >Select Search option</option>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" id="exampleFormControlSelect1" name="searchType">
+                                <option value="Other" selected>Select Search option</option>
                                 <option value="1">Requests per type that were created within a specified time range</option>
                                 <option value="2">Τotal requests per day for a specific request type and time range</option>
                                 <option value="3">Μost common service request per zipcode for a specific date</option>
@@ -449,10 +449,10 @@
                     </div>
                     <div class="row" id="showRow">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input type="date" id="firstDate" name="firstDate" class="form-control search-slt" placeholder="Enter First Date">
+                            <input type="date" id="secondDate" name="secondDate" class="form-control search-slt" placeholder="Enter From Date">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input type="date" id="secondDate" name="secondDate" class="form-control search-slt" placeholder="Enter Second Date">
+                            <input type="date" id="firstDate" name="firstDate" class="form-control search-slt" placeholder="Enter To Date">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
                             <input type="text" id="zipcode" name="zipcode" class="form-control search-slt" placeholder="Zip Code">
@@ -482,7 +482,7 @@
                             <input form="secondLatitude" type="text" id="secondLatitude" name="secondLatitude" class="form-control search-slt" placeholder="secondLatitude">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0 controls">
-                            <select id="requestType" class="form-control search-slt">
+                            <select id="requestType" name="requestType" class="form-control search-slt">
                                 <option>Select Incident Type</option>
                                 <option>Pothole in Street</option>
                                 <option>Tree Debris</option>
@@ -500,7 +500,7 @@
                     </div>
 
                 <div class="row col-lg-12 col-md-12 col-sm-12 p-0">
-                    <button th:action="@{/processSearch}" type="button" class="btn btn-success" aria-pressed="true">Search</button>
+                    <button  type="submit" class="btn btn-success" aria-pressed="true">Search</button>
                 </div>
                 </div>
             </div>
