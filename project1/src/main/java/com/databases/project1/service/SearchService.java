@@ -27,5 +27,6 @@ public interface SearchService {
     public List<Incident> findByZipCode(SearchDto searchDto, RegisteredUser user);
     public List<Incident> findByStreetAddress(SearchDto searchDto, RegisteredUser user);
     public List<Incident> findByStreetAddressAndZipCode(SearchDto searchDto, RegisteredUser user);
+    public List<Incident> findAll(SearchDto searchDto, RegisteredUser user);
 
 }

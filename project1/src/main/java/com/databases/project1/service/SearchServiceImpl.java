@@ -7,6 +7,8 @@ import com.databases.project1.entity.UserActionLog;
 import com.databases.project1.repository.IncidentRepository;
 import com.databases.project1.repository.UserActionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -150,6 +152,14 @@ public class SearchServiceImpl implements SearchService {
         log.setUserAction("Search for requests by street address and zip code with arguments: " + searchDto.toString() );
         logRepository.save(log);
         return incidentRepository.findByStreetAddressAndZipCode(searchDto.getZipcode(), searchDto.getStreetAddress(), searchDto.getPage(), searchDto.getPageSize());
+    }
+
+    public List<Incident> findAll(SearchDto searchDto, RegisteredUser user) {
+        UserActionLog log = initializeUserActionLog(user);
+        log.setUserAction("Search for requests by street address and zip code with arguments: " + searchDto.toString() );
+        logRepository.save(log);
+        Pageable pageable = PageRequest.of(searchDto.getPage(), searchDto.getPageSize());
+        return incidentRepository.findAll(pageable).toList();
     }
 
 

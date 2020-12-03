@@ -11,6 +11,11 @@ import java.util.List;
 public class IncidentServiceImpl implements IncidentService {
 
     @Autowired
-    private IncidentRepository incident;
+    private IncidentRepository incidentRepository;
+
+    public Incident findByRequestNumber(String requestNumber) {
+        return incidentRepository.findByServiceRequestNumber(requestNumber).orElse(null);
+    }
+
 
 }

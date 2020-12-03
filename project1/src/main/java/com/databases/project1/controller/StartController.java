@@ -1,5 +1,6 @@
 package com.databases.project1.controller;
 
+import com.databases.project1.entity.Incident;
 import com.databases.project1.entity.RequestType;
 import com.databases.project1.service.RequestTypeService;
 import com.databases.project1.service.UserService;
@@ -20,22 +21,5 @@ public class StartController {
 
     }
 
-    @GetMapping("/test")
-    public String testDB() {
-
-        RequestType requestType = new RequestType();
-        requestType.setName("kati");
-        requestTypeService.save(requestType);
-
-        return "home";
-
-    }
-
-    @GetMapping("/test2")
-    public String testDB2() {
-        RequestType requestType = requestTypeService.findByName("kati");
-        System.out.println(requestType.getName());
-        return "home";
-    }
 
 }

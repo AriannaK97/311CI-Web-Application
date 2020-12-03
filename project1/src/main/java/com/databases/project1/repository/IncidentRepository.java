@@ -1,6 +1,7 @@
 package com.databases.project1.repository;
 
 import com.databases.project1.entity.Incident;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +13,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface IncidentRepository extends PagingAndSortingRepository<Incident, UUID> {
+
+    Optional<Incident> findByServiceRequestNumber(String serviceRequestNumber);
 
     @Query(value = "select count(*) cnt, I.request_type from incident I\n" +
             "where CREATION_DATE between :firstDate and :secondDate \n" +

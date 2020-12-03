@@ -1,14 +1,11 @@
 package com.databases.project1.controller;
 
 import com.databases.project1.dto.SearchDto;
-import com.databases.project1.entity.Incident;
 import com.databases.project1.entity.RegisteredUser;
 import com.databases.project1.repository.IncidentRepository;
 import com.databases.project1.service.SearchRequestService;
 import com.databases.project1.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,41 +35,67 @@ public class SearchController {
     SearchService searchService;
 
     @GetMapping("/search")
-    public String search(Model theModel, HttpServletRequest request) {
+    public String search(@ModelAttribute("searchDto") SearchDto searchDto, Model theModel, HttpServletRequest request) {
 
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
-
-        int queryType = 1;
-        List<Object[]> list;
-        LocalDate first = LocalDate.parse("2015-09-10", dateTimeFormat);
-        LocalDate second = LocalDate.parse("2016-03-18", dateTimeFormat);
-        LocalDate standard = LocalDate.parse("2017-01-18", dateTimeFormat);
-        int page = 0;
-        int pagesize = 20;
+        int searchType = searchDto.getSearchType();
         try {
-            if (queryType == 1) {
-                list = incidentRepository.findTotalRequestsPerType(first, second);
-                theModel.addAttribute("list", list);
-                //list = searchRequestService.findtotalRequestsPerType(first, second);
+            if (searchType == 1) {
+                searchService.findTotalRequestsPerType(searchDto, user);
             }
 
-            else if (queryType == 3) {
-                list = incidentRepository.findMostCommonServiceRequestPerZipCode(standard,page , pagesize);
-                int x = 5;
+            else if (searchType == 2 ) {
+                searchService.findTotalRequestsPerDayAndType(searchDto, user);
             }
 
-            else if (queryType == 4) {
-
+            else if (searchType == 3) {
+                searchService.findMostCommonServiceRequestPerZipCode(searchDto, user);
             }
 
-            else if (queryType == 9) {
-                List<Incident> ilist = incidentRepository.findRodentBaitingRequestsByBaitedPremises(2, page, pagesize);
-                int x = 5;
+            else if (searchType == 4) {
+                searchService.findAvgCompletionTimePerServiceReqType(searchDto, user);
             }
 
-            else if (queryType == 13) {
-                List<Incident> anotherList = incidentRepository.findByZipCode(60601, page, pagesize);
+            else if (searchType == 5) {
+                searchService.findMostCommonReqType(searchDto, user);
             }
+
+            else if (searchType == 6) {
+                searchService.findTopSSAs(searchDto, user);
+            }
+
+            else if (searchType == 7) {
+                searchService.findNotoriousPlates(searchDto, user);
+            }
+
+            else if (searchType == 8) {
+                searchService.findSecondMostUsualVehicleColor(searchDto, user);
+            }
+
+            else if (searchType == 9) {
+                searchService.findRodentBaitingRequestsByBaitedPremises(searchDto, user);
+            }
+
+            else if (searchType == 10) {
+                searchService.findRodentBaitingRequestsByGarbagePremises(searchDto, user);
+            }
+
+            else if (searchType == 11) {
+                searchService.findRodentBaitingRequestsByRatPremises(searchDto, user);
+            }
+
+            else if (searchType == 12) {
+                searchService.findBusyPoliceDistricts(searchDto, user);
+            }
+
+            else if (searchType == 13) {
+                searchService.findByZipCode(searchDto, user);
+            }
+
+            else {
+                  searchService.findAll(searchDto, user);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

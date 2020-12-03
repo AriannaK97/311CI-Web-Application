@@ -2,10 +2,11 @@ package com.databases.project1.service;
 
 import com.databases.project1.entity.RequestType;
 
+import java.util.List;
+
 public interface RequestTypeService {
 
-    public RequestType findByName(String name);
+    public List<String> findAllNames();
 
-    public void save(RequestType requestType);
 
 }

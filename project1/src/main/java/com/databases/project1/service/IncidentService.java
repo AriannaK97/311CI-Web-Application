@@ -6,4 +6,7 @@ import javassist.NotFoundException;
 import java.util.List;
 
 public interface IncidentService {
+
+    Incident findByRequestNumber(String requestNumber);
+
 }
