@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/search")
                 .hasRole("SIMPLE")
-                .antMatchers("/report/*")
+                .antMatchers("/IncidentReport")
                 .hasRole("SIMPLE")
                 .and()
                 .formLogin()

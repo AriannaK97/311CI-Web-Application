@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/report")
+//@RequestMapping("/report")
 public class ReportIncidentController {
 
     @Autowired
@@ -65,7 +65,7 @@ public class ReportIncidentController {
         incident.setTreeDebris(new TreeDebris());
         incident.setTreeTrims(new TreeTrims());
         theModel.addAttribute("incident",incident);
-        return "report";
+        return "IncidentReport";
     }
 
 
@@ -77,7 +77,7 @@ public class ReportIncidentController {
 
         if (requestType == null || requestTypes.stream().noneMatch(type -> type.equals(requestType))) {
             theModel.addAttribute("error","No such request type. Insertion or update aborted");
-            return "/report/showInsert";
+            return "redirect:/showInsert";
         }
 
         if (incidentService.findByRequestNumber(incident.getServiceRequestNumber() )!= null) {
@@ -139,7 +139,7 @@ public class ReportIncidentController {
 
         incidentService.saveIncident(incident);
 
-        return "redirect:/report/showInsert";
+        return "redirect:/showInsert";
 
     }
 

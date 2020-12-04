@@ -17,7 +17,234 @@
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
+   <!-- <script type="text/javascript" src="IncidentReport.js"></script>-->
+    <link rel="stylesheet" href="IncidentReport.css">
 
+    <script>
+        $(function () {
+            $("#requestType").change(function () {
+                if ($(this).val() === "Other") {
+                    $("#ssa").hide();
+                    $("#currentActivity").hide();
+                    $("#daysParked").hide();
+                    $("#licensePlate").hide();
+                    $("#mostRecentAction").hide();
+                    $("#color").hide();
+                    $("#make_model").hide();
+                    $("#delivered_black_carts_num").hide();
+                    $("#graffiti_location").hide();
+                    $("#surface_type").hide();
+                    $("#filled_pot_holes").hide();
+                    $("#baited_premises").hide();
+                    $("#garbage_premises_num").hide();
+                    $("#rat_premises_num").hide();
+                    $("#violation_nature").hide();
+                    $("#debris_location").hide();
+                    $("#tree_location").hide();
+                } else {
+                    if ($(this).val() === "Pothole in Street") { /*Pothole in Street*/
+                        $("#ssa").show();
+                        $("#filled_pot_holes").show();
+                        $("#currentActivity").show();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").show();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "2") { /*Tree Debris*/
+                        $("#debris_location").show();
+                        $("#tree_location").hide();
+                        $("#ssa").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                    }else if ($(this).val() === "3") { /*Tree Trim*/
+                        $("#tree_location").show();
+                        $("#debris_location").hide();
+                        $("#ssa").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                    }else if ($(this).val() === "4") { /*Graffiti Removal*/
+                        $("#ssa").show();
+                        $("#graffiti_location").show();
+                        $("#surface_type").show();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "5") { /*Street Light - 1/Out*/
+                        $("#ssa").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "6") { /*Street Lights - All/Out*/
+                        $("#ssa").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "7") { /*Street Light Out*/
+                        $("#ssa").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "8") { /*Rodent Baiting/Rat Complaint*/
+                        $("#ssa").hide();
+                        $("#baited_premises").show();
+                        $("#garbage_premises_num").show();
+                        $("#rat_premises_num").show();
+                        $("#currentActivity").show();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").show();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "9") { /*Sanitation Code Violation*/
+                        $("#violation_nature").show();
+                        $("#ssa").hide();
+                        $("#currentActivity").hide();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").hide();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "10") { /*Garbage Cart Black Maintenance/Replacement*/
+                        $("#ssa").show();
+                        $("#currentActivity").show();
+                        $("#delivered_black_carts_num").show();
+                        $("#daysParked").hide();
+                        $("#licensePlate").hide();
+                        $("#mostRecentAction").show();
+                        $("#color").hide();
+                        $("#make_model").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }else if ($(this).val() === "11") { /*Abandoned Vehicle Complaint*/
+                        $("#ssa").show();
+                        $("#currentActivity").show();
+                        $("#daysParked").show();
+                        $("#licensePlate").show();
+                        $("#mostRecentAction").show();
+                        $("#color").show();
+                        $("#make_model").show();
+                        $("#delivered_black_carts_num").hide();
+                        $("#graffiti_location").hide();
+                        $("#surface_type").hide();
+                        $("#filled_pot_holes").hide();
+                        $("#baited_premises").hide();
+                        $("#garbage_premises_num").hide();
+                        $("#rat_premises_num").hide();
+                        $("#violation_nature").hide();
+                        $("#debris_location").hide();
+                        $("#tree_location").hide();
+                    }
+                }
+            });
+        });
+    </script>
     <style>
         fieldset {
             background-color:  #222222;
@@ -66,14 +293,12 @@
 
         .row3{
             position: absolute;
-            top: 30%;
+            top: 54.5%;
             left: 50%;
-            padding-left: 5%;
-            padding-right: 5%;
             border: rgba(0,0,0,0.5);
-            margin: 5px -50% 5px 5px;
+            margin: 0.2% 5% 0.2% 0.3%;
             transform: translate(-50%, -20%);
-            padding-top: 3%;
+            padding: 2% 1% 0 1%;
         }
 
         .help-block{
@@ -102,8 +327,8 @@
             color: darkgray;
             text-align: center;
         }
-
     </style>
+
 </head>
 <body>
 <header role="banner" class="navbar navbar-fixed-top navbar-inverse">
@@ -115,7 +340,7 @@
             <nav role="navigation" class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
-                    <li><a href="">Incident Report</a></li>
+                    <li><a href="/showInsert">Incident Report</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
@@ -132,50 +357,39 @@
 </div>
 
 <div class="row3">
-    <form th:action="@{/...}"
-          th:object="${...}" method="POST" class="form-horizontal">
+    <form th:action="@{/insertOrUpdate}"
+          th:object="${incident}" method="POST" class="form-horizontal">
 
         <fieldset>
             <div class="control-group">
                 <!-- Username -->
-                <label class="control-label"  for="request_type">Request Type</label>
+                <label class="control-label"  for="requestType">Request Type</label>
                 <div class="controls">
-                    <select class="form-control search-slt" id="request_type">
-                        <option>Select Incident Type</option>
-                        <option>Pothole in Street</option>
-                        <option>Tree Debris</option>
-                        <option>Tree Trim</option>
-                        <option>Graffiti Removal</option>
-                        <option>Street Light - 1/Out</option>
-                        <option>Street Lights - All/Out</option>
-                        <option>Street Light Out</option>
-                        <option>Rodent Baiting/Rat Complaint</option>
-                        <option>Sanitation Code Violation</option>
-                        <option>Garbage Cart Black Maintenance/Replacement</option>
-                        <option>Abandoned Vehicle Complaint</option>
+                    <select class="form-control search-slt" id="requestType">
+                        <option value="other">Select Incident Type</option>
+                        <option value="Pothole in Street">Pothole in Street</option>
+                        <option value="2">Tree Debris</option>
+                        <option value="3">Tree Trim</option>
+                        <option value="4">Graffiti Removal</option>
+                        <option value="5">Street Light - 1/Out</option>
+                        <option value="6">Street Lights - All/Out</option>
+                        <option value="7">Street Light Out</option>
+                        <option value="8">Rodent Baiting/Rat Complaint</option>
+                        <option value="9">Sanitation Code Violation</option>
+                        <option value="10">Garbage Cart Black Maintenance/Replacement</option>
+                        <option value="11">Abandoned Vehicle Complaint</option>
                     </select>
                     <p class="help-block">Please select the type of the request you want to make</p>
                 </div>
             </div>
-
             <div class="control-group">
-                <!-- E-mail -->
-                <label class="control-label" for="creation_date">Incident date</label>
+                <!-- Street Address-->
+                <label class="control-label" for="streetAddress">Street Address</label>
                 <div class="controls">
-                    <input type="datetime-local" id="creation_date" name="creation_date" placeholder="" class="input-xlarge">
-                    <p class="help-block">Please provide the date the incident took place</p>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <!-- Password-->
-                <label class="control-label" for="street_address">Street Address</label>
-                <div class="controls">
-                    <input type="text" id="street_address" name="street_address" placeholder="Street Address" class="input-xlarge">
+                    <input type="text" id="streetAddress" name="streetAddress" placeholder="Street Address" class="input-xlarge">
                     <p class="help-block">Enter the street address the incident took place</p>
                 </div>
             </div>
-
             <div class="control-group">
                 <!-- Password -->
                 <label class="control-label"  for="community_area">Community Area</label>
@@ -184,7 +398,6 @@
                     <p class="help-block">Please enter the community area</p>
                 </div>
             </div>
-
             <div class="control-group">
                 <!-- E-mail -->
                 <label class="control-label" for="police_district">Police District</label>
@@ -193,7 +406,6 @@
                     <p class="help-block">Please provide with the police district</p>
                 </div>
             </div>
-
             <div class="control-group">
                 <!-- E-mail -->
                 <label class="control-label" for="zip_code">Zip code</label>
@@ -202,13 +414,215 @@
                     <p class="help-block">Please enter the zip code</p>
                 </div>
             </div>
-
-
+            <div class="control-group">
+                <!-- latitude -->
+                <label class="control-label" for="latitude">Latitude</label>
+                <div class="controls">
+                    <input type="text" id="latitude" name="latitude" placeholder="latitude" class="input-xlarge">
+                    <p class="help-block">Please provide the date the incident took place</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- longitude -->
+                <label class="control-label" for="longitude">Longitude</label>
+                <div class="controls">
+                    <input type="text" id="longitude" name="longitude" placeholder="longitude" class="input-xlarge">
+                    <p class="help-block">Please provide the date the incident took place</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- ward -->
+                <label class="control-label" for="ward">Ward</label>
+                <div class="controls">
+                    <input type="text" id="ward" name="ward" placeholder="ward" class="input-xlarge">
+                    <p class="help-block">Please provide the ward</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- ward -->
+                <label class="control-label" for="censusTracts">Census Tracts</label>
+                <div class="controls">
+                    <input type="text" id="censusTracts" name="censusTracts" placeholder="censusTracts" class="input-xlarge">
+                    <p class="help-block">Please provide the census tracts</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- ward -->
+                <label class="control-label" for="communityAreas">Community Areas</label>
+                <div class="controls">
+                    <input type="text" id="communityAreas" name="communityAreas" placeholder="communityAreas" class="input-xlarge">
+                    <p class="help-block">Please provide the community areas</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- historical wards 2003-2015 -->
+                <label class="control-label" for="historical_wards">Historical wards 2003-2015</label>
+                <div class="controls">
+                    <input type="text" id="historical_wards" name="historical_wards" placeholder="historical wards 2003-2015" class="input-xlarge">
+                    <p class="help-block">Please provide the historical wards 2003-2015</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- wards -->
+                <label class="control-label" for="wards">Wards</label>
+                <div class="controls">
+                    <input type="text" id="wards" name="wards" placeholder="wards" class="input-xlarge">
+                    <p class="help-block">Please provide the wards</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- zip_codes -->
+                <label class="control-label" for="zip_codes">Zip codes</label>
+                <div class="controls">
+                    <input type="text" id="zip_codes" name="zip_codes" placeholder="Zip codes" class="input-xlarge">
+                    <p class="help-block">Please provide the zip codes</p>
+                </div>
+            </div>
+            <hr>
+            <!--Abandoned vehicle-->
+            <div id="subIncidentFields">
+                <div class="control-group">
+                    <!-- SSA -->
+                    <label class="control-label" for="ssa">SSA</label>
+                    <div class="controls">
+                        <input type="text" id="ssa" name="ssa" placeholder="ssa" class="input-xlarge">
+                        <p class="help-block">Please provide the SSA</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- longitude -->
+                    <label class="control-label" for="currentActivity">Current Activity</label>
+                    <div class="controls">
+                        <input type="text" id="currentActivity" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
+                        <p class="help-block">Please provide the current activity for the incident</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- daysParked -->
+                    <label class="control-label" for="daysParked">Days Reported Parked</label>
+                    <div class="controls">
+                        <input type="text" id="daysParked" name="daysParked" placeholder="daysParked" class="input-xlarge">
+                        <p class="help-block">Please provide the days the vehicle is parked</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- licensePlate -->
+                    <label class="control-label" for="licensePlate">License Plate</label>
+                    <div class="controls">
+                        <input type="text" id="licensePlate" name="licensePlate" placeholder="e.g. IL23451" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's license plate</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- mostRecentAction -->
+                    <label class="control-label" for="mostRecentAction">Most recent action</label>
+                    <div class="controls">
+                        <input type="text" id="mostRecentAction" name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's most recent action</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- vehicle color -->
+                    <label class="control-label" for="color">Vehicle color</label>
+                    <div class="controls">
+                        <input type="text" id="color" name="color" placeholder="e.g. silver" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's color</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- vehicle color -->
+                    <label class="control-label" for="make_model">Vehicle make model</label>
+                    <div class="controls">
+                        <input type="text" id="make_model" name="make_model" placeholder="e.g. BMW" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's color</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- delivered_black_carts_num -->
+                    <label class="control-label" for="delivered_black_carts_num">Number of black carts delivered</label>
+                    <div class="controls">
+                        <input type="text" id="delivered_black_carts_num" name="delivered_black_carts_num" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the number of black carts delivered</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- graffiti_location -->
+                    <label class="control-label" for="graffiti_location">Graffiti location</label>
+                    <div class="controls">
+                        <input type="text" id="graffiti_location" name="graffiti_location" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the location of the graffiti</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- surface_type -->
+                    <label class="control-label" for="surface_type">Surface type</label>
+                    <div class="controls">
+                        <input type="text" id="surface_type" name="surface_type" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the graffiti's surface type</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- filled_pot_holes -->
+                    <label class="control-label" for="filled_pot_holes">Filled block pot holes</label>
+                    <div class="controls">
+                        <input type="text" id="filled_pot_holes" name="filled_pot_holes" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the number of filled block pot holes</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- baited premises -->
+                    <label class="control-label" for="baited_premises">Number of baited premises</label>
+                    <div class="controls">
+                        <input type="text" id="baited_premises" name="baited_premises" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the number of baited premises</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- garbage_premises_num -->
+                    <label class="control-label" for="garbage_premises_num">Number of garbage premises</label>
+                    <div class="controls">
+                        <input type="text" id="garbage_premises_num" name="garbage_premises_num" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the number of garbage premises</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- rat_premises_num -->
+                    <label class="control-label" for="rat_premises_num">Number of rat premises</label>
+                    <div class="controls">
+                        <input type="text" id="rat_premises_num" name="rat_premises_num" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the number of rat premises</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- violation_nature -->
+                    <label class="control-label" for="violation_nature">Violation nature</label>
+                    <div class="controls">
+                        <input type="text" id="violation_nature" name="violation_nature" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the nature of the violation</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- debris_location -->
+                    <label class="control-label" for="violation_nature">Debris location</label>
+                    <div class="controls">
+                        <input type="text" id="debris_location" name="debris_location" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the debris location</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- tree_location -->
+                    <label class="control-label" for="violation_nature">Tree location</label>
+                    <div class="controls">
+                        <input type="text" id="tree_location" name="tree_location" placeholder="" class="input-xlarge">
+                        <p class="help-block">Please provide the tree location</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
-                    <button class="btn btn-success">Register</button>
+                    <button class="btn btn-success">Report</button>
                 </div>
             </div>
         </fieldset>
