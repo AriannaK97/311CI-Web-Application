@@ -17,7 +17,7 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
     Optional<Incident> findByServiceRequestNumber(String serviceRequestNumber);
 
     @Query(value = "select count(*) cnt, I.request_type from incident I\n" +
-            "where CREATION_DATE between :firstDate and :secondDate \n" +
+            "where CREATION_DATE between :secondDate and :firstDate \n" +
             "group by I.request_type;", nativeQuery = true )
     public List<Object[]> findTotalRequestsPerType(@Param("firstDate") LocalDate firstDate, @Param("secondDate") LocalDate secondDate);
 
