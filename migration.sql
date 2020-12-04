@@ -796,6 +796,13 @@ from (SELECT incident_id, current_activity, if_yes_where_is_the_debris_located, 
 insert into role(name)
 values ('ROLE_ADMIN'),('ROLE_RESEARCHER'),('ROLE_SIMPLE');
 
+------------------------------------------------------------------------------------------------
+--Fix non-continuities
+update incident set request_type='Pothole in Street' 
+where incident.request_type='Pot Hole in Street';
+
+delete from request_type where name='Pot Hole in Street';
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --12) Drop redundant schema import
 

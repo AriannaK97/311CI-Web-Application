@@ -60,7 +60,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "2") { /*Tree Debris*/
+                    }else if ($(this).val() === "Tree Debris") { /*Tree Debris*/
                         $("#debris_location").show();
                         $("#tree_location").hide();
                         $("#ssa").hide();
@@ -78,7 +78,7 @@
                         $("#garbage_premises_num").hide();
                         $("#rat_premises_num").hide();
                         $("#violation_nature").hide();
-                    }else if ($(this).val() === "3") { /*Tree Trim*/
+                    }else if ($(this).val() === "Tree Trim") { /*Tree Trim*/
                         $("#tree_location").show();
                         $("#debris_location").hide();
                         $("#ssa").hide();
@@ -96,7 +96,7 @@
                         $("#garbage_premises_num").hide();
                         $("#rat_premises_num").hide();
                         $("#violation_nature").hide();
-                    }else if ($(this).val() === "4") { /*Graffiti Removal*/
+                    }else if ($(this).val() === "Graffiti Removal") { /*Graffiti Removal*/
                         $("#ssa").show();
                         $("#graffiti_location").show();
                         $("#surface_type").show();
@@ -114,7 +114,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "5") { /*Street Light - 1/Out*/
+                    }else if ($(this).val() === "Street Light - 1/Out") { /*Street Light - 1/Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysParked").hide();
@@ -132,7 +132,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "6") { /*Street Lights - All/Out*/
+                    }else if ($(this).val() === "Street Lights - All/Out") { /*Street Lights - All/Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysParked").hide();
@@ -150,7 +150,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "7") { /*Street Light Out*/
+                    }else if ($(this).val() === "Street Light Out") { /*Street Light Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysParked").hide();
@@ -168,7 +168,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "8") { /*Rodent Baiting/Rat Complaint*/
+                    }else if ($(this).val() === "Rodent Baiting/Rat Complaint") { /*Rodent Baiting/Rat Complaint*/
                         $("#ssa").hide();
                         $("#baited_premises").show();
                         $("#garbage_premises_num").show();
@@ -186,7 +186,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "9") { /*Sanitation Code Violation*/
+                    }else if ($(this).val() === "Sanitation Code Violation") { /*Sanitation Code Violation*/
                         $("#violation_nature").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
@@ -204,7 +204,7 @@
                         $("#rat_premises_num").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "10") { /*Garbage Cart Black Maintenance/Replacement*/
+                    }else if ($(this).val() === "Garbage Cart Black Maintenance/Replacement") { /*Garbage Cart Black Maintenance/Replacement*/
                         $("#ssa").show();
                         $("#currentActivity").show();
                         $("#delivered_black_carts_num").show();
@@ -222,7 +222,7 @@
                         $("#violation_nature").hide();
                         $("#debris_location").hide();
                         $("#tree_location").hide();
-                    }else if ($(this).val() === "11") { /*Abandoned Vehicle Complaint*/
+                    }else if ($(this).val() === "Abandoned Vehicle Complaint") { /*Abandoned Vehicle Complaint*/
                         $("#ssa").show();
                         $("#currentActivity").show();
                         $("#daysParked").show();
@@ -363,21 +363,21 @@
         <fieldset>
             <div class="control-group">
                 <!-- Username -->
-                <label class="control-label"  for="requestType">Request Type</label>
+                <label class="control-label" for="requestType">Request Type</label>
                 <div class="controls">
-                    <select class="form-control search-slt" id="requestType">
+                    <select class="form-control search-slt" name="requestType" id="requestType">
                         <option value="other">Select Incident Type</option>
                         <option value="Pothole in Street">Pothole in Street</option>
-                        <option value="2">Tree Debris</option>
-                        <option value="3">Tree Trim</option>
-                        <option value="4">Graffiti Removal</option>
-                        <option value="5">Street Light - 1/Out</option>
-                        <option value="6">Street Lights - All/Out</option>
-                        <option value="7">Street Light Out</option>
-                        <option value="8">Rodent Baiting/Rat Complaint</option>
-                        <option value="9">Sanitation Code Violation</option>
-                        <option value="10">Garbage Cart Black Maintenance/Replacement</option>
-                        <option value="11">Abandoned Vehicle Complaint</option>
+                        <option value="Tree Debris">Tree Debris</option>
+                        <option value="Tree Trim">Tree Trim</option>
+                        <option value="Graffiti Removal">Graffiti Removal</option>
+                        <option value="Street Light - 1/Out">Street Light - 1/Out</option>
+                        <option value="Street Lights - All/Out">Street Lights - All/Out</option>
+                        <option value="Street Light Out">Street Light Out</option>
+                        <option value="Rodent Baiting/Rat Complaint">Rodent Baiting/Rat Complaint</option>
+                        <option value="Sanitation Code Violation">Sanitation Code Violation</option>
+                        <option value="Garbage Cart Black Maintenance/Replacement">Garbage Cart Black Maintenance/Replacement</option>
+                        <option value="Abandoned Vehicle Complaint">Abandoned Vehicle Complaint</option>
                     </select>
                     <p class="help-block">Please select the type of the request you want to make</p>
                 </div>
@@ -386,7 +386,7 @@
                 <!-- Street Address-->
                 <label class="control-label" for="streetAddress">Street Address</label>
                 <div class="controls">
-                    <input type="text" id="streetAddress" name="streetAddress" placeholder="Street Address" class="input-xlarge">
+                    <input type="text" id="streetAddress" name="streetAdress" placeholder="Street Address" class="input-xlarge">
                     <p class="help-block">Enter the street address the incident took place</p>
                 </div>
             </div>
@@ -483,9 +483,9 @@
             <div id="subIncidentFields">
                 <div class="control-group">
                     <!-- SSA -->
-                    <label class="control-label" for="ssa">SSA</label>
+                    <label class="control-label" for="SSA">SSA</label>
                     <div class="controls">
-                        <input type="text" id="ssa" name="ssa" placeholder="ssa" class="input-xlarge">
+                        <input type="text" id="SSA" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                 </div>
@@ -499,9 +499,9 @@
                 </div>
                 <div class="control-group">
                     <!-- daysParked -->
-                    <label class="control-label" for="daysParked">Days Reported Parked</label>
+                    <label class="control-label" for="daysReportedParked">Days Reported Parked</label>
                     <div class="controls">
-                        <input type="text" id="daysParked" name="daysParked" placeholder="daysParked" class="input-xlarge">
+                        <input type="text" id="daysReportedParked" name="daysReportedParked" placeholder="daysParked" class="input-xlarge">
                         <p class="help-block">Please provide the days the vehicle is parked</p>
                     </div>
                 </div>
@@ -523,17 +523,17 @@
                 </div>
                 <div class="control-group">
                     <!-- vehicle color -->
-                    <label class="control-label" for="color">Vehicle color</label>
+                    <label class="control-label" for="vehicleColor">Vehicle color</label>
                     <div class="controls">
-                        <input type="text" id="color" name="color" placeholder="e.g. silver" class="input-xlarge">
+                        <input type="text" id="vehicleColor" name="vehicleColor" placeholder="e.g. silver" class="input-xlarge">
                         <p class="help-block">Please provide the vehicle's color</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <!-- vehicle color -->
-                    <label class="control-label" for="make_model">Vehicle make model</label>
+                    <label class="control-label" for="vehicleMakeModel">Vehicle make model</label>
                     <div class="controls">
-                        <input type="text" id="make_model" name="make_model" placeholder="e.g. BMW" class="input-xlarge">
+                        <input type="text" id="vehicleMakeModel" name="vehicleMakeModel" placeholder="e.g. BMW" class="input-xlarge">
                         <p class="help-block">Please provide the vehicle's color</p>
                     </div>
                 </div>

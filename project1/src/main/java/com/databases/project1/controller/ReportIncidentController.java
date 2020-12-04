@@ -55,7 +55,7 @@ public class ReportIncidentController {
     @GetMapping("/showInsert")
     public String showInsert(Model theModel) {
         Incident incident = new Incident();
-        incident.setAbandonedVehicle(new AbandonedVehicle());
+/*        incident.setAbandonedVehicle(new AbandonedVehicle());
         incident.setAlleyLightsOut(new AlleyLightsOut());
         incident.setGarbageCarts(new GarbageCarts());
         incident.setPotHolesReported(new PotHolesReported());
@@ -63,14 +63,33 @@ public class ReportIncidentController {
         incident.setSanitationCodeComplaints(new SanitationCodeComplaints());
         incident.setDistrict(new District());
         incident.setTreeDebris(new TreeDebris());
-        incident.setTreeTrims(new TreeTrims());
+        incident.setTreeTrims(new TreeTrims());*/
         theModel.addAttribute("incident",incident);
+        theModel.addAttribute("abandonedVehicle", new AbandonedVehicle());
+        theModel.addAttribute("alleyLightsOut", new AlleyLightsOut());
+        theModel.addAttribute("garbageCarts", new GarbageCarts());
+        theModel.addAttribute("potHolesReported", new PotHolesReported());
+        theModel.addAttribute("rodentBaiting", new RodentBaiting());
+        theModel.addAttribute("sanitationCodeComplaints", new SanitationCodeComplaints());
+        theModel.addAttribute("district", new District());
+        theModel.addAttribute("treeDebris", new TreeDebris());
+        theModel.addAttribute("treeTrims", new TreeTrims());
         return "IncidentReport";
     }
 
 
     @PostMapping("/insertOrUpdate")
-    public String insertOrUpdateIncident(@ModelAttribute("incident") Incident incident, Model theModel, HttpServletRequest request) {
+    public String insertOrUpdateIncident(@ModelAttribute("incident") Incident incident,
+                                         @ModelAttribute("abandonedVehicle") AbandonedVehicle abandonedVehicle,
+                                         @ModelAttribute("alleyLightsOut") AlleyLightsOut alleyLightsOut,
+                                         @ModelAttribute("garbageCarts") GarbageCarts garbageCarts,
+                                         @ModelAttribute("potHolesReported") PotHolesReported potHolesReported,
+                                         @ModelAttribute("rodentBaiting") RodentBaiting rodentBaiting,
+                                         @ModelAttribute("sanitationCodeComplaints") SanitationCodeComplaints sanitationCodeComplaints,
+                                         @ModelAttribute("district") District district,
+                                         @ModelAttribute("treeDebris") TreeDebris treeDebris,
+                                         @ModelAttribute("treeTrims") TreeTrims treeTrims,
+                                         Model theModel, HttpServletRequest request) {
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         List<String> requestTypes = requestTypeService.findAllNames();
         String requestType = incident.getRequestType();
@@ -80,11 +99,11 @@ public class ReportIncidentController {
             return "redirect:/showInsert";
         }
 
-        if (incidentService.findByRequestNumber(incident.getServiceRequestNumber() )!= null) {
+/*        if (incidentService.findByRequestNumber(incident.getServiceRequestNumber() )!= null) {
             System.out.println("Update operation");
             //TODO : Update operation
 
-        }
+        }*/
 
         //TODO : Insert Operation.
 
@@ -92,7 +111,7 @@ public class ReportIncidentController {
         incident.setCreationDate(new java.sql.Date(date.getTime()));
 
         if (requestType.equals("Abandoned Vehicle Complaint")) {
-            abandonedVehicleService.saveVehicle(incident.getAbandonedVehicle());
+            abandonedVehicleService.saveVehicle(abandonedVehicle);
         }
         else if (requestType.equals("Alley Light Out")) {
             alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
