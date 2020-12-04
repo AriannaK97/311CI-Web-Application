@@ -30,357 +30,15 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="search.js"></script>-->
+    <script type="text/javascript" src="../static/js/search.js"></script>
 
-    <script>
-        $(function () {
-            $("#exampleFormControlSelect1").change(function () {
-                if ($(this).val() === "Other") {
-                    $("#requestType").hide();
-                    $("#firstDate").hide();
-                    $("#secondDate").hide();
-                    $("#streetAddress").hide();
-                    $("#premisesBaited").hide();
-                    $("#zipcode").hide();
-                    $("#firstLatitude").hide();
-                    $("#firstLongitude").hide();
-                    $("#secondLatitude").hide();
-                    $("#secondLongitude").hide();
-                    $("#garbagePremises").hide();
-                    $("#ratPremises").hide();
-                } else {
-                    if ($(this).val() === "1") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#secondDate").show();
-                        $("#requestType").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    }else if ($(this).val() === "2") {
-                        $("#showRow").show();
-                        $("#requestType").show();
-                        $("#firstDate").show();
-                        $("#secondDate").show();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "3") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#requestType").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "4") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#secondDate").show();
-                        $("#requestType").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "5") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#firstLatitude").show();
-                        $("#firstLongitude").show();
-                        $("#secondLatitude").show();
-                        $("#secondLongitude").show();
-                        $("#requestType").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "6") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#secondDate").show();
-                        $("#requestType").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "7" || $(this).val() === "8") {
-                        $("#showRow").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "9") {
-                        $("#showRow").show();
-                        $("#premisesBaited").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "10") {
-                        $("#showRow").show();
-                        $("#garbagePremises").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "11") {
-                        $("#showRow").show();
-                        $("#ratPremises").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                    } else if ($(this).val() === "12") {
-                        $("#showRow").show();
-                        $("#firstDate").show();
-                        $("#requestType").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "13") {
-                        $("#showRow").show();
-                        $("#zipcode").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#streetAddress").hide();
-                        $("#premisesBaited").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    }else if ($(this).val() === "14") {
-                        $("#showRow").show();
-                        $("#streetAddress").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#premisesBaited").hide();
-                        $("#zipcode").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    } else if ($(this).val() === "15") {
-                        $("#showRow").show();
-                        $("#streetAddress").show();
-                        $("#zipcode").show();
-                        $("#requestType").hide();
-                        $("#firstDate").hide();
-                        $("#secondDate").hide();
-                        $("#premisesBaited").hide();
-                        $("#firstLatitude").hide();
-                        $("#firstLongitude").hide();
-                        $("#secondLatitude").hide();
-                        $("#secondLongitude").hide();
-                        $("#garbagePremises").hide();
-                        $("#ratPremises").hide();
-                    }
-                }
-            });
-        });
+    <script th:src="@{/js/search.js}"></script>
+    <link th:href="@{/css/search.css}" rel="stylesheet" type="text/css" media="all">
 
-    </script>
+
 
     <style>
-        body {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IRHyBQOQ45PGXmwzt0SmtFazSM1OpXpc7A&usqp=CAU');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
 
-        /*search box css start here*/
-        .search-sec{
-            background-color: #222222;
-            padding: 2rem;
-        }
-        .search-slt{
-            display: block;
-            width: 100%;
-            font-size: 15px;
-            line-height: 2;
-            color: #55595c;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #ccc;
-            height: calc(4rem + 2px) !important;
-            border-radius:0;
-
-        }
-        .btn{
-            width: 103%;
-            font-size: 16px;
-            font-weight: 400;
-            text-transform: capitalize;
-            height: calc(4rem + 2px) !important;
-            border-radius:0;
-        }
-
-        @media (min-width: 992px){
-            .search-sec{
-                top: -114px;
-                background: rgba(26, 70, 104, 0.51)!important;
-            }
-        }
-
-        @media (max-width: 992px){
-            .search-sec{
-                background-color: #222!important;
-            }
-        }
-
-        .container2{
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .container{
-            margin: 0;
-            position: absolute;
-            top: 40%;
-            left: 55%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .row1{
-            background-color: #222;
-            color: 	whitesmoke;
-            position: absolute;
-            top: 12%;
-            left: 12%;
-            padding-left: 5%;
-            padding-right: 2%;
-            margin-right: -50%;
-            transform: translate(-50%, -30%);
-            font-weight: bolder;
-            font-size: large;
-            font-family: Verdana, sans-serif;
-        }
-
-        .row2{
-            color: 	darkgray;
-            font-weight: normal;
-            font-style: italic;
-            font-family: Verdana, sans-serif;
-        }
-
-        .row3{
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            border: rgba(0,0,0,0.5);
-            margin: 5px -50% 5px 5px;
-            transform: translate(-50%, -20%);
-            padding: 1% 3% 0 3%;
-
-        }
-        .table{
-            background-color:#3e3e3e;
-            color: whitesmoke;
-        }
-
-        .row{
-            padding-top: 1%;
-        }
-
-/*        .showRow{
-            display: none;
-        }*/
-
-        .thead-dark{
-            color: whitesmoke;
-            background-color: #222222;
-            border: #cccccc;
-        }
-
-
-        /*footer*/
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #222;
-            color: darkgray;
-            text-align: center;
-        }
 
     </style>
 
@@ -417,11 +75,9 @@
 <section class="search-sec">
     <div class="container">
         <form th:action="@{/processSearch}" th:object="${searcher}" method="post">
-            <div class="col-lg-12">
-                <div class="row">
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" name="searchType">
+                        <div class="col-lg-8 col-md-6 col-sm-12 input-field ">
+                            <select class="form-control search-slt" id="exampleFormControlSelect1" name="searchType" style="white-space: pre-wrap;" >
                                 <option value="Other" selected>Select Search option</option>
                                 <option value="1">Requests per type that were created within a specified time range</option>
                                 <option value="2">Τotal requests per day for a specific request type and time range</option>
@@ -449,42 +105,42 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row" id="showRow">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input type="date" id="secondDate" name="secondDate" class="form-control search-slt" placeholder="Enter From Date">
+                    <div class="row" id="showRow" >
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field  " id="secondDate">
+                            <input type="date"  name="secondDate" class="form-control search-slt" placeholder="Enter From Date">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input type="date" id="firstDate" name="firstDate" class="form-control search-slt" placeholder="Enter To Date">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="firstDate">
+                            <input type="date"  name="firstDate" class="form-control search-slt" placeholder="Enter To Date">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input type="text" id="zipcode" name="zipcode" class="form-control search-slt" placeholder="Zip Code">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="zipcode">
+                            <input type="text"  name="zipcode" class="form-control search-slt" placeholder="Zip Code">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="streetAddress" type="text" id="streetAddress" name="streetAddress" class="form-control search-slt" placeholder="Street Address">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="streetAddress">
+                            <input type="text"  name="streetAddress" class="form-control search-slt" placeholder="Street Address">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="premisesBaited" type="text" id="premisesBaited" name="premisesBaited" class="form-control search-slt" placeholder="Number of baited premises">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="premisesBaited">
+                            <input  type="text"  name="premisesBaited" class="form-control search-slt" placeholder="Number of baited premises">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="ratPremises" type="text" id="ratPremises" name="ratPremises" class="form-control search-slt" placeholder="Number of premises baited with rats">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="ratPremises">
+                            <input  type="text"  name="ratPremises" class="form-control search-slt" placeholder="Number of premises baited with rats">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="garbagePremises" type="text" id="garbagePremises" name="garbagePremises" class="form-control search-slt" placeholder="Number of premises baited with garbage">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="garbagePremises">
+                            <input  type="text"  name="garbagePremises" class="form-control search-slt" placeholder="Number of premises baited with garbage">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="firstLongitude" type="text" id="firstLongitude" name="firstLongitude" class="form-control search-slt" placeholder="firstLongitude">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="firstLongitude">
+                            <input  type="text"  name="firstLongitude" class="form-control search-slt" placeholder="firstLongitude">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="secondLongitude" type="text" id="secondLongitude" name="secondLongitude" class="form-control search-slt" placeholder="secondLongitude">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="secondLongitude">
+                            <input type="text"  name="secondLongitude" class="form-control search-slt" placeholder="secondLongitude">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="firstLatitude" type="text" id="firstLatitude" name="firstLatitude" class="form-control search-slt" placeholder="firstLatitude">
+                        <div class="col-lg-3 col-md-3 col-sm-12   input-field" id="firstLatitude">
+                            <input  type="text"  name="firstLatitude" class="form-control search-slt" placeholder="firstLatitude">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 input-field">
-                            <input form="secondLatitude" type="text" id="secondLatitude" name="secondLatitude" class="form-control search-slt" placeholder="secondLatitude">
+                        <div class="col-lg-3 col-md-3 col-sm-12  input-field" id="secondLatitude">
+                            <input type="text"  name="secondLatitude" class="form-control search-slt" placeholder="secondLatitude">
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 controls">
-                            <select id="requestType" name="requestType" class="form-control search-slt">
+                        <div class="col-lg-3 col-md-3 col-sm-12 input-field" id="requestType">
+                            <select  name="requestType" class="form-control search-slt">
                                 <option>Select Incident Type</option>
                                 <option>Pothole in Street</option>
                                 <option>Tree Debris</option>
@@ -499,33 +155,66 @@
                                 <option>Abandoned Vehicle Complaint</option>
                             </select>
                         </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 submitForm ">
+                            <button  type="submit" class="btn btn-success" aria-pressed="true">Search</button>
+                        </div>
+
                     </div>
 
-                <div class="row col-lg-12 col-md-12 col-sm-12 p-0">
-                    <button  type="submit" class="btn btn-success" aria-pressed="true">Search</button>
-                </div>
-                </div>
-            </div>
+
+
         </form>
     </div>
 </section>
 <section>
     <div class="row3">
-        <table class="table table-bordered ">
-            <thead class="thead-dark">
-            <tr>
-                <th>Request Type</th>
-                <th>Count</th>
-            </tr>
-            </thead>
 
-            <tbody>
-            <tr th:each="listObject : ${list}">
-                <td><span th:text="${listObject[1]}"> Title </span></td>
-                <td><span th:text="${listObject[0]}"> Author </span></td>
-            </tr>
-            </tbody>
-        </table>
+        <div th:if= "${objectList != null}">
+
+
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Request Type</th>
+                    <th>Count</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="listObject : ${objectList}">
+                    <td><span th:text="${listObject[1]}"> Title </span></td>
+                    <td><span th:text="${listObject[0]}"> Author </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if= "${incidentList != null}">
+
+
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Request Type</th>
+                    <th>zipcode</th>
+                    <th>Request number</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="listObject : ${incidentList}">
+                    <td><span th:text="${listObject.requestType}"> Request Type </span></td>
+                    <td><span th:text="${listObject.district.zipcode}"> Zip Code </span></td>
+                    <td><span th:text="${listObject.serviceRequestNumber}"> Request Num </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
     </div>
 </section>
 

@@ -126,7 +126,7 @@ public class SearchController {
         }
 
 
-        return "redirect:/search";
+        return "search";
     }
 
     @GetMapping("/search")

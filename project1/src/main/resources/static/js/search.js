@@ -1,4 +1,4 @@
-$(function () {
+$( document ).ready(function() {
     $("#exampleFormControlSelect1").change(function () {
         if ($(this).val() === "Other") {
             $("#requestType").hide();
