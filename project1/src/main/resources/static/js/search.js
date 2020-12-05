@@ -13,6 +13,7 @@ $( document ).ready(function() {
             $("#secondLongitude").hide();
             $("#garbagePremises").hide();
             $("#ratPremises").hide();
+            $("#potholes").hide();
         } else {
             if ($(this).val() === "1") {
                 $("#showRow").show();
@@ -28,6 +29,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             }else if ($(this).val() === "2") {
                 $("#showRow").show();
                 $("#requestType").show();
@@ -42,6 +44,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "3") {
                 $("#showRow").show();
                 $("#firstDate").show();
@@ -56,6 +59,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "4") {
                 $("#showRow").show();
                 $("#firstDate").show();
@@ -70,6 +74,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "5") {
                 $("#showRow").show();
                 $("#firstDate").show();
@@ -84,6 +89,7 @@ $( document ).ready(function() {
                 $("#zipcode").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "6") {
                 $("#showRow").show();
                 $("#firstDate").show();
@@ -98,6 +104,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "7" || $(this).val() === "8") {
                 $("#showRow").show();
                 $("#requestType").hide();
@@ -112,6 +119,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "9") {
                 $("#showRow").show();
                 $("#premisesBaited").show();
@@ -126,6 +134,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "10") {
                 $("#showRow").show();
                 $("#garbagePremises").show();
@@ -140,6 +149,7 @@ $( document ).ready(function() {
                 $("#secondLatitude").hide();
                 $("#secondLongitude").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "11") {
                 $("#showRow").show();
                 $("#ratPremises").show();
@@ -154,13 +164,14 @@ $( document ).ready(function() {
                 $("#secondLatitude").hide();
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "12") {
                 $("#showRow").show();
                 $("#firstDate").show();
                 $("#requestType").hide();
                 $("#secondDate").hide();
                 $("#streetAddress").hide();
-                $("#premisesBaited").hide();
+                $("#premisesBaited").show();
                 $("#zipcode").hide();
                 $("#firstLatitude").hide();
                 $("#firstLongitude").hide();
@@ -168,6 +179,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").show();
             } else if ($(this).val() === "13") {
                 $("#showRow").show();
                 $("#zipcode").show();
@@ -182,6 +194,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             }else if ($(this).val() === "14") {
                 $("#showRow").show();
                 $("#streetAddress").show();
@@ -196,6 +209,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             } else if ($(this).val() === "15") {
                 $("#showRow").show();
                 $("#streetAddress").show();
@@ -210,6 +224,7 @@ $( document ).ready(function() {
                 $("#secondLongitude").hide();
                 $("#garbagePremises").hide();
                 $("#ratPremises").hide();
+                $("#potholes").hide();
             }
         }
     });
