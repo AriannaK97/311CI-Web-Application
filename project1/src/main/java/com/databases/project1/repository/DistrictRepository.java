@@ -15,10 +15,13 @@ import java.util.UUID;
 public interface DistrictRepository extends PagingAndSortingRepository<District, UUID> {
 
 
-    @Query(value = "select id from district " +
+    Optional<District> findByCommunityAreaAndPoliceDistrictAndWardAndZipcode(Integer communityArea, Integer policeDistrict,
+                                                                             Integer ward, Integer zipcode);
+
+/*    @Query(value = "select id from district " +
             "where community_area= :communityArea and police_district= :policeDistrict " +
             "and ward= :ward and zip_code= :zipcode;", nativeQuery = true )
     public Optional<District> findIfDistrictExists(@Param("communityArea") Integer communityArea,
                                                    @Param("policeDistrict") Integer policeDistrict,
-                                                   @Param("ward") Integer ward, @Param("zipcode") Integer zipcode);
+                                                   @Param("ward") Integer ward, @Param("zipcode") Integer zipcode);*/
 }
