@@ -1,4 +1,30 @@
 $( document ).ready(function() {
+
+    $(".next").click(function(){
+        var page = $("#page").val();
+        page = parseInt(page) + 1;
+        $("#page").val(page);
+        $("#searchButton").click();
+         return false;
+    });
+
+    $(".previous").click(function(){
+        var page = $("#page").val();
+        if (page == 0)
+            return false
+        page = parseInt(page) - 1;
+        $("#page").val(page);
+        $("#searchButton").click();
+        return false;
+    });
+
+
+    if (parseInt($("#page").val()) > 0)
+        $(".previous").show();
+    else
+        $(".previous").hide();
+
+
     $("#exampleFormControlSelect1").change(function () {
         if ($(this).val() === "Other") {
             $("#requestType").hide();

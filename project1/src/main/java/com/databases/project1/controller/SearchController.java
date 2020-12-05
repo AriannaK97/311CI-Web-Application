@@ -125,6 +125,8 @@ public class SearchController {
                 theModel.addAttribute("error", "no result list is available");
             }
 
+            theModel.addAttribute("searcher",searchDto);
+
 
         } catch (Exception e) {
             e.printStackTrace();
