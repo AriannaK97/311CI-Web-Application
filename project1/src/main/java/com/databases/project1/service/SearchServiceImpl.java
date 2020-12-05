@@ -57,7 +57,7 @@ public class SearchServiceImpl implements SearchService {
         UserActionLog log = initializeUserActionLog(user);
         log.setUserAction("Search for most common service request type per zip code with arguments: " + searchDto.toString());
         logRepository.save(log);
-        return incidentRepository.findMostCommonServiceRequestPerZipCode(LocalDate.parse(searchDto.getCreationDate(), formatter),
+        return incidentRepository.findMostCommonServiceRequestPerZipCode(LocalDate.parse(searchDto.getFirstDate(), formatter),
                 searchDto.getPage(), searchDto.getPageSize());
     }
 
@@ -76,7 +76,7 @@ public class SearchServiceImpl implements SearchService {
         log.setUserAction("Search for most common request type in a bounding box with arguments: " + searchDto.toString());
         logRepository.save(log);
         return incidentRepository.findMostCommonReqType(searchDto.getFirstLongitude(), searchDto.getSecondLongitude(),
-                searchDto.getFirstLatitude(), searchDto.getSecondLatitude(), LocalDate.parse(searchDto.getCreationDate(), formatter));
+                searchDto.getFirstLatitude(), searchDto.getSecondLatitude(), LocalDate.parse(searchDto.getFirstDate(), formatter));
     }
 
     public List<Object[]> findTopSSAs(SearchDto searchDto, RegisteredUser user) {

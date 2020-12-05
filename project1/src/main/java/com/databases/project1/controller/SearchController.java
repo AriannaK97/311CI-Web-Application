@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -57,6 +59,10 @@ public class SearchController {
 
             else if (searchType == 4) {
                 objectList = searchService.findAvgCompletionTimePerServiceReqType(searchDto, user);
+                for (Object[] object : objectList) {
+                    BigDecimal num = (BigDecimal) object[0];
+                    object[0] = num.setScale(2, RoundingMode.DOWN);
+                }
             }
 
             else if (searchType == 5) {

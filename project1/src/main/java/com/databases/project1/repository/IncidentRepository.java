@@ -56,7 +56,7 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
             "        group by request_type\n" +
             "        ) tmp\n" +
             "    ) tmp1\n" +
-            "where rnk=1 limit :pagesize offset :page * :pagesize ;",nativeQuery = true)
+            "where rnk=1;",nativeQuery = true)
     public List<Object[]> findMostCommonReqType(@Param("firstLongitude") Float firstLongitude, @Param("secondLongitude") Float secondLongitude,
                                                 @Param("firstLatitude") Float firstLatitude, @Param("secondLatitude") Float secondLatitude,
                                                 @Param("creationDate") LocalDate creationDate);
@@ -87,7 +87,7 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
 
     @Query(value = "select count(*), vehicle_color from abandoned_vehicle\n" +
             "group by  vehicle_color\n" +
-            "order by count(*) desc limit :pagesize offset :page * :pagesize ;",nativeQuery = true)
+            "order by count(*) desc limit 1 offset 1 ;",nativeQuery = true)
     public List<Object[]> findSecondMostUsualVehicleColor();
 
 
