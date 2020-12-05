@@ -20,7 +20,6 @@ public class ExtraIncidentInfo {
 
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid")
     @Column(name = "id", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
@@ -29,13 +28,13 @@ public class ExtraIncidentInfo {
     private Integer historical_wards_2003_2015;
 
     @Column(name = "zip_codes")
-    private Integer zipcode;
+    private Integer zipcodes;
 
     @Column(name = "wards")
-    private Integer ward;
+    private Integer wards;
 
     @Column(name = "community_areas")
-    private Integer communityArea;
+    private Integer communityAreas;
 
     @Column(name = "cencus_tracts")
     private Integer cencusTracts;

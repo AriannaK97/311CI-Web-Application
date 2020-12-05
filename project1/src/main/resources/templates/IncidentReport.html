@@ -26,220 +26,220 @@
                 if ($(this).val() === "Other") {
                     $("#ssa").hide();
                     $("#currentActivity").hide();
-                    $("#daysParked").hide();
+                    $("#daysReportedParked").hide();
                     $("#licensePlate").hide();
                     $("#mostRecentAction").hide();
-                    $("#color").hide();
-                    $("#make_model").hide();
-                    $("#delivered_black_carts_num").hide();
-                    $("#graffiti_location").hide();
-                    $("#surface_type").hide();
-                    $("#filled_pot_holes").hide();
-                    $("#baited_premises").hide();
-                    $("#garbage_premises_num").hide();
-                    $("#rat_premises_num").hide();
-                    $("#violation_nature").hide();
-                    $("#debris_location").hide();
-                    $("#tree_location").hide();
+                    $("#vehicleColor").hide();
+                    $("#vehicleMakeModel").hide();
+                    $("#deliveredBlackCartsNum").hide();
+                    $("#graffitiLocation").hide();
+                    $("#surfaceΤype").hide();
+                    $("#filledBlockPotholesNum").hide();
+                    $("#baitedPremisesNum").hide();
+                    $("#premisesWithGarbageNum").hide();
+                    $("#premisesWithRatsNum").hide();
+                    $("#violationNature").hide();
+                    $("#debrisLocation").hide();
+                    $("#treeLocation").hide();
                 } else {
                     if ($(this).val() === "Pothole in Street") { /*Pothole in Street*/
                         $("#ssa").show();
-                        $("#filled_pot_holes").show();
+                        $("#filledBlockPotholesNum").show();
                         $("#currentActivity").show();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").show();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Tree Debris") { /*Tree Debris*/
-                        $("#debris_location").show();
-                        $("#tree_location").hide();
+                        $("#debrisLocation").show();
+                        $("#treeLocation").hide();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
                     }else if ($(this).val() === "Tree Trim") { /*Tree Trim*/
-                        $("#tree_location").show();
-                        $("#debris_location").hide();
+                        $("#treeLocation").show();
+                        $("#debrisLocation").hide();
                         $("#ssa").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
                     }else if ($(this).val() === "Graffiti Removal") { /*Graffiti Removal*/
                         $("#ssa").show();
-                        $("#graffiti_location").show();
-                        $("#surface_type").show();
+                        $("#graffitiLocation").show();
+                        $("#surfaceΤype").show();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Street Light - 1/Out") { /*Street Light - 1/Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Street Lights - All/Out") { /*Street Lights - All/Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Street Light Out") { /*Street Light Out*/
                         $("#ssa").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Rodent Baiting/Rat Complaint") { /*Rodent Baiting/Rat Complaint*/
                         $("#ssa").hide();
-                        $("#baited_premises").show();
-                        $("#garbage_premises_num").show();
-                        $("#rat_premises_num").show();
+                        $("#baitedPremisesNum").show();
+                        $("#premisesWithGarbageNum").show();
+                        $("#premisesWithRatsNum").show();
                         $("#currentActivity").show();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").show();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Sanitation Code Violation") { /*Sanitation Code Violation*/
-                        $("#violation_nature").show();
+                        $("#violationNature").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
-                        $("#daysParked").hide();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").hide();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Garbage Cart Black Maintenance/Replacement") { /*Garbage Cart Black Maintenance/Replacement*/
                         $("#ssa").show();
                         $("#currentActivity").show();
-                        $("#delivered_black_carts_num").show();
-                        $("#daysParked").hide();
+                        $("#deliveredBlackCartsNum").show();
+                        $("#daysReportedParked").hide();
                         $("#licensePlate").hide();
                         $("#mostRecentAction").show();
-                        $("#color").hide();
-                        $("#make_model").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").hide();
+                        $("#vehicleMakeModel").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }else if ($(this).val() === "Abandoned Vehicle Complaint") { /*Abandoned Vehicle Complaint*/
                         $("#ssa").show();
                         $("#currentActivity").show();
-                        $("#daysParked").show();
+                        $("#daysReportedParked").show();
                         $("#licensePlate").show();
                         $("#mostRecentAction").show();
-                        $("#color").show();
-                        $("#make_model").show();
-                        $("#delivered_black_carts_num").hide();
-                        $("#graffiti_location").hide();
-                        $("#surface_type").hide();
-                        $("#filled_pot_holes").hide();
-                        $("#baited_premises").hide();
-                        $("#garbage_premises_num").hide();
-                        $("#rat_premises_num").hide();
-                        $("#violation_nature").hide();
-                        $("#debris_location").hide();
-                        $("#tree_location").hide();
+                        $("#vehicleColor").show();
+                        $("#vehicleMakeModel").show();
+                        $("#deliveredBlackCartsNum").hide();
+                        $("#graffitiLocation").hide();
+                        $("#surfaceΤype").hide();
+                        $("#filledBlockPotholesNum").hide();
+                        $("#baitedPremisesNum").hide();
+                        $("#premisesWithGarbageNum").hide();
+                        $("#premisesWithRatsNum").hide();
+                        $("#violationNature").hide();
+                        $("#debrisLocation").hide();
+                        $("#treeLocation").hide();
                     }
                 }
             });
@@ -392,25 +392,25 @@
             </div>
             <div class="control-group">
                 <!-- Password -->
-                <label class="control-label"  for="community_area">Community Area</label>
+                <label class="control-label"  for="communityArea">Community Area</label>
                 <div class="controls">
-                    <input type="text" id="community_area" name="community_area" placeholder="Community Area" class="input-xlarge">
+                    <input type="text" id="communityArea" name="communityArea" placeholder="Community Area" class="input-xlarge">
                     <p class="help-block">Please enter the community area</p>
                 </div>
             </div>
             <div class="control-group">
                 <!-- E-mail -->
-                <label class="control-label" for="police_district">Police District</label>
+                <label class="control-label" for="policeDistrict">Police District</label>
                 <div class="controls">
-                    <input type="text" id="police_district" name="police_district" placeholder="Police District" class="input-xlarge">
+                    <input type="text" id="policeDistrict" name="policeDistrict" placeholder="Police District" class="input-xlarge">
                     <p class="help-block">Please provide with the police district</p>
                 </div>
             </div>
             <div class="control-group">
                 <!-- E-mail -->
-                <label class="control-label" for="zip_code">Zip code</label>
+                <label class="control-label" for="zipcode">Zip code</label>
                 <div class="controls">
-                    <input type="text" id="zip_code" name="zip_code" placeholder="Zip Code" class="input-xlarge">
+                    <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" class="input-xlarge">
                     <p class="help-block">Please enter the zip code</p>
                 </div>
             </div>
@@ -440,9 +440,9 @@
             </div>
             <div class="control-group">
                 <!-- ward -->
-                <label class="control-label" for="censusTracts">Census Tracts</label>
+                <label class="control-label" for="cencusTracts">Census Tracts</label>
                 <div class="controls">
-                    <input type="text" id="censusTracts" name="censusTracts" placeholder="censusTracts" class="input-xlarge">
+                    <input type="text" id="cencusTracts" name="cencusTracts" placeholder="censusTracts" class="input-xlarge">
                     <p class="help-block">Please provide the census tracts</p>
                 </div>
             </div>
@@ -456,9 +456,9 @@
             </div>
             <div class="control-group">
                 <!-- historical wards 2003-2015 -->
-                <label class="control-label" for="historical_wards">Historical wards 2003-2015</label>
+                <label class="control-label" for="historical_wards_2003_2015">Historical wards 2003-2015</label>
                 <div class="controls">
-                    <input type="text" id="historical_wards" name="historical_wards" placeholder="historical wards 2003-2015" class="input-xlarge">
+                    <input type="text" id="historical_wards_2003_2015" name="historical_wards_2003_2015" placeholder="historical wards 2003-2015" class="input-xlarge">
                     <p class="help-block">Please provide the historical wards 2003-2015</p>
                 </div>
             </div>
@@ -472,9 +472,9 @@
             </div>
             <div class="control-group">
                 <!-- zip_codes -->
-                <label class="control-label" for="zip_codes">Zip codes</label>
+                <label class="control-label" for="zipcodes">Zip codes</label>
                 <div class="controls">
-                    <input type="text" id="zip_codes" name="zip_codes" placeholder="Zip codes" class="input-xlarge">
+                    <input type="text" id="zipcodes" name="zipcodes" placeholder="Zip codes" class="input-xlarge">
                     <p class="help-block">Please provide the zip codes</p>
                 </div>
             </div>
@@ -498,10 +498,10 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- daysParked -->
+                    <!-- daysReportedParked -->
                     <label class="control-label" for="daysReportedParked">Days Reported Parked</label>
                     <div class="controls">
-                        <input type="text" id="daysReportedParked" name="daysReportedParked" placeholder="daysParked" class="input-xlarge">
+                        <input type="text" id="daysReportedParked" name="daysReportedParked" placeholder="daysReportedParked" class="input-xlarge">
                         <p class="help-block">Please provide the days the vehicle is parked</p>
                     </div>
                 </div>
@@ -534,86 +534,86 @@
                     <label class="control-label" for="vehicleMakeModel">Vehicle make model</label>
                     <div class="controls">
                         <input type="text" id="vehicleMakeModel" name="vehicleMakeModel" placeholder="e.g. BMW" class="input-xlarge">
-                        <p class="help-block">Please provide the vehicle's color</p>
+                        <p class="help-block">Please provide the vehicle's make model</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- delivered_black_carts_num -->
-                    <label class="control-label" for="delivered_black_carts_num">Number of black carts delivered</label>
+                    <!-- deliveredBlackCartsNum -->
+                    <label class="control-label" for="deliveredBlackCartsNum">Number of black carts delivered</label>
                     <div class="controls">
-                        <input type="text" id="delivered_black_carts_num" name="delivered_black_carts_num" placeholder="" class="input-xlarge">
+                        <input type="text" id="deliveredBlackCartsNum" name="deliveredBlackCartsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of black carts delivered</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- graffiti_location -->
-                    <label class="control-label" for="graffiti_location">Graffiti location</label>
+                    <!-- graffitiLocation -->
+                    <label class="control-label" for="graffitiLocation">Graffiti location</label>
                     <div class="controls">
-                        <input type="text" id="graffiti_location" name="graffiti_location" placeholder="" class="input-xlarge">
+                        <input type="text" id="graffitiLocation" name="graffitiLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the location of the graffiti</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- surface_type -->
-                    <label class="control-label" for="surface_type">Surface type</label>
+                    <!-- surfaceΤype -->
+                    <label class="control-label" for="surfaceΤype">Surface type</label>
                     <div class="controls">
-                        <input type="text" id="surface_type" name="surface_type" placeholder="" class="input-xlarge">
+                        <input type="text" id="surfaceΤype" name="surfaceΤype" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the graffiti's surface type</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- filled_pot_holes -->
-                    <label class="control-label" for="filled_pot_holes">Filled block pot holes</label>
+                    <!-- filledBlockPotholesNum -->
+                    <label class="control-label" for="filledBlockPotholesNum">Filled block pot holes</label>
                     <div class="controls">
-                        <input type="text" id="filled_pot_holes" name="filled_pot_holes" placeholder="" class="input-xlarge">
+                        <input type="text" id="filledBlockPotholesNum" name="filledBlockPotholesNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of filled block pot holes</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <!-- baited premises -->
-                    <label class="control-label" for="baited_premises">Number of baited premises</label>
+                    <label class="control-label" for="baitedPremisesNum">Number of baited premises</label>
                     <div class="controls">
-                        <input type="text" id="baited_premises" name="baited_premises" placeholder="" class="input-xlarge">
+                        <input type="text" id="baitedPremisesNum" name="baitedPremisesNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of baited premises</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- garbage_premises_num -->
-                    <label class="control-label" for="garbage_premises_num">Number of garbage premises</label>
+                    <!-- premisesWithGarbageNum -->
+                    <label class="control-label" for="premisesWithGarbageNum">Number of garbage premises</label>
                     <div class="controls">
-                        <input type="text" id="garbage_premises_num" name="garbage_premises_num" placeholder="" class="input-xlarge">
+                        <input type="text" id="premisesWithGarbageNum" name="premisesWithGarbageNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of garbage premises</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- rat_premises_num -->
-                    <label class="control-label" for="rat_premises_num">Number of rat premises</label>
+                    <!-- premisesWithRatsNum -->
+                    <label class="control-label" for="premisesWithRatsNum">Number of rat premises</label>
                     <div class="controls">
-                        <input type="text" id="rat_premises_num" name="rat_premises_num" placeholder="" class="input-xlarge">
+                        <input type="text" id="premisesWithRatsNum" name="premisesWithRatsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of rat premises</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- violation_nature -->
-                    <label class="control-label" for="violation_nature">Violation nature</label>
+                    <!-- violationNature -->
+                    <label class="control-label" for="violationNature">Violation nature</label>
                     <div class="controls">
-                        <input type="text" id="violation_nature" name="violation_nature" placeholder="" class="input-xlarge">
+                        <input type="text" id="violationNature" name="violationNature" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the nature of the violation</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- debris_location -->
-                    <label class="control-label" for="violation_nature">Debris location</label>
+                    <!-- debrisLocation -->
+                    <label class="control-label" for="violationNature">Debris location</label>
                     <div class="controls">
-                        <input type="text" id="debris_location" name="debris_location" placeholder="" class="input-xlarge">
+                        <input type="text" id="debrisLocation" name="debrisLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the debris location</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <!-- tree_location -->
-                    <label class="control-label" for="violation_nature">Tree location</label>
+                    <!-- treeLocation -->
+                    <label class="control-label" for="violationNature">Tree location</label>
                     <div class="controls">
-                        <input type="text" id="tree_location" name="tree_location" placeholder="" class="input-xlarge">
+                        <input type="text" id="treeLocation" name="treeLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the tree location</p>
                     </div>
                 </div>

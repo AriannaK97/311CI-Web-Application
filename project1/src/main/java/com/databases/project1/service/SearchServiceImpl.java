@@ -162,16 +162,4 @@ public class SearchServiceImpl implements SearchService {
         return incidentRepository.findAll(pageable).toList();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }

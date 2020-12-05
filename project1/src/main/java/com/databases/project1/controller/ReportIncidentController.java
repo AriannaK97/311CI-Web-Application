@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -51,19 +53,16 @@ public class ReportIncidentController {
     @Autowired
     TreeTrimService treeTrimService;
 
+    @Autowired
+    ExtraIncidentInfoService extraIncidentInfoService;
+
+    @Autowired
+    DistrictService districtService;
+
 
     @GetMapping("/showInsert")
     public String showInsert(Model theModel) {
         Incident incident = new Incident();
-/*        incident.setAbandonedVehicle(new AbandonedVehicle());
-        incident.setAlleyLightsOut(new AlleyLightsOut());
-        incident.setGarbageCarts(new GarbageCarts());
-        incident.setPotHolesReported(new PotHolesReported());
-        incident.setRodentBaiting(new RodentBaiting());
-        incident.setSanitationCodeComplaints(new SanitationCodeComplaints());
-        incident.setDistrict(new District());
-        incident.setTreeDebris(new TreeDebris());
-        incident.setTreeTrims(new TreeTrims());*/
         theModel.addAttribute("incident",incident);
         theModel.addAttribute("abandonedVehicle", new AbandonedVehicle());
         theModel.addAttribute("alleyLightsOut", new AlleyLightsOut());
@@ -84,11 +83,13 @@ public class ReportIncidentController {
                                          @ModelAttribute("alleyLightsOut") AlleyLightsOut alleyLightsOut,
                                          @ModelAttribute("garbageCarts") GarbageCarts garbageCarts,
                                          @ModelAttribute("potHolesReported") PotHolesReported potHolesReported,
+                                         @ModelAttribute("graffitiRemoval") GraffitiRemoval graffitiRemoval,
                                          @ModelAttribute("rodentBaiting") RodentBaiting rodentBaiting,
                                          @ModelAttribute("sanitationCodeComplaints") SanitationCodeComplaints sanitationCodeComplaints,
                                          @ModelAttribute("district") District district,
                                          @ModelAttribute("treeDebris") TreeDebris treeDebris,
                                          @ModelAttribute("treeTrims") TreeTrims treeTrims,
+                                         @ModelAttribute("extraIncidentInfo") ExtraIncidentInfo extraIncidentInfo,
                                          Model theModel, HttpServletRequest request) {
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         List<String> requestTypes = requestTypeService.findAllNames();
@@ -107,56 +108,77 @@ public class ReportIncidentController {
 
         //TODO : Insert Operation.
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         Date date = new Date();
+        incident.setServiceRequestNumber(dateFormat.format(date) + incident.getRequestType().length());
         incident.setCreationDate(new java.sql.Date(date.getTime()));
 
-        if (requestType.equals("Abandoned Vehicle Complaint")) {
-            abandonedVehicleService.saveVehicle(abandonedVehicle);
-        }
-        else if (requestType.equals("Alley Light Out")) {
-            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
-        }
-        else if (requestType.equals("Garbage Cart Black Maintenance/Replacement")) {
-            garbageCartsService.saveGarbageCarts(incident.getGarbageCarts());
-        }
-
-        else if (requestType.equals("Graffiti Removal")) {
-            graffityRemovalService.saveGraffityRemoval(incident.getGraffitiRemoval());
-        }
-
-        else if (requestType.equals("Pothole in Street")) {
-            potHolesService.savePotHoles(incident.getPotHolesReported());
-        }
-
-        else if (requestType.equals("Rodent Baiting/Rat Complaint")) {
-            rodentBaitingService.saveRodentBaiting(incident.getRodentBaiting());
-        }
-
-        else if (requestType.equals("Sanitation Code Violation")) {
-            sanitationComplaintService.saveSanitationComplaint(incident.getSanitationCodeComplaints());
-        }
-
-        else if (requestType.equals("Tree Trim")) {
-            treeTrimService.saveTreeTrim(incident.getTreeTrims());
-        }
-
-        else if (requestType.equals("Tree Debris")) {
-            treeDebrisService.saveTreeDebris(incident.getTreeDebris());
-        }
-
-        else if (requestType.equals("Street Lights - All/Out")) {
-            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
-        }
-
-        else if (requestType.equals("Street Light Out")) {
-            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
-        }
-
-        else if (requestType.equals("Street Lights - 1/Out")) {
-            alleyLightsService.saveAlleyLights(incident.getAlleyLightsOut());
+        /*insert the district if the district combination does not already exist in table district*/
+        if (district != null){
+            District districtFromTable = districtService.findIfDistrictExists(district.getCommunityArea(),
+                    district.getPoliceDistrict(), district.getWard(), district.getZipcode());
+            if(districtFromTable == null){
+                districtService.saveDistrict(district);
+            }
+            incident.setDistrict(district);
         }
 
         incidentService.saveIncident(incident);
+
+        /*insert the extra incident info if there are any*/
+        if(extraIncidentInfo != null){
+            extraIncidentInfo.setId(incident.getId());
+            extraIncidentInfoService.saveExtraIncidentInfo(extraIncidentInfo);
+        }
+
+        if (requestType.equals("Abandoned Vehicle Complaint")) {
+            abandonedVehicle.setId(incident.getId());
+            abandonedVehicleService.saveVehicle(abandonedVehicle);
+        }
+        else if (requestType.equals("Alley Light Out")) {
+            alleyLightsOut.setId(incident.getId());
+            alleyLightsService.saveAlleyLights(alleyLightsOut);
+        }
+        else if (requestType.equals("Garbage Cart Black Maintenance/Replacement")) {
+            garbageCarts.setId(incident.getId());
+            garbageCartsService.saveGarbageCarts(garbageCarts);
+        }
+        else if (requestType.equals("Graffiti Removal")) {
+            graffitiRemoval.setId(incident.getId());
+            graffityRemovalService.saveGraffityRemoval(graffitiRemoval);
+        }
+        else if (requestType.equals("Pothole in Street")) {
+            potHolesReported.setId(incident.getId());
+            potHolesService.savePotHoles(potHolesReported);
+        }
+        else if (requestType.equals("Rodent Baiting/Rat Complaint")) {
+            rodentBaiting.setId(incident.getId());
+            rodentBaitingService.saveRodentBaiting(rodentBaiting);
+        }
+        else if (requestType.equals("Sanitation Code Violation")) {
+            sanitationCodeComplaints.setId(incident.getId());
+            sanitationComplaintService.saveSanitationComplaint(sanitationCodeComplaints);
+        }
+        else if (requestType.equals("Tree Trim")) {
+            treeTrims.setId(incident.getId());
+            treeTrimService.saveTreeTrim(treeTrims);
+        }
+        else if (requestType.equals("Tree Debris")) {
+            treeDebris.setId(incident.getId());
+            treeDebrisService.saveTreeDebris(treeDebris);
+        }
+        else if (requestType.equals("Street Lights - All/Out")) {
+            alleyLightsOut.setId(incident.getId());
+            alleyLightsService.saveAlleyLights(alleyLightsOut);
+        }
+        else if (requestType.equals("Street Light Out")) {
+            alleyLightsOut.setId(incident.getId());
+            alleyLightsService.saveAlleyLights(alleyLightsOut);
+        }
+        else if (requestType.equals("Street Lights - 1/Out")) {
+            alleyLightsOut.setId(incident.getId());
+            alleyLightsService.saveAlleyLights(alleyLightsOut);
+        }
 
         return "redirect:/showInsert";
 

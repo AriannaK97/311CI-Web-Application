@@ -20,13 +20,12 @@ public class GarbageCarts {
 
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid")
     @Column(name = "id", unique = true, nullable = false)
     @Type(type="pg-uuid")
     private UUID id;
 
     @Column(name = "delivered_black_carts_num")
-    private float deliveredBlackCartsNum;
+    private Float deliveredBlackCartsNum;
 
     @Column(name = "current_activity")
     private String currentActivity;
