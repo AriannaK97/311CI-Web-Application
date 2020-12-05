@@ -91,6 +91,7 @@ public class ReportIncidentController {
                                          @ModelAttribute("treeTrims") TreeTrims treeTrims,
                                          @ModelAttribute("extraIncidentInfo") ExtraIncidentInfo extraIncidentInfo,
                                          Model theModel, HttpServletRequest request) {
+
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         List<String> requestTypes = requestTypeService.findAllNames();
         String requestType = incident.getRequestType();
@@ -99,14 +100,6 @@ public class ReportIncidentController {
             theModel.addAttribute("error","No such request type. Insertion or update aborted");
             return "redirect:/showInsert";
         }
-
-/*        if (incidentService.findByRequestNumber(incident.getServiceRequestNumber() )!= null) {
-            System.out.println("Update operation");
-            //TODO : Update operation
-
-        }*/
-
-        //TODO : Insert Operation.
 
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         Date date = new Date();

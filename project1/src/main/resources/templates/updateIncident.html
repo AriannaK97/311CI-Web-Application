@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Incident Report</title>
+    <title>Update Incident</title>
 
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -17,13 +17,14 @@
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-   <!-- <script type="text/javascript" src="IncidentReport.js"></script>-->
+    <!-- <script type="text/javascript" src="IncidentReport.js"></script>-->
     <link rel="stylesheet" href="IncidentReport.css">
 
     <script>
         $(function () {
             $("#requestType").change(function () {
                 if ($(this).val() === "Other") {
+                    $("#subIncidentFields").hide();
                     $("#ssa").hide();
                     $("#currentActivity").hide();
                     $("#daysReportedParked").hide();
@@ -41,9 +42,9 @@
                     $("#violationNature").hide();
                     $("#debrisLocation").hide();
                     $("#treeLocation").hide();
-                    $("#subIncidentFields").hide();
                 } else {
                     if ($(this).val() === "Pothole in Street") { /*Pothole in Street*/
+                        $("#subIncidentFields").show();
                         $("#ssa").show();
                         $("#filledBlockPotholesNum").show();
                         $("#currentActivity").show();
@@ -61,8 +62,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Tree Debris") { /*Tree Debris*/
+                        $("#subIncidentFields").show();
                         $("#debrisLocation").show();
                         $("#treeLocation").hide();
                         $("#ssa").hide();
@@ -80,8 +81,8 @@
                         $("#premisesWithGarbageNum").hide();
                         $("#premisesWithRatsNum").hide();
                         $("#violationNature").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Tree Trim") { /*Tree Trim*/
+                        $("#subIncidentFields").show();
                         $("#treeLocation").show();
                         $("#debrisLocation").hide();
                         $("#ssa").hide();
@@ -99,8 +100,8 @@
                         $("#premisesWithGarbageNum").hide();
                         $("#premisesWithRatsNum").hide();
                         $("#violationNature").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Graffiti Removal") { /*Graffiti Removal*/
+                        $("#subIncidentFields").show();
                         $("#ssa").show();
                         $("#graffitiLocation").show();
                         $("#surfaceΤype").show();
@@ -118,8 +119,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Street Light - 1/Out") { /*Street Light - 1/Out*/
+                        $("#subIncidentFields").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysReportedParked").hide();
@@ -137,8 +138,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Street Lights - All/Out") { /*Street Lights - All/Out*/
+                        $("#subIncidentFields").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysReportedParked").hide();
@@ -156,8 +157,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Street Light Out") { /*Street Light Out*/
+                        $("#subIncidentFields").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
                         $("#daysReportedParked").hide();
@@ -175,8 +176,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Rodent Baiting/Rat Complaint") { /*Rodent Baiting/Rat Complaint*/
+                        $("#subIncidentFields").show();
                         $("#ssa").hide();
                         $("#baitedPremisesNum").show();
                         $("#premisesWithGarbageNum").show();
@@ -194,8 +195,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Sanitation Code Violation") { /*Sanitation Code Violation*/
+                        $("#subIncidentFields").show();
                         $("#violationNature").show();
                         $("#ssa").hide();
                         $("#currentActivity").hide();
@@ -213,8 +214,8 @@
                         $("#premisesWithRatsNum").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Garbage Cart Black Maintenance/Replacement") { /*Garbage Cart Black Maintenance/Replacement*/
+                        $("#subIncidentFields").show();
                         $("#ssa").show();
                         $("#currentActivity").show();
                         $("#deliveredBlackCartsNum").show();
@@ -232,8 +233,8 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }else if ($(this).val() === "Abandoned Vehicle Complaint") { /*Abandoned Vehicle Complaint*/
+                        $("#subIncidentFields").show();
                         $("#ssa").show();
                         $("#currentActivity").show();
                         $("#daysReportedParked").show();
@@ -251,7 +252,6 @@
                         $("#violationNature").hide();
                         $("#debrisLocation").hide();
                         $("#treeLocation").hide();
-                        $("#subIncidentFields").show();
                     }
                 }
             });
@@ -332,6 +332,9 @@
             display: none;
         }
 
+        #showRow{
+            display: none;
+        }
 
         /*footer*/
 
@@ -368,14 +371,14 @@
 </header>
 
 <div class="row1">
-    <h1>Report Incident</h1>
+    <h1>Update Incident</h1>
     <p class="row2">Welcome to Chicago Incident Report Platform</p>
     <p class="row2">To report a new incident, please login or register</p>
 </div>
 
 <div class="row3">
-    <form th:action="@{/insertOrUpdate}"
-          th:object="${incident}" method="POST" class="form-horizontal">
+    <form th:action="@{/searchUpdate}"
+          th:object="${updateIncident}" method="POST" class="form-horizontal">
 
         <fieldset>
             <div class="control-group">
@@ -399,114 +402,124 @@
                     <p class="help-block">Please select the type of the request you want to make</p>
                 </div>
             </div>
-            <div class="control-group">
-                <!-- Street Address-->
-                <label class="control-label" for="streetAddress">Street Address</label>
+            <div class="control-group" id="serviceRequestNumber">
+                <!-- Service Request Number-->
+                <label class="control-label" for="serviceRequestNumber">Service Request Number</label>
                 <div class="controls">
-                    <input type="text" id="streetAddress" name="streetAdress" placeholder="Street Address" class="input-xlarge">
-                    <p class="help-block">Enter the street address the incident took place</p>
+                    <input type="text"  name="serviceRequestNumber" placeholder="Service Request Number" class="input-xlarge">
+                    <p class="help-block">Enter the Service Number of the request</p>
                 </div>
             </div>
-            <div class="control-group">
-                <!-- Password -->
-                <label class="control-label"  for="communityArea">Community Area</label>
-                <div class="controls">
-                    <input type="text" id="communityArea" name="communityArea" placeholder="Community Area" class="input-xlarge">
-                    <p class="help-block">Please enter the community area</p>
+            <div id="showRow">
+                <div class="control-group" id="streetAddress">
+                    <!-- Street Address-->
+                    <label class="control-label" for="streetAddress">Street Address</label>
+                    <div class="controls">
+                        <input type="text"  name="streetAdress" placeholder="Street Address" class="input-xlarge">
+                        <p class="help-block">Enter the street address the incident took place</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- E-mail -->
-                <label class="control-label" for="policeDistrict">Police District</label>
-                <div class="controls">
-                    <input type="text" id="policeDistrict" name="policeDistrict" placeholder="Police District" class="input-xlarge">
-                    <p class="help-block">Please provide with the police district</p>
+                <div class="control-group" id="communityArea" >
+                    <!-- Password -->
+                    <label class="control-label"  for="communityArea">Community Area</label>
+                    <div class="controls">
+                        <input type="text" name="communityArea" placeholder="Community Area" class="input-xlarge">
+                        <p class="help-block">Please enter the community area</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- E-mail -->
-                <label class="control-label" for="zipcode">Zip code</label>
-                <div class="controls">
-                    <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" class="input-xlarge">
-                    <p class="help-block">Please enter the zip code</p>
+                <div class="control-group" id="policeDistrict">
+                    <!-- E-mail -->
+                    <label class="control-label" for="policeDistrict">Police District</label>
+                    <div class="controls">
+                        <input type="text"  name="policeDistrict" placeholder="Police District" class="input-xlarge">
+                        <p class="help-block">Please provide with the police district</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- latitude -->
-                <label class="control-label" for="latitude">Latitude</label>
-                <div class="controls">
-                    <input type="text" id="latitude" name="latitude" placeholder="latitude" class="input-xlarge">
-                    <p class="help-block">Please provide the date the incident took place</p>
+                <div class="control-group" id="zipcode">
+                    <!-- E-mail -->
+                    <label class="control-label" for="zipcode">Zip code</label>
+                    <div class="controls">
+                        <input type="text" name="zipcode" placeholder="Zip Code" class="input-xlarge">
+                        <p class="help-block">Please enter the zip code</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- longitude -->
-                <label class="control-label" for="longitude">Longitude</label>
-                <div class="controls">
-                    <input type="text" id="longitude" name="longitude" placeholder="longitude" class="input-xlarge">
-                    <p class="help-block">Please provide the date the incident took place</p>
+                <div class="control-group"  id="latitude">
+                    <!-- latitude -->
+                    <label class="control-label" for="latitude">Latitude</label>
+                    <div class="controls">
+                        <input type="text" name="latitude" placeholder="latitude" class="input-xlarge">
+                        <p class="help-block">Please provide the date the incident took place</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- ward -->
-                <label class="control-label" for="ward">Ward</label>
-                <div class="controls">
-                    <input type="text" id="ward" name="ward" placeholder="ward" class="input-xlarge">
-                    <p class="help-block">Please provide the ward</p>
+                <div class="control-group" id="longitude">
+                    <!-- longitude -->
+                    <label class="control-label" for="longitude">Longitude</label>
+                    <div class="controls">
+                        <input type="text"  name="longitude" placeholder="longitude" class="input-xlarge">
+                        <p class="help-block">Please provide the date the incident took place</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- ward -->
-                <label class="control-label" for="cencusTracts">Census Tracts</label>
-                <div class="controls">
-                    <input type="text" id="cencusTracts" name="cencusTracts" placeholder="censusTracts" class="input-xlarge">
-                    <p class="help-block">Please provide the census tracts</p>
+                <div class="control-group" id="ward" >
+                    <!-- ward -->
+                    <label class="control-label" for="ward">Ward</label>
+                    <div class="controls">
+                        <input type="text" name="ward" placeholder="ward" class="input-xlarge">
+                        <p class="help-block">Please provide the ward</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- ward -->
-                <label class="control-label" for="communityAreas">Community Areas</label>
-                <div class="controls">
-                    <input type="text" id="communityAreas" name="communityAreas" placeholder="communityAreas" class="input-xlarge">
-                    <p class="help-block">Please provide the community areas</p>
+                <div class="control-group" id="cencusTracts">
+                    <!-- ward -->
+                    <label class="control-label" for="cencusTracts">Census Tracts</label>
+                    <div class="controls">
+                        <input type="text"  name="cencusTracts" placeholder="censusTracts" class="input-xlarge">
+                        <p class="help-block">Please provide the census tracts</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- historical wards 2003-2015 -->
-                <label class="control-label" for="historical_wards_2003_2015">Historical wards 2003-2015</label>
-                <div class="controls">
-                    <input type="text" id="historical_wards_2003_2015" name="historical_wards_2003_2015" placeholder="historical wards 2003-2015" class="input-xlarge">
-                    <p class="help-block">Please provide the historical wards 2003-2015</p>
+                <div class="control-group"  id="communityAreas">
+                    <!-- ward -->
+                    <label class="control-label" for="communityAreas">Community Areas</label>
+                    <div class="controls">
+                        <input type="text" name="communityAreas" placeholder="communityAreas" class="input-xlarge">
+                        <p class="help-block">Please provide the community areas</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- wards -->
-                <label class="control-label" for="wards">Wards</label>
-                <div class="controls">
-                    <input type="text" id="wards" name="wards" placeholder="wards" class="input-xlarge">
-                    <p class="help-block">Please provide the wards</p>
+                <div class="control-group"  id="historical_wards_2003_2015">
+                    <!-- historical wards 2003-2015 -->
+                    <label class="control-label" for="historical_wards_2003_2015">Historical wards 2003-2015</label>
+                    <div class="controls">
+                        <input type="text" name="historical_wards_2003_2015" placeholder="historical wards 2003-2015" class="input-xlarge">
+                        <p class="help-block">Please provide the historical wards 2003-2015</p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <!-- zip_codes -->
-                <label class="control-label" for="zipcodes">Zip codes</label>
-                <div class="controls">
-                    <input type="text" id="zipcodes" name="zipcodes" placeholder="Zip codes" class="input-xlarge">
-                    <p class="help-block">Please provide the zip codes</p>
+                <div class="control-group"  id="wards">
+                    <!-- wards -->
+                    <label class="control-label" for="wards">Wards</label>
+                    <div class="controls">
+                        <input type="text" name="wards" placeholder="wards" class="input-xlarge">
+                        <p class="help-block">Please provide the wards</p>
+                    </div>
                 </div>
-            </div>
-            <hr>
+                <div class="control-group"  id="zipcodes">
+                    <!-- zip_codes -->
+                    <label class="control-label" for="zipcodes">Zip codes</label>
+                    <div class="controls">
+                        <input type="text" name="zipcodes" placeholder="Zip codes" class="input-xlarge">
+                        <p class="help-block">Please provide the zip codes</p>
+                    </div>
+                </div>
+                <hr>
+            </div>>
             <!--Abandoned vehicle-->
             <div id="subIncidentFields">
                 <div class="control-group" id="SSA">
                     <!-- SSA -->
                     <label class="control-label" for="SSA">SSA</label>
                     <div class="controls">
-                        <input type="text"  name="SSA" placeholder="ssa" class="input-xlarge">
+                        <input type="text" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                 </div>
-                <div class="control-group"  id="currentActivity">
+                <div class="control-group" id="currentActivity" >
                     <!-- longitude -->
                     <label class="control-label" for="currentActivity">Current Activity</label>
                     <div class="controls">
@@ -514,7 +527,7 @@
                         <p class="help-block">Please provide the current activity for the incident</p>
                     </div>
                 </div>
-                <div class="control-group" id="daysReportedParked">
+                <div class="control-group" id="daysReportedParked" >
                     <!-- daysReportedParked -->
                     <label class="control-label" for="daysReportedParked">Days Reported Parked</label>
                     <div class="controls">
@@ -522,7 +535,7 @@
                         <p class="help-block">Please provide the days the vehicle is parked</p>
                     </div>
                 </div>
-                <div class="control-group"  id="licensePlate">
+                <div class="control-group" id="licensePlate">
                     <!-- licensePlate -->
                     <label class="control-label" for="licensePlate">License Plate</label>
                     <div class="controls">
@@ -530,15 +543,15 @@
                         <p class="help-block">Please provide the vehicle's license plate</p>
                     </div>
                 </div>
-                <div class="control-group"  id="mostRecentAction">
+                <div class="control-group" id="mostRecentAction">
                     <!-- mostRecentAction -->
                     <label class="control-label" for="mostRecentAction">Most recent action</label>
                     <div class="controls">
-                        <input type="text" name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <input type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
                         <p class="help-block">Please provide the vehicle's most recent action</p>
                     </div>
                 </div>
-                <div class="control-group"  id="vehicleColor">
+                <div class="control-group" id="vehicleColor" >
                     <!-- vehicle color -->
                     <label class="control-label" for="vehicleColor">Vehicle color</label>
                     <div class="controls">
@@ -546,7 +559,7 @@
                         <p class="help-block">Please provide the vehicle's color</p>
                     </div>
                 </div>
-                <div class="control-group" id="vehicleMakeModel">
+                <div class="control-group"  id="vehicleMakeModel">
                     <!-- vehicle color -->
                     <label class="control-label" for="vehicleMakeModel">Vehicle make model</label>
                     <div class="controls">
@@ -554,7 +567,7 @@
                         <p class="help-block">Please provide the vehicle's make model</p>
                     </div>
                 </div>
-                <div class="control-group" id="deliveredBlackCartsNum">
+                <div class="control-group"  id="deliveredBlackCartsNum">
                     <!-- deliveredBlackCartsNum -->
                     <label class="control-label" for="deliveredBlackCartsNum">Number of black carts delivered</label>
                     <div class="controls">
@@ -562,7 +575,7 @@
                         <p class="help-block">Please provide the number of black carts delivered</p>
                     </div>
                 </div>
-                <div class="control-group" id="graffitiLocation">
+                <div class="control-group"  id="graffitiLocation">
                     <!-- graffitiLocation -->
                     <label class="control-label" for="graffitiLocation">Graffiti location</label>
                     <div class="controls">
@@ -570,7 +583,7 @@
                         <p class="help-block">Please provide the location of the graffiti</p>
                     </div>
                 </div>
-                <div class="control-group" id="surfaceΤype">
+                <div class="control-group"  id="surfaceΤype">
                     <!-- surfaceΤype -->
                     <label class="control-label" for="surfaceΤype">Surface type</label>
                     <div class="controls">
@@ -578,7 +591,7 @@
                         <p class="help-block">Please provide the graffiti's surface type</p>
                     </div>
                 </div>
-                <div class="control-group" id="filledBlockPotholesNum">
+                <div class="control-group"  id="filledBlockPotholesNum">
                     <!-- filledBlockPotholesNum -->
                     <label class="control-label" for="filledBlockPotholesNum">Filled block pot holes</label>
                     <div class="controls">
@@ -586,7 +599,7 @@
                         <p class="help-block">Please provide the number of filled block pot holes</p>
                     </div>
                 </div>
-                <div class="control-group" id="baitedPremisesNum">
+                <div class="control-group"  id="baitedPremisesNum">
                     <!-- baited premises -->
                     <label class="control-label" for="baitedPremisesNum">Number of baited premises</label>
                     <div class="controls">
@@ -594,7 +607,7 @@
                         <p class="help-block">Please provide the number of baited premises</p>
                     </div>
                 </div>
-                <div class="control-group" id="premisesWithGarbageNum">
+                <div class="control-group"  id="premisesWithGarbageNum">
                     <!-- premisesWithGarbageNum -->
                     <label class="control-label" for="premisesWithGarbageNum">Number of garbage premises</label>
                     <div class="controls">
@@ -602,7 +615,7 @@
                         <p class="help-block">Please provide the number of garbage premises</p>
                     </div>
                 </div>
-                <div class="control-group" id="premisesWithRatsNum">
+                <div class="control-group"  id="premisesWithRatsNum">
                     <!-- premisesWithRatsNum -->
                     <label class="control-label" for="premisesWithRatsNum">Number of rat premises</label>
                     <div class="controls">
@@ -610,7 +623,7 @@
                         <p class="help-block">Please provide the number of rat premises</p>
                     </div>
                 </div>
-                <div class="control-group" id="violationNature">
+                <div class="control-group"  id="violationNature">
                     <!-- violationNature -->
                     <label class="control-label" for="violationNature">Violation nature</label>
                     <div class="controls">
@@ -618,7 +631,7 @@
                         <p class="help-block">Please provide the nature of the violation</p>
                     </div>
                 </div>
-                <div class="control-group" id="debrisLocation">
+                <div class="control-group" id="debrisLocation" >
                     <!-- debrisLocation -->
                     <label class="control-label" for="violationNature">Debris location</label>
                     <div class="controls">
@@ -626,7 +639,7 @@
                         <p class="help-block">Please provide the debris location</p>
                     </div>
                 </div>
-                <div class="control-group" id="treeLocation">
+                <div class="control-group"  id="treeLocation">
                     <!-- treeLocation -->
                     <label class="control-label" for="violationNature">Tree location</label>
                     <div class="controls">
