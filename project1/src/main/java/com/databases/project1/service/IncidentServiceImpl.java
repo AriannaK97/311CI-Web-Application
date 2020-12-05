@@ -17,8 +17,8 @@ public class IncidentServiceImpl implements IncidentService {
         return incidentRepository.findByServiceRequestNumber(requestNumber).orElse(null);
     }
 
-    public boolean saveIncident(Incident incident) {
-        return (incidentRepository.save(incident) != null);
+    public Incident saveIncident(Incident incident) {
+        return (incidentRepository.save(incident));
     }
 
 

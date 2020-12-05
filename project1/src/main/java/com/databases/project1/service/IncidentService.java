@@ -10,6 +10,6 @@ public interface IncidentService {
 
     Incident findByRequestNumber(String requestNumber);
 
-    boolean saveIncident(Incident incident);
+    Incident saveIncident(Incident incident);
 
 }
