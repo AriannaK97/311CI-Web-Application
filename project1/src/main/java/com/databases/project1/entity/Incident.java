@@ -60,7 +60,7 @@ public class Incident {
     @JoinColumn(name="status_type")
     String statusType;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToOne(cascade= { CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="district_id")
     District district;
