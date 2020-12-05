@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -57,6 +59,10 @@ public class SearchController {
 
             else if (searchType == 4) {
                 objectList = searchService.findAvgCompletionTimePerServiceReqType(searchDto, user);
+                for (Object[] object : objectList) {
+                    BigDecimal num = (BigDecimal) object[0];
+                    object[0] = num.setScale(2, RoundingMode.DOWN);
+                }
             }
 
             else if (searchType == 5) {
@@ -136,18 +142,6 @@ public class SearchController {
         return "search";
     }
 
-    @PostMapping("/tesSearch")
-    public String processSearchQuery(@ModelAttribute("searcher") SearchDto searcher,
-                                     BindingResult theBindingResult, Model theModel,
-                                     @RequestParam(value = "creation_date", required = false, defaultValue = "") String creation_date){
 
-        List<Object[]> list;
-        /*LocalDate first = LocalDate.parse("2015-09-10", dateTimeFormat);
-        LocalDate second = LocalDate.parse("2016-03-18", dateTimeFormat);
-        LocalDate standard = LocalDate.parse("2017-01-18", dateTimeFormat);*/
-        creation_date = searcher.getCreationDate();
-        theModel.addAttribute("creation_date", creation_date);
-        return "search";
-    }
 
 }

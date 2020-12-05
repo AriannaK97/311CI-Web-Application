@@ -301,21 +301,148 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-body table-responsive">
-                                <table class="table table-bordered table-list">
-                                    <thead>
-                                    <tr>
-                                        <th>Request Type</th>
-                                        <th>Count</th>
+                            <div th:switch="${searchDto.searchType}" class="panel-body table-responsive">
+                                <table  th:case="'1'"  class="table table-bordered table-list">
+                                    <thead >
+                                        <tr >
+                                            <th> Request Type </th>
+                                            <th> Count </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  th:each="listObject : ${objectList}">
+                                            <td><span th:text="${listObject[1]}"> Request Type </span></td>
+                                            <td><span th:text="${listObject[0]}"> Count </span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'2'" class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th >
+                                            <span> Creation Date </span>
+                                        </th>
+                                        <th>
+                                            <span> Count </span>
+                                        </th>
                                     </tr>
                                     </thead>
-                                    <tbody id="myListTable">
-                                    <tr th:each="listObject : ${objectList}">
-                                        <td><span th:text="${listObject[1]}"> Title </span></td>
-                                        <td><span th:text="${listObject[0]}"> Author </span></td>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> Creation Date</span></td>
+                                        <td><span th:text="${listObject[0]}"> Count </span></td>
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <table  th:case="'3'" class="table table-bordered table-list">
+                                    <thead>
+                                    <tr>
+                                        <th> RequestType </th>
+                                        <th> Count </th>
+                                        <th> Zipcode </th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> RequestType</span></td>
+                                        <td><span th:text="${listObject[0]}"> Count </span></td>
+                                        <td><span th:text="${listObject[2]}"> Zipcode </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'4'" class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> Request Type </th>
+                                        <th> Average </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> Request Type </span></td>
+                                        <td><span th:text="${listObject[0]}"> Average </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'5'"  class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> Request Type </th>
+                                        <th> Count </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> Request Type </span></td>
+                                        <td><span th:text="${listObject[0]}"> Count </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'6'"  class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> SSA </th>
+                                        <th> Request Type Num </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> SSA </span></td>
+                                        <td><span th:text="${listObject[0]}"> Request Type Num </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <table  th:case="'7'"  class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> License plate </th>
+                                        <th> Count </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> License plate </span></td>
+                                        <td><span th:text="${listObject[0]}"> Count </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'8'"  class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> Second most common vehicle color </th>
+                                        <th> Count </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[1]}"> Vehicle color </span></td>
+                                        <td><span th:text="${listObject[0]}"> Count </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table  th:case="'12'"  class="table table-bordered table-list">
+                                    <thead >
+                                    <tr >
+                                        <th> Busy police districts ids </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="listObject : ${objectList}">
+                                        <td><span th:text="${listObject[0]}"> Id </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
 
                             </div>
                             <div class="panel-footer">
