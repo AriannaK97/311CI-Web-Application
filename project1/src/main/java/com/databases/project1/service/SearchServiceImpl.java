@@ -129,7 +129,7 @@ public class SearchServiceImpl implements SearchService {
         UserActionLog log = initializeUserActionLog(user);
         log.setUserAction("Search for busy police districts with arguments: " + searchDto.toString());
         logRepository.save(log);
-        return incidentRepository.findBusyPoliceDistricts(LocalDate.parse(searchDto.getCompletionDate(), formatter), searchDto.getPotholes(),
+        return incidentRepository.findBusyPoliceDistricts(LocalDate.parse(searchDto.getFirstDate(), formatter), searchDto.getPotholes(),
                 searchDto.getPremisesBaited(),searchDto.getPage(), searchDto.getPageSize());
     }
 
