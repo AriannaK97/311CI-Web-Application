@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,6 +59,9 @@ public class ReportIncidentController {
 
     @Autowired
     DistrictService districtService;
+
+    @Autowired
+    LoggingService logService;
 
 
     @GetMapping("/showInsert")
@@ -180,6 +184,13 @@ public class ReportIncidentController {
             alleyLightsService.saveAlleyLights(alleyLightsOut);
         }
 
+        UserActionLog log = new UserActionLog();
+        log.setRegUser(user);
+        log.setUserName(user.getUserName());
+        log.setActionTimeStamp(new Timestamp(System.currentTimeMillis()));
+        log.setUserAction("Import operation by user " + log.getUserName() +
+                ". Request type: " + incident.getRequestType() + ", Request number: " + incident.getServiceRequestNumber());
+        logService.logAction(log);
         return "redirect:/showInsert";
 
     }

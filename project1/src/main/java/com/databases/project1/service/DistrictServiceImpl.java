@@ -16,7 +16,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     public District findIfDistrictExists(Integer communityArea, Integer policeDistrict, Integer ward, Integer zipcode){
-        return districtRepository.findIfDistrictExists(communityArea, policeDistrict, ward, zipcode).orElse(null);
+        return districtRepository.findByCommunityAreaAndPoliceDistrictAndWardAndZipcode(communityArea, policeDistrict, ward, zipcode).orElse(null);
     }
 
 }
