@@ -27,7 +27,7 @@ public class UserActionLog {
     @Column(name="action_time_stamp")
     private Timestamp actionTimeStamp;
 
-    @Column(name="action")
+    @Column(name="action", columnDefinition = "TEXT")
     private String userAction;
 
     @ManyToOne

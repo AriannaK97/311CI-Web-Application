@@ -142,18 +142,6 @@ public class SearchController {
         return "search";
     }
 
-    @PostMapping("/tesSearch")
-    public String processSearchQuery(@ModelAttribute("searcher") SearchDto searcher,
-                                     BindingResult theBindingResult, Model theModel,
-                                     @RequestParam(value = "creation_date", required = false, defaultValue = "") String creation_date){
 
-        List<Object[]> list;
-        /*LocalDate first = LocalDate.parse("2015-09-10", dateTimeFormat);
-        LocalDate second = LocalDate.parse("2016-03-18", dateTimeFormat);
-        LocalDate standard = LocalDate.parse("2017-01-18", dateTimeFormat);*/
-        creation_date = searcher.getCreationDate();
-        theModel.addAttribute("creation_date", creation_date);
-        return "search";
-    }
 
 }

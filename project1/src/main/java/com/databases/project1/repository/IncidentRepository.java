@@ -7,6 +7,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -57,8 +59,8 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
             "        ) tmp\n" +
             "    ) tmp1\n" +
             "where rnk=1;",nativeQuery = true)
-    public List<Object[]> findMostCommonReqType(@Param("firstLongitude") Float firstLongitude, @Param("secondLongitude") Float secondLongitude,
-                                                @Param("firstLatitude") Float firstLatitude, @Param("secondLatitude") Float secondLatitude,
+    public List<Object[]> findMostCommonReqType(@Param("firstLongitude") BigDecimal firstLongitude, @Param("secondLongitude") BigDecimal secondLongitude,
+                                                @Param("firstLatitude") BigDecimal firstLatitude, @Param("secondLatitude") BigDecimal secondLatitude,
                                                 @Param("creationDate") LocalDate creationDate);
 
     @Query(value = "select sum(c) total , ssa from (select ssa,count(*) as c from garbage_carts join incident on incident.id = garbage_carts.id\n" +
