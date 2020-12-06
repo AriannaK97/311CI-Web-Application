@@ -143,7 +143,9 @@ public class UpdateIncidentController {
                 if(districtFromTable == null){
                     districtService.saveDistrict(district);
                 }
-                incident.setDistrict(district);
+                else {
+                    incident.setDistrict(districtFromTable);
+                }
             }
 
             incident = incidentService.saveIncident(incident);

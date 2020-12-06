@@ -391,14 +391,14 @@
                                     <thead>
                                     <tr>
                                         <th>Request Type</th>
-                                        <th>zipcode</th>
+                                        <th>Status</th>
                                         <th>Request number</th>
                                     </tr>
                                     </thead>
                                     <tbody id="myObjTable">
                                     <tr th:each="listObject : ${incidentList}">
                                         <td><span th:text="${listObject.requestType}"> Request Type </span></td>
-                                        <td><span th:text="${listObject.district.zipcode}"> Zip Code </span></td>
+                                        <td><span th:text="${listObject.statusType}"> Status </span></td>
                                         <td><span th:text="${listObject.serviceRequestNumber}"> Request Num </span></td>
                                     </tr>
                                     </tbody>
