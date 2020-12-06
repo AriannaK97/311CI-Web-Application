@@ -137,7 +137,7 @@ public class UpdateIncidentController {
             String requestType = updateDto.getIncident().getRequestType();
             incident.setId(updateDto.getIncident().getId());
 
-            if (district != null){
+          if (district != null){
                 District districtFromTable = districtService.findIfDistrictExists(district.getCommunityArea(),
                         district.getPoliceDistrict(), district.getWard(), district.getZipcode());
                 if(districtFromTable == null){

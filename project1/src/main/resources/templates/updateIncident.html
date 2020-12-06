@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-    <script th:src="@{/js/updateIncident.js}"></script>
+    <!--<script th:src="@{/js/updateIncident.js}"></script>-->
     <link th:href="@{/css/updateIncident.css}" rel="stylesheet" type="text/css" media="all">
 
 
@@ -80,7 +80,7 @@
     <input type="hidden" th:value="${updateIncident.garbageCarts.deliveredBlackCartsNum}" name="deliveredBlackCartsNum">
     <input type="hidden" th:value="${updateIncident.graffitiRemoval.SSA}" name="SSA">
     <input type="hidden" th:value="${updateIncident.graffitiRemoval.graffitiLocation}" name="graffitiLocation">
-    <input type="hidden" th:value="${updateIncident.graffitiRemoval.surfaceType}" name="surfaceΤype">
+    <input type="hidden" th:value="${updateIncident.graffitiRemoval.surfaceType}" name="surfaceType">
     <input type="hidden" th:value="${updateIncident.potHolesReported.SSA}" name="SSA">
     <input type="hidden" th:value="${updateIncident.potHolesReported.currentActivity}" name="currentActivity">
     <input type="hidden" th:value="${updateIncident.potHolesReported.mostRecentAction}" name="mostRecentAction">
@@ -237,28 +237,54 @@
             <!--Abandoned vehicle-->
             <div id="subIncidentFields">
 
-                <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint' or
-                    ${updateIncident.requestType} eq 'Pothole in Street' or ${updateIncident.requestType} eq 'Graffiti Removal'
-                    or ${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'"
-                     class="control-group" id="SSA">
+                <div class="control-group" id="SSA">
                     <!-- SSA -->
                     <label class="control-label" for="SSA">SSA</label>
-                    <div class="controls">
+                    <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'" class="controls">
                         <input th:value="${updateIncident.abandonedVehicle.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <p class="help-block">Please provide the SSA</p>
+                    </div>
+                    <div th:if="${updateIncident.getRequestType()} eq 'Garbage Cart Black Maintenance/Replacement'" class="controls">
+                        <input th:value="${updateIncident.garbageCarts.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <p class="help-block">Please provide the SSA</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Graffiti Removal'" class="controls">
+                        <input th:value="${updateIncident.graffitiRemoval.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <p class="help-block">Please provide the SSA</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Pothole in Street'" class="controls">
+                        <input th:value="${updateIncident.potHolesReported.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                 </div>
                 <div th:if="${updateIncident.requestType} eq 'Pothole in Street' or ${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'
-                or ${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement' or ${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"
+                    or ${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'
+                    or ${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"
                      class="control-group" id="currentActivity" >
                     <!-- currentActivity -->
                     <label class="control-label" for="currentActivity">Current Activity</label>
-                    <div class="controls">
+                    <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'" class="controls">
                         <input th:value="${updateIncident.abandonedVehicle.currentActivity}" type="text" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
                         <p class="help-block">Please provide the current activity for the incident</p>
                     </div>
+                    <div th:if="${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'" class="controls">
+                        <input th:value="${updateIncident.garbageCarts.currentActivity}" type="text" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
+                        <p class="help-block">Please provide the current activity for the incident</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Pothole in Street'" class="controls">
+                        <input th:value="${updateIncident.potHolesReported.currentActivity}" type="text" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
+                        <p class="help-block">Please provide the current activity for the incident</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'" class="controls">
+                        <input th:value="${updateIncident.rodentBaiting.currentActivity}" type="text" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
+                        <p class="help-block">Please provide the current activity for the incident</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Tree Debris'" class="controls">
+                        <input th:value="${updateIncident.treeDebris.currentActivity}" type="text" name="currentActivity" placeholder="currentActivity" class="input-xlarge">
+                        <p class="help-block">Please provide the current activity for the incident</p>
+                    </div>
                 </div>
-                <div th:if="'Abandoned Vehicle Complaint'" class="control-group" id="daysReportedParked" >
+                <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"  class="control-group" id="daysReportedParked" >
                     <!-- daysReportedParked -->
                     <label class="control-label" for="daysReportedParked">Days Reported Parked</label>
                     <div class="controls">
@@ -266,7 +292,7 @@
                         <p class="help-block">Please provide the days the vehicle is parked</p>
                     </div>
                 </div>
-                <div th:if="'Abandoned Vehicle Complaint'" class="control-group" id="licensePlate">
+                <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"  class="control-group" id="licensePlate">
                     <!-- licensePlate -->
                     <label class="control-label" for="licensePlate">License Plate</label>
                     <div class="controls">
@@ -274,18 +300,34 @@
                         <p class="help-block">Please provide the vehicle's license plate</p>
                     </div>
                 </div>
-                <div th:if="'Pothole in Street' or ${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'
+                <div th:if="${updateIncident.requestType} eq 'Pothole in Street' or ${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'
                     or ${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'
                     or ${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"
-                     class="control-group" id="mostRecentAction">
+                    class="control-group" id="mostRecentAction">
                     <!-- mostRecentAction -->
                     <label class="control-label" for="mostRecentAction">Most recent action</label>
-                    <div class="controls">
+                    <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"  class="controls">
                         <input th:value="${updateIncident.abandonedVehicle.mostRecentAction}" type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
                         <p class="help-block">Please provide the vehicle's most recent action</p>
                     </div>
+                    <div th:if="${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'"  class="controls">
+                        <input th:value="${updateIncident.garbageCarts.mostRecentAction}" type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's most recent action</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Pothole in Street'"  class="controls">
+                        <input th:value="${updateIncident.potHolesReported.mostRecentAction}" type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's most recent action</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'"  class="controls">
+                        <input th:value="${updateIncident.rodentBaiting.mostRecentAction}" type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's most recent action</p>
+                    </div>
+                    <div th:if="${updateIncident.requestType} eq 'Tree Debris'"  class="controls">
+                        <input th:value="${updateIncident.treeDebris.mostRecentAction}" type="text"x name="mostRecentAction" placeholder="Most recent action" class="input-xlarge">
+                        <p class="help-block">Please provide the vehicle's most recent action</p>
+                    </div>
                 </div>
-                <div th:if="'Abandoned Vehicle Complaint'" class="control-group" id="vehicleColor" >
+                <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'"  class="control-group" id="vehicleColor" >
                     <!-- vehicle color -->
                     <label class="control-label" for="vehicleColor">Vehicle color</label>
                     <div class="controls">
@@ -293,7 +335,7 @@
                         <p class="help-block">Please provide the vehicle's color</p>
                     </div>
                 </div>
-                <div th:if="'Abandoned Vehicle Complaint'" class="control-group"  id="vehicleMakeModel">
+                <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'" class="control-group"  id="vehicleMakeModel">
                     <!-- vehicle color -->
                     <label class="control-label" for="vehicleMakeModel">Vehicle make model</label>
                     <div class="controls">
@@ -301,87 +343,88 @@
                         <p class="help-block">Please provide the vehicle's make model</p>
                     </div>
                 </div>
-                <div th:if="'Garbage Cart Black Maintenance/Replacement'" class="control-group"  id="deliveredBlackCartsNum">
+                <div th:if="${updateIncident.requestType} eq 'Garbage Cart Black Maintenance/Replacement'" class="control-group"  id="deliveredBlackCartsNum">
                     <!-- deliveredBlackCartsNum -->
                     <label class="control-label" for="deliveredBlackCartsNum">Number of black carts delivered</label>
                     <div class="controls">
-                        <input type="text" name="deliveredBlackCartsNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.garbageCarts.deliveredBlackCartsNum}" type="text" name="deliveredBlackCartsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of black carts delivered</p>
                     </div>
                 </div>
-                <div th:if="'Graffiti Removal'" class="control-group"  id="graffitiLocation">
+                <div th:if="${updateIncident.requestType} eq 'Graffiti Removal'" class="control-group"  id="graffitiLocation">
                     <!-- graffitiLocation -->
                     <label class="control-label" for="graffitiLocation">Graffiti location</label>
                     <div class="controls">
-                        <input type="text" name="graffitiLocation" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.graffitiRemoval.graffitiLocation}" type="text" name="graffitiLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the location of the graffiti</p>
                     </div>
                 </div>
-                <div th:if="'Graffiti Removal'" class="control-group"  id="surfaceΤype">
+                <div th:if="${updateIncident.requestType} eq 'Graffiti Removal'" class="control-group"  id="surfaceType">
                     <!-- surfaceΤype -->
-                    <label class="control-label" for="surfaceΤype">Surface type</label>
+                    <label class="control-label" for="surfaceType">Surface type</label>
                     <div class="controls">
-                        <input type="text" name="surfaceΤype" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.graffitiRemoval.surfaceType}" type="text" name="surfaceType" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the graffiti's surface type</p>
                     </div>
                 </div>
-                <div th:if="'Pothole in Street'" class="control-group"  id="filledBlockPotholesNum">
+                <div th:if="${updateIncident.requestType} eq 'Pothole in Street'" class="control-group"  id="filledBlockPotholesNum">
                     <!-- filledBlockPotholesNum -->
                     <label class="control-label" for="filledBlockPotholesNum">Filled block pot holes</label>
                     <div class="controls">
-                        <input type="text" name="filledBlockPotholesNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.potHolesReported.filledBlockPotholesNum}" type="text" name="filledBlockPotholesNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of filled block pot holes</p>
                     </div>
                 </div>
-                <div th:if="'Rodent Baiting/Rat Complaint'" class="control-group"  id="baitedPremisesNum">
+                <div th:if="${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'" class="control-group"  id="baitedPremisesNum">
                     <!-- baited premises -->
                     <label class="control-label" for="baitedPremisesNum">Number of baited premises</label>
                     <div class="controls">
-                        <input type="text" name="baitedPremisesNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.rodentBaiting.baitedPremisesNum}" type="text" name="baitedPremisesNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of baited premises</p>
                     </div>
                 </div>
-                <div th:if="'Rodent Baiting/Rat Complaint'" class="control-group"  id="premisesWithGarbageNum">
+                <div th:if="${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'" class="control-group"  id="premisesWithGarbageNum">
                     <!-- premisesWithGarbageNum -->
                     <label class="control-label" for="premisesWithGarbageNum">Number of garbage premises</label>
                     <div class="controls">
-                        <input type="text" name="premisesWithGarbageNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.rodentBaiting.premisesWithGarbageNum}" type="text" name="premisesWithGarbageNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of garbage premises</p>
                     </div>
                 </div>
-                <div th:if="'Rodent Baiting/Rat Complaint'" class="control-group"  id="premisesWithRatsNum">
+                <div th:if="${updateIncident.requestType} eq 'Rodent Baiting/Rat Complaint'" class="control-group"  id="premisesWithRatsNum">
                     <!-- premisesWithRatsNum -->
                     <label class="control-label" for="premisesWithRatsNum">Number of rat premises</label>
                     <div class="controls">
-                        <input type="text" name="premisesWithRatsNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.rodentBaiting.premisesWithRatsNum}" type="text" name="premisesWithRatsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of rat premises</p>
                     </div>
                 </div>
-                <div th:if="'Sanitation Code Violation'" class="control-group"  id="violationNature">
+                <div th:if="${updateIncident.requestType} eq 'Sanitation Code Violation'" class="control-group"  id="violationNature">
                     <!-- violationNature -->
                     <label class="control-label" for="violationNature">Violation nature</label>
                     <div class="controls">
-                        <input type="text" name="violationNature" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.sanitationCodeComplaints.violationNature}" type="text" name="violationNature" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the nature of the violation</p>
                     </div>
                 </div>
-                <div th:if="'Tree Debris'" class="control-group" id="debrisLocation" >
+                <div th:if="${updateIncident.requestType} eq 'Tree Debris'" class="control-group" id="debrisLocation" >
                     <!-- debrisLocation -->
                     <label class="control-label" for="violationNature">Debris location</label>
                     <div class="controls">
-                        <input type="text" name="debrisLocation" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.treeDebris.debrisLocation}" type="text" name="debrisLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the debris location</p>
                     </div>
                 </div>
-                <div th:if="'Tree Trim'" class="control-group"  id="treeLocation">
+                <div th:if="${updateIncident.requestType} eq 'Tree Trim'" class="control-group"  id="treeLocation">
                     <!-- treeLocation -->
                     <label class="control-label" for="violationNature">Tree location</label>
                     <div class="controls">
-                        <input type="text" name="treeLocation" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.treeTrims.treeLocation}" type="text" name="treeLocation" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the tree location</p>
                     </div>
                 </div>
             </div>
+
             <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
