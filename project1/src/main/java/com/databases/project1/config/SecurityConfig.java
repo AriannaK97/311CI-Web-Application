@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("SIMPLE")
                 .antMatchers("/IncidentReport")
                 .hasRole("SIMPLE")
+                .antMatchers("/update")
+                .hasRole("SIMPLE")
                 .and()
                 .formLogin()
                 .loginPage("/login")

@@ -1,5 +1,6 @@
 package com.databases.project1.repository;
 
+import com.databases.project1.dto.UpdateDto;
 import com.databases.project1.entity.Incident;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

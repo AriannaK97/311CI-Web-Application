@@ -25,7 +25,7 @@ public class GraffitiRemoval {
     private UUID id;
 
     @Column(name = "surface_type")
-    private String surfaceΤype;
+    private String surfaceType;
 
     @Column(name = "graffiti_location")
     private String graffitiLocation;

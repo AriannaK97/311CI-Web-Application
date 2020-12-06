@@ -77,6 +77,7 @@ public class ReportIncidentController {
         theModel.addAttribute("district", new District());
         theModel.addAttribute("treeDebris", new TreeDebris());
         theModel.addAttribute("treeTrims", new TreeTrims());
+        theModel.addAttribute("extraIncidentInfo", new ExtraIncidentInfo());
         return "IncidentReport";
     }
 

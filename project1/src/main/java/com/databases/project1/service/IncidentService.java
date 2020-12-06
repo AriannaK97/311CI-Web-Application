@@ -1,5 +1,6 @@
 package com.databases.project1.service;
 
+import com.databases.project1.dto.UpdateDto;
 import com.databases.project1.entity.Incident;
 import javassist.NotFoundException;
 

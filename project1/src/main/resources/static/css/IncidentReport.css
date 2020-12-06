@@ -1,0 +1,86 @@
+fieldset {
+    background-color:  #222222;
+    padding: 4% 3% 2% 1%;
+}
+
+legend {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+}
+
+input {
+    margin: 5px;
+}
+
+.container2{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.row1{
+    background-color: #222;
+    color: 	whitesmoke;
+    margin: 0px;
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    padding-left: 5%;
+    padding-right: 1%;
+    margin-right: -50%;
+    transform: translate(-50%, -30%);
+    font-weight: bolder;
+    font-size: large;
+    font-family: Verdana, sans-serif;
+}
+
+.row2{
+    font-weight: normal;
+    font-style: italic;
+}
+
+.row3{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    border: rgba(0,0,0,0.5);
+    margin: 0.2% 5% 0.2% 0.3%;
+    transform: translate(-50%, -20%);
+    padding: 2% 1% 0 1%;
+}
+
+.help-block{
+    color: darkgray;
+}
+
+.control-label{
+    color: whitesmoke;
+}
+
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IRHyBQOQ45PGXmwzt0SmtFazSM1OpXpc7A&usqp=CAU');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#subIncidentFields {
+    display: none;
+}
+
+
+/*footer*/
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    color: darkgray;
+    text-align: center;
+}
