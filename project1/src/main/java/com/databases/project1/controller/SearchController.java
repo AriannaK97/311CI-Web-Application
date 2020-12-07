@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Controller
@@ -39,6 +41,7 @@ public class SearchController {
         int searchType = searchDto.getSearchType();
         List<Object[]> objectList = null;
         List<Incident> incidentList = null;
+        LocalDateTime startTime = LocalDateTime.now();
         try {
             if (searchType == 1) {
                 objectList = searchService.findTotalRequestsPerType(searchDto, user);
@@ -119,6 +122,11 @@ public class SearchController {
             else {
                 theModel.addAttribute("error", "no result list is available");
             }
+
+            Long executionTime = startTime.until(LocalDateTime.now(), ChronoUnit.MILLIS);
+            Long seconds = executionTime / 1000;
+            Long milliseconds = executionTime % 1000;
+            System.out.println("Execution time of query " + searchDto.getSearchType() + " was " + seconds + " seconds and " + milliseconds + " milliseconds");
 
             theModel.addAttribute("searcher",searchDto);
 
