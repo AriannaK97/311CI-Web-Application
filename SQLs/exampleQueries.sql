@@ -29,9 +29,7 @@ select * from (
 
 --Query 4
 --603ms
---556ms
---232
---specs only for one type
+--232ms
 select avg(completion_date - creation_date), request_type from incident
 where creation_date <= '2020-09-07' and creation_date >= '2012-03-03' and completion_date is not null
 group by request_type;
@@ -98,7 +96,6 @@ where baited_premises_num < 2;
 --Query 10
 --269ms
 --92ms
---40ms
 select *  from incident
                 inner join rodent_baiting on incident.id = rodent_baiting.id
                 inner join district on incident.district_id = district.id
