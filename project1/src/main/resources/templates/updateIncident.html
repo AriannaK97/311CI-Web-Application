@@ -125,7 +125,7 @@
                 <!-- Password -->
                 <label class="control-label"  for="communityArea">Community Area</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.district.communityArea}" type="text" name="communityArea" placeholder="Community Area" class="input-xlarge">
+                    <input th:value="${updateIncident.district.communityArea}" type="number" name="communityArea" placeholder="Community Area" class="input-xlarge">
                     <p class="help-block">Please enter the community area</p>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <!-- E-mail -->
                 <label class="control-label" for="policeDistrict">Police District</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.district.policeDistrict}" type="text"  name="policeDistrict" placeholder="Police District" class="input-xlarge">
+                    <input th:value="${updateIncident.district.policeDistrict}" type="number"  name="policeDistrict" placeholder="Police District" class="input-xlarge">
                     <p class="help-block">Please provide with the police district</p>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                 <!-- E-mail -->
                 <label class="control-label" for="zipcode">Zip code</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.district.zipcode}" type="text" name="zipcode" placeholder="Zip Code" class="input-xlarge">
+                    <input th:value="${updateIncident.district.zipcode}" type="number" name="zipcode" placeholder="Zip Code" class="input-xlarge">
                     <p class="help-block">Please enter the zip code</p>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                 <!-- ward -->
                 <label class="control-label" for="ward">Ward</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.district.ward}" type="text" name="ward" placeholder="ward" class="input-xlarge">
+                    <input th:value="${updateIncident.district.ward}" type="number" name="ward" placeholder="ward" class="input-xlarge">
                     <p class="help-block">Please provide the ward</p>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                 <!-- cencusTracts -->
                 <label class="control-label" for="cencusTracts">Census Tracts</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.extraIncidentInfo.cencusTracts}" type="text"  name="cencusTracts" placeholder="censusTracts" class="input-xlarge">
+                    <input th:value="${updateIncident.extraIncidentInfo.cencusTracts}" type="number"  name="cencusTracts" placeholder="censusTracts" class="input-xlarge">
                     <p class="help-block">Please provide the census tracts</p>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                 <!-- communityAreas -->
                 <label class="control-label" for="communityAreas">Community Areas</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.extraIncidentInfo.communityAreas}" type="text" name="communityAreas" placeholder="communityAreas" class="input-xlarge">
+                    <input th:value="${updateIncident.extraIncidentInfo.communityAreas}" type="number" name="communityAreas" placeholder="communityAreas" class="input-xlarge">
                     <p class="help-block">Please provide the community areas</p>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                 <!-- historical wards 2003-2015 -->
                 <label class="control-label" for="historical_wards_2003_2015">Historical wards 2003-2015</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.extraIncidentInfo.historical_wards_2003_2015}" type="text" name="historical_wards_2003_2015" placeholder="historical wards 2003-2015" class="input-xlarge">
+                    <input th:value="${updateIncident.extraIncidentInfo.historical_wards_2003_2015}" type="number" name="historical_wards_2003_2015" placeholder="historical wards 2003-2015" class="input-xlarge">
                     <p class="help-block">Please provide the historical wards 2003-2015</p>
                 </div>
             </div>
@@ -197,7 +197,7 @@
                 <!-- wards -->
                 <label class="control-label" for="wards">Wards</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.extraIncidentInfo.wards}" type="text" name="wards" placeholder="wards" class="input-xlarge">
+                    <input th:value="${updateIncident.extraIncidentInfo.wards}" type="number" name="wards" placeholder="wards" class="input-xlarge">
                     <p class="help-block">Please provide the wards</p>
                 </div>
             </div>
@@ -205,7 +205,7 @@
                 <!-- zip_codes -->
                 <label class="control-label" for="zipcodes">Zip codes</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.extraIncidentInfo.zipcodes}" type="text" name="zipcodes" placeholder="Zip codes" class="input-xlarge">
+                    <input th:value="${updateIncident.extraIncidentInfo.zipcodes}" type="number" name="zipcodes" placeholder="Zip codes" class="input-xlarge">
                     <p class="help-block">Please provide the zip codes</p>
                 </div>
             </div>
@@ -218,19 +218,19 @@
                     <!-- SSA -->
                     <label class="control-label" for="SSA">SSA</label>
                     <div th:if="${updateIncident.requestType} eq 'Abandoned Vehicle Complaint'" class="controls">
-                        <input th:value="${updateIncident.abandonedVehicle.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <input th:value="${updateIncident.abandonedVehicle.SSA}" type="number" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                     <div th:if="${updateIncident.getRequestType()} eq 'Garbage Cart Black Maintenance/Replacement'" class="controls">
-                        <input th:value="${updateIncident.garbageCarts.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <input th:value="${updateIncident.garbageCarts.SSA}" type="number" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                     <div th:if="${updateIncident.requestType} eq 'Graffiti Removal'" class="controls">
-                        <input th:value="${updateIncident.graffitiRemoval.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <input th:value="${updateIncident.graffitiRemoval.SSA}" type="number" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                     <div th:if="${updateIncident.requestType} eq 'Pothole in Street'" class="controls">
-                        <input th:value="${updateIncident.potHolesReported.SSA}" type="text" name="SSA" placeholder="ssa" class="input-xlarge">
+                        <input th:value="${updateIncident.potHolesReported.SSA}" type="number" name="SSA" placeholder="ssa" class="input-xlarge">
                         <p class="help-block">Please provide the SSA</p>
                     </div>
                 </div>
@@ -265,7 +265,7 @@
                     <!-- daysReportedParked -->
                     <label class="control-label" for="daysReportedParked">Days Reported Parked</label>
                     <div class="controls">
-                        <input th:value="${updateIncident.abandonedVehicle.daysReportedParked}" type="text" name="daysReportedParked" placeholder="daysReportedParked" class="input-xlarge">
+                        <input th:value="${updateIncident.abandonedVehicle.daysReportedParked}" type="number" name="daysReportedParked" placeholder="daysReportedParked" class="input-xlarge">
                         <p class="help-block">Please provide the days the vehicle is parked</p>
                     </div>
                 </div>
@@ -324,7 +324,7 @@
                     <!-- deliveredBlackCartsNum -->
                     <label class="control-label" for="deliveredBlackCartsNum">Number of black carts delivered</label>
                     <div class="controls">
-                        <input th:value="${updateIncident.garbageCarts.deliveredBlackCartsNum}" type="text" name="deliveredBlackCartsNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.garbageCarts.deliveredBlackCartsNum}" type="number" name="deliveredBlackCartsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of black carts delivered</p>
                     </div>
                 </div>
@@ -348,7 +348,7 @@
                     <!-- filledBlockPotholesNum -->
                     <label class="control-label" for="filledBlockPotholesNum">Filled block pot holes</label>
                     <div class="controls">
-                        <input th:value="${updateIncident.potHolesReported.filledBlockPotholesNum}" type="text" name="filledBlockPotholesNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.potHolesReported.filledBlockPotholesNum}" type="number" name="filledBlockPotholesNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of filled block pot holes</p>
                     </div>
                 </div>
@@ -364,7 +364,7 @@
                     <!-- premisesWithGarbageNum -->
                     <label class="control-label" for="premisesWithGarbageNum">Number of garbage premises</label>
                     <div class="controls">
-                        <input th:value="${updateIncident.rodentBaiting.premisesWithGarbageNum}" type="text" name="premisesWithGarbageNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.rodentBaiting.premisesWithGarbageNum}" type="number" name="premisesWithGarbageNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of garbage premises</p>
                     </div>
                 </div>
@@ -372,7 +372,7 @@
                     <!-- premisesWithRatsNum -->
                     <label class="control-label" for="premisesWithRatsNum">Number of rat premises</label>
                     <div class="controls">
-                        <input th:value="${updateIncident.rodentBaiting.premisesWithRatsNum}" type="text" name="premisesWithRatsNum" placeholder="" class="input-xlarge">
+                        <input th:value="${updateIncident.rodentBaiting.premisesWithRatsNum}" type="number" name="premisesWithRatsNum" placeholder="" class="input-xlarge">
                         <p class="help-block">Please provide the number of rat premises</p>
                     </div>
                 </div>

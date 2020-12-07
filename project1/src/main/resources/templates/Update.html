@@ -35,7 +35,24 @@
 </form>
 
 
+
+
+
 <div class="row3">
+
+
+    <div style="padding-bottom: 30%" th:if="${message} != null">
+        <div class="alert alert-success">
+            <strong>Successful update of request with request number:  </strong>
+            <div th:text=${message}>  </div>
+        </div>
+    </div>
+
+    <div th:if="${error} != null">
+        <div class="alert alert-danger">
+            <div th:text=${error}>  </div>
+        </div>
+    </div>
     <form th:action="@{/update/showFormUpdate}"
           th:object="${updater}" method="POST" class="form-horizontal">
 

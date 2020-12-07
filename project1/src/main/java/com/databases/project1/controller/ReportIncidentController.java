@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -95,14 +96,14 @@ public class ReportIncidentController {
                                          @ModelAttribute("treeDebris") TreeDebris treeDebris,
                                          @ModelAttribute("treeTrims") TreeTrims treeTrims,
                                          @ModelAttribute("extraIncidentInfo") ExtraIncidentInfo extraIncidentInfo,
-                                         Model theModel, HttpServletRequest request) {
+                                         Model theModel, HttpServletRequest request, RedirectAttributes redirectAttrs) {
 
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
         List<String> requestTypes = requestTypeService.findAllNames();
         String requestType = incident.getRequestType();
 
         if (requestType == null || requestTypes.stream().noneMatch(type -> type.equals(requestType))) {
-            theModel.addAttribute("error","No such request type. Insertion or update aborted");
+            redirectAttrs.addFlashAttribute("error", "No such request type. Insertion or update aborted");
             return "redirect:/report/showInsert";
         }
 
@@ -187,6 +188,9 @@ public class ReportIncidentController {
         log.setUserAction("Import operation by user " + log.getUserName() +
                 ". Request type: " + incident.getRequestType() + ", Request number: " + incident.getServiceRequestNumber());
         logService.logAction(log);
+
+        String successMessage = incident.getServiceRequestNumber();
+        redirectAttrs.addFlashAttribute("message", successMessage);
         return "redirect:/report/showInsert";
 
     }

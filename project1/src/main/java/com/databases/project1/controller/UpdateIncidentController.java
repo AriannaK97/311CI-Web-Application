@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -128,7 +129,7 @@ public class UpdateIncidentController {
                                  @ModelAttribute("treeDebris") TreeDebris treeDebris,
                                  @ModelAttribute("treeTrims") TreeTrims treeTrims,
                                  @ModelAttribute("extraIncidentInfo") ExtraIncidentInfo extraIncidentInfo,
-                     Model theModel, HttpServletRequest request){
+                     Model theModel, HttpServletRequest request, RedirectAttributes redirectAttrs){
 
         RegisteredUser user = (RegisteredUser) request.getSession().getAttribute("user");
 
@@ -207,7 +208,7 @@ public class UpdateIncidentController {
             }
 
         }else {
-            theModel.addAttribute("error", "This type of incident does not exist");
+            redirectAttrs.addFlashAttribute("error", "No such incident.Update aborted");
         }
 
         UserActionLog log = new UserActionLog();
@@ -217,6 +218,8 @@ public class UpdateIncidentController {
         log.setUserAction("Update operation by user " + log.getUserName() +
                 ". Request type: " + incident.getRequestType() + ", Request number: " + updateDto.getServiceRequestNumber());
         logService.logAction(log);
+        String successMessage = incident.getServiceRequestNumber();
+        redirectAttrs.addFlashAttribute("message", successMessage);
         return "redirect:/update/showUpdate";
     }
 
