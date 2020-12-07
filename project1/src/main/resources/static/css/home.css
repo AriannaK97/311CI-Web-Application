@@ -1,0 +1,72 @@
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IRHyBQOQ45PGXmwzt0SmtFazSM1OpXpc7A&usqp=CAU');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header{
+    font-weight: bold;
+    padding: 18px 30px;
+    text-transform: capitalize;
+}
+
+.container2{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.row1{
+    background-color: #222;
+    color: 	whitesmoke;
+    margin: 0px;
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    left: 12%;
+    padding-left: 5%;
+    padding-right: 2%;
+    margin-right: -50%;
+    transform: translate(-50%, -30%);
+    font-weight: bolder;
+    font-size: large;
+    font-family: Verdana, sans-serif;
+}
+
+.row2{
+    color: 	darkgray;
+    font-weight: normal;
+    font-style: italic;
+    font-family: Verdana, sans-serif;
+}
+
+.row3{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #222222;
+    padding: 1% 1% 1% 1%;
+    color: 	whitesmoke;
+    font-weight: normal;
+    font-style: italic;
+    font-family: Verdana, sans-serif;
+}
+
+/*footer*/
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #222222;
+    color: darkgray;
+    text-align: center;
+}
