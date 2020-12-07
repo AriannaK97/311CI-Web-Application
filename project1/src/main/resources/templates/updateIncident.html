@@ -38,7 +38,7 @@
                     <li th:unless="${session.user}"><a href="/login">Login</a></li>
                     <li th:unless="${session.user}"><a href="/register">Register</a></li>
                     <li th:if="${session.user}"><a href="/logout"> Logout </a></li>
-                    <li th:if="${session.user}"><a th:text="'User: ' + ${session.user.firstName} + ' ' + ${session.user.lastName}"></a></li>
+                    <li th:if="${session.user}"><a th:text="'User: ' + ${session.user.userName}"></a></li>
                 </ul>
             </nav>
         </div>
@@ -107,7 +107,7 @@
                 <!-- Service Request Number-->
                 <label class="control-label" for="serviceRequestNumber">Service Request Number</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.serviceRequestNumber}" type="text"  name="serviceRequestNumber" placeholder="Service Request Number" class="input-xlarge">
+                    <input th:value="${updateIncident.serviceRequestNumber}" type=""  name="serviceRequestNumber" placeholder="Service Request Number" class="input-xlarge" readonly>
                     <p class="help-block">Enter the Service Number of the request</p>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                 <!-- Street Address-->
                 <label class="control-label" for="requestType">Request Type</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.requestType}" type="text" name="requestType" placeholder="Request Type" class="input-xlarge">
+                    <input th:value="${updateIncident.requestType}" type="text" name="requestType" placeholder="Request Type" class="input-xlarge" readonly>
                     <p class="help-block">Enter the street address the incident took place</p>
                 </div>
             </div>
@@ -124,15 +124,19 @@
                 <!-- creationDate-->
                 <label class="control-label" for="serviceRequestNumber">Creation Date</label>
                 <div class="controls">
-                    <input th:value="${updateIncident.creationDate}" type="text"  name="creationDate" placeholder="Creation Date" class="input-xlarge">
+                    <input th:value="${updateIncident.creationDate}" type="text"  name="creationDate" placeholder="Creation Date" class="input-xlarge" readonly>
                     <p class="help-block">Enter the Service Number of the request</p>
                 </div>
             </div>
             <div class="control-group" id="completionDate">
                 <!-- completionDate-->
                 <label class="control-label" for="completionDate">Completion Date</label>
-                <div class="controls">
-                    <input th:value="${updateIncident.completionDate}" type="text"  name="completionDate" placeholder="Completion Date" class="input-xlarge">
+                <div th:if="${updateIncident.completionDate} eq null" class="controls">
+                    <input th:if="${updateIncident.completionDate} eq null" th:value="${updateIncident.completionDate}" type="text"  name="completionDate" placeholder="Completion Date" class="input-xlarge">
+                    <p class="help-block">Enter the Service Number of the request</p>
+                </div>
+                <div th:unless="${updateIncident.completionDate} eq null" class="controls">
+                    <input th:value="${updateIncident.completionDate}" type="text"  name="completionDate" placeholder="Completion Date" class="input-xlarge" readonly>
                     <p class="help-block">Enter the Service Number of the request</p>
                 </div>
             </div>

@@ -66,6 +66,7 @@ body {
     top: 40%;
     left: 55%;
     margin-right: -50%;
+    margin-bottom: 5% !important;
     transform: translate(-50%, -50%);
 }
 
@@ -96,9 +97,9 @@ body {
     top: 60%;
     left: 50%;
     border: rgba(0,0,0,0.5);
-    margin: 5px -50% 5px 5px;
+    margin: 1% -55% 1% 1%;
     transform: translate(-50%, -20%);
-    padding: 1% 3% 0 3%;
+    padding: 1% 5% 5% 3%;
 
 }
 .table{
@@ -117,8 +118,11 @@ body {
     border: #cccccc;
 }
 
+.panel .panel-default .panel-table{}
 
-
+.row4{
+    padding-bottom: 10% !important;
+}
 
 .panel-heading{
     color: whitesmoke;
@@ -131,7 +135,7 @@ body {
     color: whitesmoke;
 }
 .panel-table .panel-body{
-    padding:0;
+    padding:0%;
 }
 .table-responsive {height:400px;}
 
@@ -161,6 +165,7 @@ body {
 
 .panel-table .panel-body .table-bordered > thead > tr:first-of-type > th{
     border-top: 0px;
+    margin-bottom: 10%;
 }
 
 .panel-table .panel-footer .pagination{
@@ -203,7 +208,7 @@ used to vertically center elements, may need modification if you're not using de
     position: absolute;
     top: 71%;
     left: 46.9%;
-    margin: 22% -50% 0 -5%;
+    margin: 22% -50% 10% -5%;
     transform: translate(-50%, -30%);
     padding: 1% 1% 1% 1%;
 }

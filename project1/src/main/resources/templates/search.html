@@ -62,7 +62,7 @@
                     <li th:unless="${session.user}"><a href="/login">Login</a></li>
                     <li th:unless="${session.user}"><a href="/register">Register</a></li>
                     <li th:if="${session.user}"><a href="/logout"> Logout </a></li>
-                    <li th:if="${session.user}"><a th:text="'User: ' + ${session.user.firstName} + ' ' + ${session.user.lastName}"></a></li>
+                    <li th:if="${session.user}"><a th:text="'User: ' + ${session.user.userName}"></a></li>
                 </ul>
             </nav>
         </div>
@@ -200,16 +200,17 @@
     <div class="row3">
 
         <div th:if= "${objectList != null}">
-            <div class="container resultTable row" id="resultsList">
-                <div class="row">
+            <div class="container resultTable row row4" id="resultsList">
+                <div class="row row4">
 
-                    <div class="col-md-12 col-md-offset-1">
+                    <div class="col-md-8 col-md-offset-1">
 
                         <div class="panel panel-default panel-table">
                             <div class="panel-heading">
                                 <div class="row">
-                                    <div class="col col-xs-6">
+                                    <div class="col col-xs-6" >
                                         <h3 class="panel-title">Results</h3>
+                                        <h5 th:text="'Query: ' + ${searchDto.searchType}"></h5>
                                     </div>
                                 </div>
                             </div>
@@ -375,15 +376,16 @@
 
         <div th:if= "${incidentList != null}">
             <div class="container resultTable row" id="resultsObject">
-                <div class="row">
+                <div class="row row4">
 
-                    <div class="col-md-12 col-md-offset-1">
+                    <div class="col-md-8 col-md-offset-1">
 
                         <div class="panel panel-default panel-table">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col col-xs-6">
                                         <h3 class="panel-title">Results</h3>
+                                        <h5 th:text="'Query: ' + ${searchDto.searchType}"></h5>
                                     </div>
                                 </div>
                             </div>
