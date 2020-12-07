@@ -2,7 +2,6 @@ package com.databases.project1.service;
 
 
 import com.databases.project1.dao.RoleDao;
-import com.databases.project1.dao.UserDao;
 import com.databases.project1.entity.RegisteredUser;
 import com.databases.project1.entity.Role;
 import com.databases.project1.repository.UserRepository;
@@ -21,10 +20,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-	// need to inject user dao
-	@Autowired
-	private UserDao userDao;
 
 	@Autowired
 	private RoleDao roleDao;

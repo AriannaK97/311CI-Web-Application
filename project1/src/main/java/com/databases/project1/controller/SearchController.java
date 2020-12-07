@@ -4,7 +4,6 @@ import com.databases.project1.dto.SearchDto;
 import com.databases.project1.entity.Incident;
 import com.databases.project1.entity.RegisteredUser;
 import com.databases.project1.repository.IncidentRepository;
-import com.databases.project1.service.SearchRequestService;
 import com.databases.project1.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +27,6 @@ public class SearchController {
     @Autowired
     IncidentRepository incidentRepository;
 
-    @Autowired
-    SearchRequestService searchRequestService;
 
     @Autowired
     SearchService searchService;

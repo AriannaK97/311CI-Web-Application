@@ -6,5 +6,5 @@ create unique index district_id_uindex
 create index request_incident_id_index
     on incident using btree (request_type, id);
 
-create index request_type_index
-    on incident using btree (request_type);
+create index request_num_index
+on incident using  btree(service_request_number);
