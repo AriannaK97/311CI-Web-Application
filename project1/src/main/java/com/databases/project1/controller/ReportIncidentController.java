@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("/report")
 public class ReportIncidentController {
 
     @Autowired
@@ -80,8 +82,8 @@ public class ReportIncidentController {
     }
 
 
-    @PostMapping("/insertOrUpdate")
-    public String insertOrUpdateIncident(@ModelAttribute("incident") Incident incident,
+    @PostMapping("/insert")
+    public String insertIncident(@ModelAttribute("incident") Incident incident,
                                          @ModelAttribute("abandonedVehicle") AbandonedVehicle abandonedVehicle,
                                          @ModelAttribute("alleyLightsOut") AlleyLightsOut alleyLightsOut,
                                          @ModelAttribute("garbageCarts") GarbageCarts garbageCarts,
@@ -101,7 +103,7 @@ public class ReportIncidentController {
 
         if (requestType == null || requestTypes.stream().noneMatch(type -> type.equals(requestType))) {
             theModel.addAttribute("error","No such request type. Insertion or update aborted");
-            return "redirect:/showInsert";
+            return "redirect:/report/showInsert";
         }
 
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
@@ -114,7 +116,7 @@ public class ReportIncidentController {
             District districtFromTable = districtService.findIfDistrictExists(district.getCommunityArea(),
                     district.getPoliceDistrict(), district.getWard(), district.getZipcode());
             if(districtFromTable == null){
-                districtService.saveDistrict(district);
+                incident.setDistrict(districtService.saveDistrict(district));
             }
             else {
                 incident.setDistrict(districtFromTable);
@@ -185,7 +187,7 @@ public class ReportIncidentController {
         log.setUserAction("Import operation by user " + log.getUserName() +
                 ". Request type: " + incident.getRequestType() + ", Request number: " + incident.getServiceRequestNumber());
         logService.logAction(log);
-        return "redirect:/showInsert";
+        return "redirect:/report/showInsert";
 
     }
 

@@ -9,21 +9,16 @@ import com.databases.project1.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
+@RequestMapping("/search")
 public class SearchController {
 
     private static final DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -137,7 +132,7 @@ public class SearchController {
         return "search";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/showSearch")
     public String search(Model theModel) {
         SearchDto searcher = new SearchDto();
         theModel.addAttribute("searcher", new SearchDto());

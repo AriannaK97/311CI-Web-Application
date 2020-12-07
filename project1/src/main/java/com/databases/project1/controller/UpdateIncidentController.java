@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 
 @Controller
+@RequestMapping("/update")
 public class UpdateIncidentController {
 
     @Autowired
@@ -60,7 +61,7 @@ public class UpdateIncidentController {
     @Autowired
     LoggingService logService;
 
-    @GetMapping("/update")
+    @GetMapping("/showUpdate")
     public String update(Model theModel){
         Incident incident = new Incident();
 
@@ -141,7 +142,7 @@ public class UpdateIncidentController {
                 District districtFromTable = districtService.findIfDistrictExists(district.getCommunityArea(),
                         district.getPoliceDistrict(), district.getWard(), district.getZipcode());
                 if(districtFromTable == null){
-                    districtService.saveDistrict(district);
+                    incident.setDistrict(districtService.saveDistrict(district));
                 }
                 else {
                     incident.setDistrict(districtFromTable);
@@ -216,7 +217,7 @@ public class UpdateIncidentController {
         log.setUserAction("Update operation by user " + log.getUserName() +
                 ". Request type: " + incident.getRequestType() + ", Request number: " + updateDto.getServiceRequestNumber());
         logService.logAction(log);
-        return "redirect:/update";
+        return "redirect:/update/showUpdate";
     }
 
 

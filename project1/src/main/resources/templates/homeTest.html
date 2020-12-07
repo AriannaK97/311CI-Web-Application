@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+
+    We are here!
+
+
+    <div th:if="${session.user == null}" >
+        To login click here
+         <a href="/login"> Login </a>
+    </div>
+
+    <div th:if="${session.user}" >
+        <p th:text="'First name: ' + ${session.user.firstName} + ', Last name: ' + ${session.user.lastName} + ', Email: ' + ${session.user.email}"></p>
+
+        To logout click here
+        <a href="/logout"> Logout </a>
+    </div>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Request Type</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="listObject : ${list}">
+            <td><span th:text="${listObject[1]}"> Request Type </span></td>
+            <td><span th:text="${listObject[0]}"> Count</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

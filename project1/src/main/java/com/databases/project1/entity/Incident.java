@@ -60,8 +60,8 @@ public class Incident {
     @JoinColumn(name="status_type")
     String statusType;
 
-    @ManyToOne
-    @JoinColumn(name="district_id", updatable = false, insertable = false)
+    @ManyToOne()
+    @JoinColumn(name="district_id")
     District district;
 
     @OneToOne(cascade = CascadeType.ALL)

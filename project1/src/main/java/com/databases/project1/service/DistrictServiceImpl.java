@@ -11,8 +11,8 @@ public class DistrictServiceImpl implements DistrictService {
     @Autowired
     DistrictRepository districtRepository;
 
-    public boolean saveDistrict(District district) {
-        return (districtRepository.save(district) != null);
+    public District saveDistrict(District district) {
+        return districtRepository.save(district);
     }
 
     public District findIfDistrictExists(Integer communityArea, Integer policeDistrict, Integer ward, Integer zipcode){
